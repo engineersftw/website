@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  before_filter :set_nav
+  before_filter :set_nav, except: [:goto_playlist]
   attr_accessor :active_index, :active_about, :active_events
 
   def set_nav
