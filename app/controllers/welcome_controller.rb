@@ -7,6 +7,6 @@ class WelcomeController < ApplicationController
   end
 
   def goto_playlist
-    redirect 'http://j.mp/sgmeetups'
+    redirect_to 'http://j.mp/sgmeetups'
   end
 end
