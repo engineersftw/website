@@ -5,4 +5,8 @@ class WelcomeController < ApplicationController
   def set_nav
     self.send("active_#{params[:action]}=", 'active')
   end
+
+  def goto_playlist
+    redirect 'http://j.mp/sgmeetups'
+  end
 end
