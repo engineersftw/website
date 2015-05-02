@@ -1,0 +1,28 @@
+.video-wall
+  #player
+
+.container
+  .videos.row
+    - @episodes.each do |video|
+      .video.col-xs-6.col-md-3.col-lg-2
+        .thumbnail
+          a href="/episodes/#{video.video_id}" title="#{video.title}" data-video-id="#{video.video_id}"
+            img src="#{video.image1}" alt="#{video.title}"
+
+
+javascript:
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '486',
+      width: '864',
+      videoId: '#{@episodes.first.video_id}'
+    });
+  }
+
