@@ -3,10 +3,10 @@
 
 .container
   .videos.row
-    - @episodes.each do |video|
+    - @episodes.each_with_index do |video, index|
       .video.col-xs-6.col-md-3.col-lg-2
         .thumbnail
-          a href="/episodes/#{video.video_id}" title="#{video.title}" data-video-id="#{video.video_id}"
+          a href="/episodes/#{video.video_id}" title="#{video.title}" data-pos="#{index}" data-video-id="#{video.video_id}" data-description="#{video.description}"
             img src="#{video.image1}" alt="#{video.title}"
 
 
@@ -22,7 +22,11 @@ javascript:
     player = new YT.Player('player', {
       height: '486',
       width: '864',
-      videoId: '#{@episodes.first.video_id}'
+      playerVars: {
+        listType: 'playlist',
+        list: 'PLECEw2eFfW7hYMucZmsrryV_9nIc485P1'
+      }
+      //videoId: '#{@episodes.first.video_id}'
     });
   }
 
