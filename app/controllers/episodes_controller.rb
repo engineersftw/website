@@ -1,6 +1,6 @@
 class EpisodesController < ApplicationController
   def index
-    @episodes = Episode.all
+    @episodes = Episode.all.order(:sort_order)
   end
 
   def show

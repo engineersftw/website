@@ -7,8 +7,8 @@ namespace :engineerssg do
 
     puts "#{items.count} items found..."
 
-    items.each do |item|
-      Episode.find_or_create_by(video_id: item[:video_id]) do |video|
+    items.each_with_index do |item, index|
+      episode = Episode.find_or_create_by(video_id: item[:video_id]) do |video|
         video.title = item[:title]
         video.published_at = item[:published_at]
         video.description = item[:description]
@@ -16,6 +16,7 @@ namespace :engineerssg do
         video.image2 = item[:image2]
         video.image3 = item[:image3]
       end
+      episode.update(sort_order:index)
     end
   end
 
