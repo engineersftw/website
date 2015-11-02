@@ -3,6 +3,8 @@
     .col.s12
       h4 Meetup Videos
       p Listing of the videos we record at local tech meetups.
+    .col.s12
+      span= "#{@episodes.count} videos found."
   .videos.row
     - @episodes.each_with_index do |video, index|
       .video.col.s12.m4.l3
