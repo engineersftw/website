@@ -5,6 +5,12 @@ html
     link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /
     =stylesheet_link_tag 'application', media: 'all'
     meta name="viewport" content="width=device-width, initial-scale=1.0" /
+    meta property="og:site_name" content="Engineers.SG"
+    meta property="og:title" content="Engineers.SG" /
+    meta property="og:type" content="website" /
+    meta property="og:description" content="We are a not-for-profit community initiative, created to help document the Singapore Tech and Startup Scene." /
+    meta property="og:url" content="http://engineers.sg/" /
+    meta property="og:image" content="https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg" /
     =csrf_meta_tags
   body
     nav
@@ -27,9 +33,9 @@ html
                 i.material-icons.left search
                 span Search
             li
-              a href="/events"
-                i.material-icons.left today
-                span Events
+              a href="/bookings"
+                i.material-icons.left queue
+                span Book Us
           ul#mobile-nav.side-nav
             li
               a href="/episodes/" Videos
@@ -38,16 +44,18 @@ html
             li
               a href="/episodes/search" Search
             li
-              a href="/events" Events
+              a href="/bookings" Book Us
 
     ==yield
 
     footer.page-footer.blue.darken-3
       .container
         .row
-          .col.s12
+          .col.s12.l9
             h5.white-text Navigation
             ul
+              li
+                a.grey-text.text-lighten-3 href="/about" About Us
               li
                 a.grey-text.text-lighten-3 href="/episodes" Videos
               li
@@ -55,9 +63,12 @@ html
               li
                 a.grey-text.text-lighten-3 href="/episodes/search" Search
               li
-                a.grey-text.text-lighten-3 href="/events" Events
+                a.grey-text.text-lighten-3 href="/bookings" Book Us
+          .col.s12.l3
+            h5.white-text Links
+            ul
               li
-                a.grey-text.text-lighten-3 href="/about" About Us
+                a.grey-text.text-lighten-3 href="/events" Event Listings
       .footer-copyright
         .container Copyrights Reserved &copy; #{Date.current.strftime '%Y'}
 
