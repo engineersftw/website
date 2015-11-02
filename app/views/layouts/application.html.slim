@@ -2,34 +2,63 @@ doctype html
 html
   head
     title Engineers.SG
-    =stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /
+    =stylesheet_link_tag 'application', media: 'all'
+    meta name="viewport" content="width=device-width, initial-scale=1.0" /
     =csrf_meta_tags
-body data-no-turbolink="true"
-  nav.navbar.navbar-inverse.navbar-fixed-top (role="navigation")
-    .container
-      .navbar-header
-        button.navbar-toggle.collapsed (type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
-          span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand (href="/") Engineers.SG
-      div#navbar.collapse.navbar-collapse
-        ul.nav.navbar-nav
-          li (class="#{@active_index}")
-            a (href="/") Home
-          li (class="#{@active_episodes}")
-            a (href="/episodes") Videos
-          li (class="#{@active_about}")
-            a (href="/about") About
-          li (class="#{@active_events}")
-            a (href="/events") Events
+  body
+    nav
+      .nav-wrapper
+        .container
+          a.brand-logo href="/" Engineers.SG
+          a.button-collapse href="#" data-activates="mobile-nav"
+            i.material-icons menu
+          ul.nav-mobile.right.hide-on-med-and-down
+            li
+              a href="/episodes/"
+                i.material-icons.left video_library
+                span Videos
+            li
+              a href="/conferences"
+                i.material-icons.left assignment
+                span Conferences
+            li
+              a href="/episodes/search"
+                i.material-icons.left search
+                span Search
+            li
+              a href="/events"
+                i.material-icons.left today
+                span Events
+          ul#mobile-nav.side-nav
+            li
+              a href="/episodes/" Videos
+            li
+              a href="/conferences" Conferences
+            li
+              a href="/episodes/search" Search
+            li
+              a href="/events" Events
 
-  ==yield
+    ==yield
 
-  nav.navbar.navbar-default.navbar-fixed-bottom
-    .container
-      .copyright Copyrights Reserved &copy; #{Date.current.strftime '%Y'}
+    footer.page-footer.blue.darken-3
+      .container
+        .row
+          .col.s12
+            h5.white-text Navigation
+            ul
+              li
+                a.grey-text.text-lighten-3 href="/episodes" Videos
+              li
+                a.grey-text.text-lighten-3 href="/conferences" Conferences
+              li
+                a.grey-text.text-lighten-3 href="/episodes/search" Search
+              li
+                a.grey-text.text-lighten-3 href="/events" Events
+              li
+                a.grey-text.text-lighten-3 href="/about" About Us
+      .footer-copyright
+        .container Copyrights Reserved &copy; #{Date.current.strftime '%Y'}
 
-  =javascript_include_tag 'application', 'data-turbolinks-track' => true
-
+    =javascript_include_tag 'application'

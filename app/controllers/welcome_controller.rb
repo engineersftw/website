@@ -1,9 +1,7 @@
 class WelcomeController < ApplicationController
-  before_filter :set_nav, except: [:goto_playlist]
-  attr_accessor :active_index, :active_about, :active_events
-
-  def set_nav
-    self.send("active_#{params[:action]}=", 'active')
+  def index
+    @first_video = Episode.limit(1).order(:sort_order).first
+    @recent_episodes = Episode.limit(8).offset(1).order(:sort_order)
   end
 
   def goto_playlist

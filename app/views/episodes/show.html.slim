@@ -1,9 +1,12 @@
 .container
-  h1=@video.title
-
-  .video
-    iframe allowfullscreen="true" frameborder="0" height="486" src="http://www.youtube.com/embed/#{@video.video_id}" type="text/html" width="864"
-    p== @video.description.gsub(/(\r)?\n/, "<br />")
-
-
-  a(href="/episodes/") &laquo Back
+  .row
+    .col.s12
+      h4=@video.title
+  .row
+    .col.s12
+      .video.video-container
+        iframe allowfullscreen="true" frameborder="0" height="486" src="http://www.youtube.com/embed/#{@video.video_id}" type="text/html" width="864"
+      = auto_link(simple_format(@video.description))
+  .row
+    .col.s12
+      a(href="/episodes/") &laquo; Back

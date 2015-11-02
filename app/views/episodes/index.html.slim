@@ -1,32 +1,21 @@
-.video-wall
-  #player
-
 .container
+  .row
+    .col.s12
+      h4 Meetup Videos
+      p Listing of the videos we record at local tech meetups.
   .videos.row
     - @episodes.each_with_index do |video, index|
-      .video.col-xs-6.col-md-3.col-lg-2
-        .thumbnail
-          a href="/episodes/#{video.video_id}" title="#{video.title}" data-pos="#{index}" data-video-id="#{video.video_id}" data-description="#{video.description}"
-            img src="#{video.image1}" alt="#{video.title}"
-
-
-javascript:
-  var tag = document.createElement('script');
-
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '486',
-      width: '864',
-      playerVars: {
-        listType: 'playlist',
-        list: 'PLECEw2eFfW7hYMucZmsrryV_9nIc485P1'
-      }
-      //videoId: '#{@episodes.first.video_id}'
-    });
-  }
-
+      .video.col.s12.m4.l3
+        .card
+          .card-image
+            img.responsive-img.activator src="#{video.image2}" alt="#{video.title}"
+          .card-content
+            span.video-title.card-title.activator.grey-text.text-darken-4.truncate
+              = video.title
+          .card-action
+            a.watch-video href=episode_path(video) data-video-title="#{video.title}" data-video-id="#{video.video_id}" Watch
+          .card-reveal
+            span.video-title.card-title.grey-text.text-darken-4
+              = video.title
+              i.material-icons.right close
+            .video-description= simple_format video.description
