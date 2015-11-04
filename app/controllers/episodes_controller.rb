@@ -1,4 +1,6 @@
 class EpisodesController < ApplicationController
+  layout 'video', only: [:show]
+
   def index
     @episodes = Episode.all.order(:sort_order)
   end
