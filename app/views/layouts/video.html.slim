@@ -12,6 +12,12 @@ html
     meta property="og:image" content=@video.image3 /
     meta property="og:type" content="website" /
 
+    meta name="twitter:card" content="summary" /
+    meta name="twitter:site" content="@engineersftw" /
+    meta name="twitter:title" content="#{@video.title} - Engineers.SG" /
+    meta name="twitter:description" content=@video.description /
+    meta name="twitter:image" content=@video.image3 /
+
     =csrf_meta_tags
   body
     ==render 'shared/nav_bar'
