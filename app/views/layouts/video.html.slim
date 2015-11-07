@@ -10,30 +10,8 @@ html
     meta property="og:description" content=@video.description /
     meta property="og:url" content=episode_url(@video) /
     meta property="og:image" content=@video.image3 /
+    meta property="og:type" content="website" /
 
-    meta property="og:type" content="video" /
-    meta property="og:video:url" content="https://www.youtube.com/embed/#{@video.video_id}" /
-    meta property="og:video:secure_url" content="https://www.youtube.com/embed/#{@video.video_id}" /
-    meta property="og:video:type" content="text/html" /
-    meta property="og:video:width" content="1280" /
-    meta property="og:video:height" content="720" /
-
-    meta property="og:video:url" content="http://www.youtube.com/v/#{@video.video_id}?version=3&autohide=1" /
-    meta property="og:video:secure_url" content="https://www.youtube.com/v/#{@video.video_id}?version=3&autohide=1" /
-    meta property="og:video:type" content="application/x-shockwave-flash" /
-    meta property="og:video:width" content="1280" /
-    meta property="og:video:height" content="720" /
-
-    meta name="twitter:card" content="player" /
-    meta name="twitter:site" content="@youtube" /
-    meta name="twitter:url" content=episode_url(@video) /
-    meta name="twitter:title" content="#{@video.title} - Engineers.SG" /
-    meta name="twitter:description" content=@video.description /
-    meta name="twitter:image" content=@video.image3 /
-
-    meta name="twitter:player" content="https://www.youtube.com/embed/#{@video.video_id}" /
-    meta name="twitter:player:width" content="1280" /
-    meta name="twitter:player:height" content="720" /
     =csrf_meta_tags
   body
     ==render 'shared/nav_bar'
