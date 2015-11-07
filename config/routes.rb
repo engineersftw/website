@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :episodes, only: [:index, :show] do
     collection do
       get '/search', to: 'episodes#search'

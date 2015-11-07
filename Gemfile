@@ -14,10 +14,15 @@ gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'google-api-client'
 gem 'rails_autolink'
+gem 'puma'
+
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'devise'
+gem 'cancancan'
 
 gem 'spring',        group: :development
 
-gem 'rails_12factor', group: :production
-gem 'newrelic_rpm', group: :production
-
-gem 'unicorn'
+group :production do
+  gem 'rails_12factor'
+  gem 'newrelic_rpm'
+end
