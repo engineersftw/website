@@ -5,4 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create!(email: 'admin@engineers.sg', password: 'password', password_confirmation: 'password')
+# User.create!(email: 'admin@engineers.sg', password: 'password', password_confirmation: 'password')
+#
+
+Playlist.create!(
+  playlist_id: 'PLECEw2eFfW7hYMucZmsrryV_9nIc485P1',
+  name: 'Meetup Videos',
+  publish_date: Date.today,
+)
+

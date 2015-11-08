@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107090947) do
+ActiveRecord::Schema.define(version: 20151108023937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,32 @@ ActiveRecord::Schema.define(version: 20151107090947) do
   end
 
   add_index "episodes", ["video_id"], name: "index_episodes_on_video_id", using: :btree
+
+  create_table "playlist_items", force: :cascade do |t|
+    t.integer  "playlist_id", null: false
+    t.integer  "episode_id",  null: false
+    t.integer  "sort_order"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "playlist_items", ["episode_id"], name: "index_playlist_items_on_episode_id", using: :btree
+  add_index "playlist_items", ["playlist_id"], name: "index_playlist_items_on_playlist_id", using: :btree
+  add_index "playlist_items", ["sort_order"], name: "index_playlist_items_on_sort_order", using: :btree
+
+  create_table "playlists", force: :cascade do |t|
+    t.string   "playlist_id"
+    t.string   "name",                        null: false
+    t.text     "description"
+    t.date     "publish_date",                null: false
+    t.string   "image"
+    t.boolean  "active",       default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "playlists", ["active"], name: "index_playlists_on_active", using: :btree
+  add_index "playlists", ["playlist_id"], name: "index_playlists_on_playlist_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
