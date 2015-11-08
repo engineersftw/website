@@ -20,7 +20,10 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 gem 'cancancan'
 
-gem 'spring',        group: :development
+group :development do
+  gem 'spring'
+  gem 'pry-rails'
+end
 
 group :production do
   gem 'rails_12factor'
