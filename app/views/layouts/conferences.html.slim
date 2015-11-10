@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Engineers.SG
+    link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /
+    =stylesheet_link_tag 'application', media: 'all'
+    meta name="viewport" content="width=device-width, initial-scale=1.0" /
+    meta property="og:site_name" content="Engineers.SG"
+    meta property="og:title" content="Conferences - Engineers.SG" /
+    meta property="og:type" content="website" /
+    meta property="og:description" content="Here is a list of conferences we participated in." /
+    meta property="og:url" content="http://engineers.sg/conferences" /
+    meta property="og:image" content="https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg" /
+
+    meta name="twitter:card" content="summary" /
+    meta name="twitter:site" content="@engineersftw" /
+    meta name="twitter:title" content="Conferences - Engineers.SG" /
+    meta name="twitter:description" content="Here is a list of conferences we participated in." /
+    meta name="twitter:image" content="https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg" /
+    =csrf_meta_tags
+  body
+    ==render 'shared/fb'
+    ==render 'shared/nav_bar'
+
+    ==yield
+
+    ==render 'shared/footer'
+    =javascript_include_tag 'application'
+    ==render 'shared/ga'
