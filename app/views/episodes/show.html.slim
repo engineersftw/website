@@ -9,7 +9,7 @@
   .row
     .col.s12
       | &nbsp;
-      a.twitter-share-button data-url=episode_url(@video) href="https://twitter.com/share" Tweet
+      a.twitter-share-button data-text="#{@video.title} - Engineers.SG" data-url=episode_url(@video) data-via="engineersftw" href="https://twitter.com/share" Tweet
       .fb-share-button.left data-href=episode_url(@video) data-layout="button_count"
     .col.s12
       = auto_link(simple_format(@video.description))
