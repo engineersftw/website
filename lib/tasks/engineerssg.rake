@@ -3,9 +3,22 @@ namespace :engineerssg do
   task update_playlist: :environment do
     puts 'Starting to pull YouTube Playlist'
 
+    youtube_service = YoutubeService.new
     Playlist.active.each do |playlist|
-      items = YoutubeService.new.retrieve_playlist(playlist.playlist_id)
+      puts 'Retrieving Playlist Info from YouTube... for' + playlist.playlist_id
 
+      playlist_info = youtube_service.fetch_playlist_details(playlist.playlist_id)
+      playlist.name = playlist_info.snippet.title
+      playlist.publish_date = playlist_info.snippet.published_at
+      playlist.description = playlist_info.snippet.description
+      # if playlist_info.snippet.thumbnails.maxres.present?
+      #   playlist.image = playlist_info.snippet.thumbnails.maxres.url
+      # else
+        playlist.image = playlist_info.snippet.thumbnails.high.url
+      # end
+      playlist.save
+
+      items = youtube_service.retrieve_playlist(playlist.playlist_id)
       puts "#{items.count} items found..."
 
       items.each_with_index do |item, index|

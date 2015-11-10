@@ -1,8 +1,14 @@
 class EpisodesController < ApplicationController
   layout 'video', only: [:show]
+  layout 'playlist', only: [:playlist]
 
   def index
-    @episodes = Episode.all.order(:sort_order)
+    @episodes = Episode.all.order('published_at DESC')
+  end
+
+  def playlist
+    @playlist = Playlist.find(params[:id])
+    @episodes = @playlist.playlist_items.order('sort_order ASC').map(&:episode)
   end
 
   def search

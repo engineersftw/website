@@ -1,12 +1,10 @@
 require 'google/api_client'
 
 class YoutubeService
-  DEVELOPER_KEY = "AIzaSyAnql4dYjLTLSmWi6JYoES0ftTm9CBf_i0"
   YOUTUBE_API_SERVICE_NAME = "youtube"
   YOUTUBE_API_VERSION = "v3"
-  MEETUPS_PLAYLIST = 'PLECEw2eFfW7hYMucZmsrryV_9nIc485P1'
 
-  def retrieve_playlist
+  def retrieve_playlist(playlist_id)
     items = []
 
     next_page_token = ''
@@ -14,7 +12,7 @@ class YoutubeService
       opts = {
         part: 'snippet',
         maxResults: 50,
-        playlistId: MEETUPS_PLAYLIST,
+        playlistId: playlist_id,
         pageToken: next_page_token
       }
       api_response = api_client.execute!(api_method: youtube.playlist_items.list, parameters: opts)
@@ -37,10 +35,20 @@ class YoutubeService
     items
   end
 
+  def fetch_playlist_details(playlist_id)
+    opts = {
+      part: 'snippet',
+      id: playlist_id
+    }
+    api_response = api_client.execute!(api_method: youtube.playlists.list, parameters: opts)
+
+    api_response.data.items.first unless api_response.data.items.empty?
+  end
+
   private
 
   def api_client
-    @google_api_client ||= Google::APIClient.new(key: DEVELOPER_KEY, authorization: nil, application_name: 'Engineers.SG', application_version: '1.0.0')
+    @google_api_client ||= Google::APIClient.new(key: ENV['GOOGLE_DEV_KEY'], authorization: nil, application_name: 'Engineers.SG', application_version: '1.0.0')
   end
 
   def youtube

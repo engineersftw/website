@@ -3,48 +3,8 @@
     .col.s12
       h4 Conferences
       p We have been actively involved in recording local tech conferences too.
-    .col.s12.l6
-      h5 iOS Conf SG 2015
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLED4k3CZkY9RDUdF59xfWY1KAeE9Wgmp7" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 DevOpsDays Singapore 2015
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLpWsyYqY_ehl-U2r0zhi8WoJofHJpGHX8" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 GeekCampSG 2015
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL7fTdQ2ppzdAp9ZGCa086TZWF8Q8DuVA1" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 PHPConf.Asia 2015
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLECEw2eFfW7jZnht0ZtRizolgaZWdvErS" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 PyCon SG 2015
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLMrPHnpQRHYZ2eGRhDEMdacDLnSpwGxBf" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 PyCon SG 2015 EDU Summit
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLMrPHnpQRHYbuyYXp53Zymlo-I3OI9ao8" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 Rails Girls Singapore 2015 (RDRC Edition)
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLECEw2eFfW7gq56fc0aSIvF1AEg6xmw6k" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 FOSSAsia 2015 - DevOps Track (15 March)
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLECEw2eFfW7gsu3B4CnIXFkZ8IMHotrRK" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 FOSSAsia 2015 - Python Track
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLECEw2eFfW7jOVyEeTzU0eAtB7NWc7ROW" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 Hackatron Asia 2014
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLECEw2eFfW7hu3f9NLJzc9KVUkIycG66W" frameborder="0" allowfullscreen="true"
-    .col.s12.l6
-      h5 GeekCampSG 2014
-      .video-container
-        iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL7fTdQ2ppzdB_6v1gBu8CAL7XmBp-Vc8O" frameborder="0" allowfullscreen="true"
-
+    - @conferences.each do |playlist|
+      .col.s12.l4.m6
+        a href=playlist_path(playlist)
+          h5.truncate= playlist.name
+          img.responsive-img src=playlist.image

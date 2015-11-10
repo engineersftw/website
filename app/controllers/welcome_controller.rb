@@ -1,7 +1,10 @@
 class WelcomeController < ApplicationController
   def index
-    @first_video = Episode.limit(1).order(:sort_order).first
-    @recent_episodes = Episode.limit(8).offset(1).order(:sort_order)
+    @recent_episodes = Episode.limit(8).order('published_at DESC')
+  end
+
+  def conferences
+    @conferences = Playlist.where("playlist_id != ?", 'PLECEw2eFfW7hYMucZmsrryV_9nIc485P1').where(active: true).order('publish_date DESC')
   end
 
   def goto_playlist

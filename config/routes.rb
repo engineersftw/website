@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       get '/search', to: 'episodes#search'
     end
   end
+  get 'playlist/:id', to: 'episodes#playlist', as: 'playlist'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

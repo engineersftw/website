@@ -23,6 +23,7 @@ gem 'cancancan'
 group :development do
   gem 'spring'
   gem 'pry-rails'
+  gem 'dotenv-rails'
 end
 
 group :production do

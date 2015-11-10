@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20151108023937) do
 
   create_table "playlists", force: :cascade do |t|
     t.string   "playlist_id"
-    t.string   "name",                        null: false
+    t.string   "name"
     t.text     "description"
-    t.date     "publish_date",                null: false
+    t.date     "publish_date"
     t.string   "image"
     t.boolean  "active",       default: true
     t.datetime "created_at",                  null: false

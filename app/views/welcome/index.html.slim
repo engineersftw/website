@@ -7,29 +7,16 @@
     .col.s12
       h5 Latest Video
       .video.video-container
-        iframe allowfullscreen="true" frameborder="0" height="486" src="http://www.youtube.com/embed/#{@first_video.video_id}" type="text/html" width="864"
+        iframe allowfullscreen="true" frameborder="0" height="486" src="http://www.youtube.com/embed/#{@recent_episodes.first.video_id}" type="text/html" width="864"
       .card.card-panel
-        h5=@first_video.title
-        = auto_link(simple_format(@first_video.description))
+        h5=@recent_episodes.first.title
+        = auto_link(simple_format(@recent_episodes.first.description))
   .row
     .col.s12
       h5 Recent Videos
   .row
     - @recent_episodes.each_with_index do |video, index|
-      .video.col.s12.m4.l3
-        .card
-          .card-image
-            img.responsive-img.activator src="#{video.image2}" alt="#{video.title}"
-          .card-content
-            span.video-title.card-title.activator.grey-text.text-darken-4.truncate
-              = video.title
-          .card-action
-            a.watch-video href=episode_path(video) data-video-title="#{video.title}" data-video-id="#{video.video_id}" Watch
-          .card-reveal
-            span.video-title.card-title.grey-text.text-darken-4
-              = video.title
-              i.material-icons.right close
-            .video-description= simple_format video.description
+      ==render partial: 'shared/video', locals: {video: video}
   .row
     .col.s12.center
       a.btn.btn-large.waves-effect.waves-light href="/episodes/" More Videos
