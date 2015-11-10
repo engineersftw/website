@@ -1,16 +1,25 @@
 .container
   .row
-    .col.s12.l8
-      h4.grey-text Welcome to Engineers.SG
-    .col.s12.l4
-      a.btn.btn-small.right.light-blue.accent-3 href="https://twitter.com/engineersftw" Follow us @engineersftw
     .col.s12
+      h4.grey-text Welcome to Engineers.SG
+    .col.s12.l9
       h5 Latest Video
       .video.video-container
         iframe allowfullscreen="true" frameborder="0" height="486" src="http://www.youtube.com/embed/#{@recent_episodes.first.video_id}" type="text/html" width="864"
       .card.card-panel
         h5=@recent_episodes.first.title
         = auto_link(simple_format(@recent_episodes.first.description))
+    .col.s12.l3.hide-on-small-only
+      .row
+        .col.s12
+          h5 Social Media
+          .fb-page data-adapt-container-width="true" data-hide-cover="false" data-href="https://www.facebook.com/engineersftw/" data-show-facepile="true" data-show-posts="false" data-small-header="false"
+            .fb-xfbml-parse-ignore
+              blockquote cite="https://www.facebook.com/engineersftw/"
+                a href="https://www.facebook.com/engineersftw/"  Engineers.SG
+      .row
+        .col.s12
+          a.twitter-timeline data-widget-id="664100397691244544" href="https://twitter.com/engineersftw"  Tweets by @engineersftw
   .row
     .col.s12
       h5 Recent Videos

@@ -6,6 +6,12 @@
     .col.s12
       .video.video-container
         iframe allowfullscreen="true" frameborder="0" height="486" src="http://www.youtube.com/embed/#{@video.video_id}" type="text/html" width="864"
+  .row
+    .col.s12
+      | &nbsp;
+      a.twitter-share-button data-url=episode_url(@video) href="https://twitter.com/share" Tweet
+      .fb-share-button.left data-href=episode_url(@video) data-layout="button_count"
+    .col.s12
       = auto_link(simple_format(@video.description))
   .row
     .col.s12
