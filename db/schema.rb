@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108023937) do
+ActiveRecord::Schema.define(version: 20151110192529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 20151108023937) do
 
   add_index "episodes", ["video_id"], name: "index_episodes_on_video_id", using: :btree
 
+  create_table "organizations", force: :cascade do |t|
+    t.string   "title",                         null: false
+    t.text     "description"
+    t.string   "website"
+    t.string   "twitter"
+    t.string   "contact_person"
+    t.boolean  "active",         default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "organizations", ["twitter"], name: "index_organizations_on_twitter", using: :btree
+
   create_table "playlist_items", force: :cascade do |t|
     t.integer  "playlist_id", null: false
     t.integer  "episode_id",  null: false
@@ -72,6 +85,19 @@ ActiveRecord::Schema.define(version: 20151108023937) do
   add_index "playlists", ["active"], name: "index_playlists_on_active", using: :btree
   add_index "playlists", ["playlist_id"], name: "index_playlists_on_playlist_id", using: :btree
 
+  create_table "presenters", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.text     "biography"
+    t.string   "twitter"
+    t.string   "email"
+    t.string   "website"
+    t.boolean  "active",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "presenters", ["twitter"], name: "index_presenters_on_twitter", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -90,4 +116,28 @@ ActiveRecord::Schema.define(version: 20151108023937) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "video_organizations", force: :cascade do |t|
+    t.integer  "episode_id"
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "video_organizations", ["episode_id"], name: "index_video_organizations_on_episode_id", using: :btree
+  add_index "video_organizations", ["organization_id"], name: "index_video_organizations_on_organization_id", using: :btree
+
+  create_table "video_presenters", force: :cascade do |t|
+    t.integer  "episode_id"
+    t.integer  "presenter_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "video_presenters", ["episode_id"], name: "index_video_presenters_on_episode_id", using: :btree
+  add_index "video_presenters", ["presenter_id"], name: "index_video_presenters_on_presenter_id", using: :btree
+
+  add_foreign_key "video_organizations", "episodes"
+  add_foreign_key "video_organizations", "organizations"
+  add_foreign_key "video_presenters", "episodes"
+  add_foreign_key "video_presenters", "presenters"
 end
