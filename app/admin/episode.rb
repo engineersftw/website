@@ -77,15 +77,21 @@ ActiveAdmin.register Episode do
     panel 'Organizations' do
       table_for episode.organizations do
         column :title
-        column :website
+        column('Website') { |v| link_to v.website, v.website, target: '_blank' }
         column :twitter
       end
     end
     panel 'Presenters' do
       table_for episode.presenters do
         column :name
-        column :website
+        column('Website') { |v| link_to v.website, v.website, target: '_blank' }
         column :twitter
+      end
+    end
+    panel 'Links' do
+      table_for episode.video_links do
+        column :title
+        column('URL') { |v| link_to v.url, v.url, target: '_blank' }
       end
     end
   end
