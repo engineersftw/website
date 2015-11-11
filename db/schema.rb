@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110192529) do
+ActiveRecord::Schema.define(version: 20151111153431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,17 @@ ActiveRecord::Schema.define(version: 20151110192529) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "video_links", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "episode_id"
+    t.boolean  "active",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "video_links", ["episode_id"], name: "index_video_links_on_episode_id", using: :btree
+
   create_table "video_organizations", force: :cascade do |t|
     t.integer  "episode_id"
     t.integer  "organization_id"
@@ -136,6 +147,7 @@ ActiveRecord::Schema.define(version: 20151110192529) do
   add_index "video_presenters", ["episode_id"], name: "index_video_presenters_on_episode_id", using: :btree
   add_index "video_presenters", ["presenter_id"], name: "index_video_presenters_on_presenter_id", using: :btree
 
+  add_foreign_key "video_links", "episodes"
   add_foreign_key "video_organizations", "episodes"
   add_foreign_key "video_organizations", "organizations"
   add_foreign_key "video_presenters", "episodes"
