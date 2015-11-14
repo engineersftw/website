@@ -2,19 +2,18 @@ ActiveAdmin.register Episode do
   permit_params :id, :video_id, :title, :description, :published_at, :image1, :image2, :image3, :sort_order, video_organizations_attributes: [:id, :organization_id, :_destroy],
     video_presenters_attributes: [:id, :presenter_id, :_destroy], video_links_attributes: [:id, :_destroy, :title, :url]
 
-  config.sort_order = 'sort_order_asc'
+  config.sort_order = 'published_at_desc'
 
   filter :title
   filter :description
 
   index do
     id_column
-    column :sort_order
+    column :published_at
     column 'Thumbnail' do |video|
       image_tag video.image1
     end
     column :title
-    column :published_at
     actions
   end
 

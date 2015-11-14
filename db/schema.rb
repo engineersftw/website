@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111165958) do
+ActiveRecord::Schema.define(version: 20151114062954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 20151111165958) do
 
   add_index "organizations", ["twitter"], name: "index_organizations_on_twitter", using: :btree
 
+  create_table "playlist_categories", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "active",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "playlist_items", force: :cascade do |t|
     t.integer  "playlist_id", null: false
     t.integer  "episode_id",  null: false
@@ -78,12 +85,16 @@ ActiveRecord::Schema.define(version: 20151111165958) do
     t.text     "description"
     t.date     "publish_date"
     t.string   "image"
-    t.boolean  "active",       default: true
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "active",               default: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "website"
+    t.string   "hashtag"
+    t.integer  "playlist_category_id"
   end
 
   add_index "playlists", ["active"], name: "index_playlists_on_active", using: :btree
+  add_index "playlists", ["playlist_category_id"], name: "index_playlists_on_playlist_category_id", using: :btree
   add_index "playlists", ["playlist_id"], name: "index_playlists_on_playlist_id", using: :btree
 
   create_table "presenters", force: :cascade do |t|

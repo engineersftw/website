@@ -6,7 +6,8 @@ class WelcomeController < ApplicationController
   end
 
   def conferences
-    @conferences = Playlist.where("playlist_id != ?", 'PLECEw2eFfW7hYMucZmsrryV_9nIc485P1').where(active: true).order('publish_date DESC')
+    conference_category = 1
+    @conferences = Playlist.where(playlist_category_id: conference_category).where(active: true).order('publish_date DESC')
   end
 
   def goto_playlist
