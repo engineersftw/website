@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'events' => 'welcome#events'
   get 'conferences' => 'welcome#conferences'
   get 'bookings' => 'welcome#bookings'
+  get 'live' => 'welcome#live'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

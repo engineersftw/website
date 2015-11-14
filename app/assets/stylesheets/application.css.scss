@@ -2,21 +2,17 @@
 $primary-color: color("blue", "darken-4") !default;
 @import "materialize";
 
-// .video-wall{
-//   width: 100%;
-//   position:fixed;
-//   z-index: 1000;
-// }
-// #player{
-//   display: block;
-//   width: 864px;
-//   height: 486px;
-//   margin-left:auto;
-//   margin-right: auto;
-//   margin-bottom: 30px;
-//   margin-top: 20px;
-//   background: #ccc;
-// }
+video{
+  width: 1280px;
+  height: 720px;
+  border: 1px solid white;
+  outline: 1px solid #ccc;
+  z-index: 5;
+}
+
+#myvideo{
+  // transform: rotateY(-180deg);
+}
 
 .video{
   span.video-title{

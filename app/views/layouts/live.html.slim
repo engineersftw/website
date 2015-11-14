@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title= "Engineers.SG"
+    link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /
+    =stylesheet_link_tag 'application', media: 'all'
+    meta name="viewport" content="width=device-width, initial-scale=1.0" /
+    /meta property="og:site_name" content="Engineers.SG"
+    /meta property="og:title" content="#{@video.title} - Engineers.SG" /
+    /meta property="og:description" content=@video.description /
+    /meta property="og:url" content=episode_url(@video) /
+    /meta property="og:image" content=@video.image3 /
+    /meta property="og:type" content="website" /
+    /
+    /meta name="twitter:card" content="summary" /
+    /meta name="twitter:site" content="@engineersftw" /
+    /meta name="twitter:title" content="#{@video.title} - Engineers.SG" /
+    /meta name="twitter:description" content=@video.description /
+    /meta name="twitter:image" content=@video.image3 /
+
+    script src="//cdn.temasys.com.sg/skylink/skylinkjs/0.6.x/skylink.complete.min.js" /
+    =csrf_meta_tags
+  body
+    ==render 'shared/fb'
+    ==render 'shared/nav_bar'
+
+    ==yield
+
+    ==render 'shared/footer'
+    =javascript_include_tag 'application'
+    ==render 'shared/ga'

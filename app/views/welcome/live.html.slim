@@ -1,0 +1,64 @@
+.container
+  .row
+    .col.s12
+      h4 Live Stream
+  .row
+    .col.s12
+      .live-conference
+        video#myvideo.responsive-video autoplay=true muted=true
+    .col.s12
+      button.btn onclick="joinRoom()" Join Room
+      | &nbsp;
+      button.btn onclick="startCamera()" Start Webcam
+      | &nbsp;
+      button.btn onclick="startShareScreen()" Share Screen
+
+javascript:
+  var skylink = new Skylink();
+
+  skylink.on('peerJoined', function(peerId, peerInfo, isSelf) {
+    if(isSelf) return;
+    var vid = document.createElement('video');
+    vid.autoplay = true;
+    vid.muted = true;
+    vid.id = peerId;
+    document.body.appendChild(vid);
+  });
+
+  skylink.on('incomingStream', function(peerId, stream, isSelf) {
+    if(isSelf) return;
+    var vid = document.getElementById(peerId);
+    attachMediaStream(vid, stream);
+  });
+
+  skylink.on('peerLeft', function(peerId) {
+    var vid = document.getElementById(peerId);
+    document.body.removeChild(vid);
+  });
+
+  skylink.on('mediaAccessSuccess', function(stream) {
+    var vid = document.getElementById('myvideo');
+    attachMediaStream(vid, stream);
+  });
+
+  skylink.init({
+    apiKey: 'eedf78ae-0694-4a2a-b928-062306d93f7e', // Get your own key at developer.temasys.com.sg
+    defaultRoom: 'engineers-sg-live-conference'
+  });
+
+  function joinRoom(){
+    skylink.joinRoom();
+  }
+
+  function startCamera() {
+    skylink.sendStream({
+      audio: true,
+      video: true
+    });
+  }
+
+  function startShareScreen(){
+    skylink.shareScreen(function(data, error){
+      console.log(data, error);
+    });
+  }
