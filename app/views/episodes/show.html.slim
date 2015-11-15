@@ -27,19 +27,21 @@
               ul
                 - @video.organizations.each do |organization|
                   li
-                    a href=organization.website target="_blank"
-                      img.responsive-img src=organization.image
-                      br
+                    a href=organization_path(organization)
+                      - if organization.image.present?
+                        img.responsive-img src=organization.image
+                        br
                       = organization.title
-          - if @video.organizations.present?
+          - if @video.presenters.present?
             .col.s6.l12
               h5 Presenter
               ul
                 - @video.presenters.each do |presenter|
                   li
-                    a href=presenter.website target="_blank"
-                      img.responsive-img src=presenter.avatar
-                      br
+                    a href=speaker_path(presenter)
+                      - if presenter.avatar.present?
+                        img.responsive-img src=presenter.avatar
+                        br
                       =presenter.name
           - if @video.video_links.present?
             .col.s12

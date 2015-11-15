@@ -1,0 +1,13 @@
+.container
+  .row
+    .col.s12
+      h4 Speakers
+      p The speakers we recorded.
+    - @presenters.each do |presenter|
+      .col.s12.l4.m6
+        a href=speaker_path(presenter)
+          h5.truncate= presenter.name
+          - if presenter.avatar.present?
+            img.responsive-img src=presenter.avatar
+
+

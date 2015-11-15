@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
   get 'playlist/:id', to: 'episodes#playlist', as: 'playlist'
+  resources :organizations, only: [:index, :show]
+  resources :speakers, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

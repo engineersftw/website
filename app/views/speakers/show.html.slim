@@ -1,0 +1,20 @@
+.container
+  .row
+    .col.s12
+      h4= @presenter.name
+      - if @presenter.byline.present?
+        h5= @presenter.byline
+      - if @presenter.biography.present?
+        p=@presenter.biography
+      - if @presenter.twitter.present?
+        p=link_to "@#{@presenter.twitter}", "https://twitter.com/#{@presenter.twitter}", target: '_blank'
+      - if @presenter.website.present?
+        p
+          | Website:
+          =< link_to @presenter.website, @presenter.website, target: '_blank'
+    .col.s12
+      span= "#{@episodes.count} videos found."
+  .videos.row
+    - @episodes.each do |video|
+      ==render partial: 'shared/video', locals: {video: video}
+

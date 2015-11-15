@@ -11,11 +11,7 @@ namespace :engineerssg do
       playlist.name = playlist_info.snippet.title
       playlist.publish_date = playlist_info.snippet.published_at
       playlist.description = playlist_info.snippet.description
-      # if playlist_info.snippet.thumbnails.maxres.present?
-      #   playlist.image = playlist_info.snippet.thumbnails.maxres.url
-      # else
-        playlist.image = playlist_info.snippet.thumbnails.high.url
-      # end
+      playlist.image = playlist_info.snippet.thumbnails.high.url
       playlist.save
 
       items = youtube_service.retrieve_playlist(playlist.playlist_id)

@@ -1,0 +1,17 @@
+.container
+  .row
+    .col.s12
+      h4= @organization.title
+      p=@organization.description
+      - if @organization.twitter.present?
+        p=link_to "@#{@organization.twitter}", "https://twitter.com/#{@organization.twitter}", target: '_blank'
+      - if @organization.website.present?
+        p
+          | Website:
+          =< link_to @organization.website, @organization.website, target: '_blank'
+    .col.s12
+      span= "#{@episodes.count} videos found."
+  .videos.row
+    - @episodes.each do |video|
+      ==render partial: 'shared/video', locals: {video: video}
+

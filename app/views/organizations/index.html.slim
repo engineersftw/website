@@ -1,0 +1,12 @@
+.container
+  .row
+    .col.s12
+      h4 Organizations
+      p The local tech and startup communities that we support.
+    - @organizations.each do |organization|
+      .col.s12.l4.m6
+        a href=organization_path(organization)
+          h5.truncate= organization.title
+          - if organization.image.present?
+            img.responsive-img src=organization.image
+
