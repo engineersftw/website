@@ -1,5 +1,6 @@
 ActiveAdmin.register Presenter do
   permit_params :id, :name, :byline, :biography, :twitter, :email, :website, :active
+  config.sort_order = 'name_asc'
 
   filter :name
   filter :byline
@@ -7,7 +8,37 @@ ActiveAdmin.register Presenter do
   filter :twitter
   filter :email
 
+  batch_action :merge, form: -> {
+    {
+      merge_with: Presenter.order('name ASC').pluck(:name, :id),
+      remove_merged: :checkbox
+    }
+  } do |ids, inputs|
+    merge_id = inputs[:merge_with].to_i
+    remove_merged = (inputs[:remove_merged] == 'on')
+
+    affected_videos = VideoPresenter.where(presenter_id: ids)
+    affected_videos.each do |video_presenter|
+      if video_presenter.episode.video_presenters.map(&:presenter_id).include?(merge_id)
+        video_presenter.destroy
+      else
+        video_presenter.update(presenter_id: merge_id)
+      end
+    end
+
+    batch_action_collection.find(ids).each do |presenter|
+      if remove_merged
+        presenter.destroy
+      else
+        presenter.update(active: false)
+      end
+    end
+
+    redirect_to collection_path, alert: "Presenters have been merged."
+  end
+
   index do
+    selectable_column
     id_column
     column 'Avatar' do |p|
       image_tag p.avatar, width: 73 if p.avatar.present?

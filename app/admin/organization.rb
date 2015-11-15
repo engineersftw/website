@@ -1,12 +1,43 @@
 ActiveAdmin.register Organization do
   permit_params :id, :title, :description, :website, :twitter, :contact_person, :image, :active
+  config.sort_order = 'title_asc'
 
   filter :title
   filter :description
   filter :contact_person
   filter :website
 
+  batch_action :merge, form: -> {
+    {
+      merge_with: Organization.order('title ASC').pluck(:title, :id),
+      remove_merged: :checkbox
+    }
+  } do |ids, inputs|
+    merge_id = inputs[:merge_with].to_i
+    remove_merged = (inputs[:remove_merged] == 'on')
+
+    affected_videos = VideoOrganization.where(organization_id: ids)
+    affected_videos.each do |video_org|
+      if video_org.episode.video_organizations.map(&:organization_id).include?(merge_id)
+        video_org.destroy
+      else
+        video_org.update(organization_id: merge_id)
+      end
+    end
+
+    batch_action_collection.find(ids).each do |organization|
+      if remove_merged
+        organization.destroy
+      else
+        organization.update(active: false)
+      end
+    end
+
+    redirect_to collection_path, alert: "Organizations have been merged."
+  end
+
   index do
+    selectable_column
     id_column
     column 'Logo' do |org|
       image_tag org.image, width: 150
@@ -14,7 +45,7 @@ ActiveAdmin.register Organization do
     column :title
     column :twitter
     column 'Website' do |org|
-      link_to org.website, org.website
+      link_to org.website, org.website if org.website.present?
     end
     column :contact_person
     column :active
