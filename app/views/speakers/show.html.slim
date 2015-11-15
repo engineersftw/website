@@ -2,6 +2,8 @@
   .row
     .col.s12
       h4= @presenter.name
+      - if @presenter.avatar.present?
+        = image_tag @presenter.avatar
       - if @presenter.byline.present?
         h5= @presenter.byline
       - if @presenter.biography.present?

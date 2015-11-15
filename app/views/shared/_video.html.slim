@@ -4,12 +4,8 @@
       a.watch-video href=video_path(video)
         img.responsive-img src="#{video.image2}" alt="#{video.title}"
     .card-content
-      span.video-title.card-title.activator.grey-text.text-darken-4.truncate
-        = video.title
+      a href=video_path(video)
+        span.video-title.card-title.grey-text.text-darken-4.truncate
+          = video.title
     .card-action
       a.watch-video href=video_path(video) data-video-title="#{video.title}" data-video-id="#{video.video_id}" Watch
-    .card-reveal
-      span.video-title.card-title.grey-text.text-darken-4
-        = video.title
-        i.material-icons.right close
-      .video-description= simple_format video.description
