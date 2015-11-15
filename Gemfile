@@ -19,6 +19,7 @@ gem 'puma'
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 gem 'cancancan'
+gem 'feature'
 
 group :development do
   gem 'spring'

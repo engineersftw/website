@@ -1,0 +1,10 @@
+development:
+  features:
+    video_sidebar: true
+    organizations_menu: true
+    speakers_menu: true
+production:
+  features:
+    video_sidebar: false
+    organizations_menu: false
+    speakers_menu: false

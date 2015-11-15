@@ -3,7 +3,7 @@
     .col.s12
       h4=@video.title
   .row
-    .col.s12 class=(@video.organizations.present? || @video.organizations.present? || @video.video_links.present? ? 'l10' : 'l12' )
+    .col.s12 class=(Feature.active?(:video_sidebar) && (@video.organizations.present? || @video.organizations.present? || @video.video_links.present?) ? 'l10' : 'l12' )
       .row
         .col.s12
           .video.video-container
@@ -18,7 +18,7 @@
         .col.s12
           a(href="javascript:window.history.back()") &laquo; Back
 
-    - if @video.organizations.present? || @video.organizations.present? || @video.video_links.present?
+    - if Feature.active?(:video_sidebar) && (@video.organizations.present? || @video.organizations.present? || @video.video_links.present?)
       .col.s12.l2
         .row
           - if @video.organizations.present?
