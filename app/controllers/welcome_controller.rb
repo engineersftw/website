@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
   layout 'conferences', only: [:conferences]
-  layout 'live', only: [:live]
 
   def index
     @recent_episodes = Episode.limit(8).order('published_at DESC')
@@ -12,6 +11,7 @@ class WelcomeController < ApplicationController
   end
 
   def live
+    render layout: 'live'
   end
 
   def goto_playlist
