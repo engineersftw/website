@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     Rails.logger.info 'Getting User Auth' + auth.to_s
+    Rails.logger.info 'Search For' + auth.slice(:provider, :uid).to_s
+    Rails.logger.info 'User nickname' + auth.info.nickname.to_s
     user = where(auth.slice(:provider, :uid)).first || where(twitter:auth.info.nickname).first || new
     user.update_attributes provider: auth.provider,
                            uid:      auth.uid,
