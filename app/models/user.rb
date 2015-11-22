@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
     provider.present? ? false : super
   end
 
+  def email_required?
+    provider.present? && provider == 'twitter' ? false : super
+  end
+
   def self.from_omniauth(auth)
     user = where(provider:auth.provider, uid:auth.uid).first || where(twitter:auth.info.nickname).first || new
     user.update_attributes provider: auth.provider,
