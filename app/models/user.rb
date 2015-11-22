@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
     user.update_attributes provider: auth.provider,
                            uid:      auth.uid,
                            twitter:  auth.info.nickname
-    user.name ||= auth.info.name
     user
   end
 end
