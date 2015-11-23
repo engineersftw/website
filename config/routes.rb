@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   devise_for :users, devise_config
 
   ActiveAdmin.routes(self)
-  get 'v/:id', to: 'episodes#show', as: 'video'
   resources :episodes, only: [:index, :show] do
     collection do
       get '/search', to: 'episodes#search'
@@ -26,6 +25,9 @@ Rails.application.routes.draw do
   get 'conferences' => 'welcome#conferences'
   get 'bookings' => 'welcome#bookings'
   get 'live' => 'welcome#live'
+
+  get 'v/:id', to: 'episodes#show', as: 'video'
+  get ':id', to: 'episodes#show', as: 'video_shortcut', constraints: { id: /[0-9]+/ }
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -14,6 +14,10 @@
           a.twitter-share-button data-text="#{@video.title}" data-url=episode_url(@video) data-via="engineersftw" href="https://twitter.com/share" Tweet
           .fb-share-button.left data-href=episode_url(@video) data-layout="button_count"
         .col.s12
+          strong
+            | Published on:
+            =< @video.published_at.strftime('%A, %e %B %Y')
+        .col.s12
           = auto_link(simple_format(@video.description))
         .col.s12
           a(href="javascript:window.history.back()") &laquo; Back
