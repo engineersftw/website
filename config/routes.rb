@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
   get 'playlist/:id', to: 'episodes#playlist', as: 'playlist'
+  get 'feed', to: 'episodes#index', format: 'atom'
+
   resources :organizations, only: [:index, :show]
   resources :speakers, only: [:index, :show]
 

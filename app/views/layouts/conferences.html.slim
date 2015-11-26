@@ -18,6 +18,7 @@ html
     meta name="twitter:description" content="Here is a list of conferences we participated in." /
     meta name="twitter:image" content="https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg" /
     =csrf_meta_tags
+    =auto_discovery_link_tag(:atom, feed_url(format: "atom"), title: "Engineers.SG - ATOM Feed")
   body
     ==render 'shared/fb'
     ==render 'shared/nav_bar'

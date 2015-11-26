@@ -20,6 +20,7 @@ html
 
     script src="//cdn.temasys.com.sg/skylink/skylinkjs/0.6.x/skylink.complete.min.js" /
     =csrf_meta_tags
+    =auto_discovery_link_tag(:atom, feed_url(format: "atom"), title: "Engineers.SG - ATOM Feed")
   body
     ==render 'shared/fb'
     ==render 'shared/nav_bar'

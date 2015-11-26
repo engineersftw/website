@@ -19,6 +19,7 @@ html
     meta name="twitter:image" content=@video.image3 /
 
     =csrf_meta_tags
+    =auto_discovery_link_tag(:atom, feed_url(format: "atom"), title: "Engineers.SG - ATOM Feed")
   body
     ==render 'shared/fb'
     ==render 'shared/nav_bar'
