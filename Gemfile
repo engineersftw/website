@@ -6,6 +6,8 @@ gem 'rails', '4.2.4'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
+gem 'jbuilder'
+gem 'kaminari'
 
 gem "slim-rails"
 gem 'materialize-sass'
