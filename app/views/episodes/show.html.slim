@@ -67,13 +67,6 @@ javascript:
     player = new YT.Player('player', {
       height: '486',
       width: '864',
-      videoId: '#{@video.video_id}',
-      events: {
-        'onReady': onPlayerReady
-      }
+      videoId: '#{@video.video_id}'
     });
-  }
-
-  function onPlayerReady(event) {
-    event.target.playVideo();
   }
