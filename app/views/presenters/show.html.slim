@@ -1,4 +1,17 @@
-==render partial: 'shared/default_social_share_headers'
+- content_for :social_share_headers do
+  meta property="og:site_name" content="Engineers.SG"
+  meta property="og:title" content="Presenter: #{@presenter.name} - Engineers.SG" /
+  meta property="og:description" content=(@presenter.biography.present? ? @presenter.biography : 'One of the presenters we recorded.') /
+  meta property="og:url" content=presenter_url(@presenter) /
+  meta property="og:image" content=(@presenter.avatar.present? ? @presenter.avatar : 'https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg') /
+  meta property="og:type" content="website" /
+  meta property="fb:app_id" content="1636558033282778" /
+
+  meta name="twitter:card" content="summary" /
+  meta name="twitter:site" content="@engineersftw" /
+  meta name="twitter:title" content="Presenter: #{@presenter.name} - Engineers.SG" /
+  meta name="twitter:description" content=(@presenter.biography.present? ? @presenter.biography : 'One of the presenters we recorded.') /
+  meta name="twitter:image" content=(@presenter.avatar.present? ? @presenter.avatar : 'https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg')  /
 
 .container
   .row
