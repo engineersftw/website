@@ -19,3 +19,32 @@ video{
     font-size: 1.2em;
   }
 }
+
+.thumbnail{
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin: 10px;
+  position: relative;
+
+  img {
+    position: absolute;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+
+    //position: absolute;
+    //left: 50%;
+    //top: 50%;
+    //height: 100%;
+    //width: auto;
+    //-webkit-transform: translate(-50%,-50%);
+    //-ms-transform: translate(-50%,-50%);
+    //transform: translate(-50%,-50%);
+
+  }
+}
