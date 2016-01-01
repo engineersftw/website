@@ -57,7 +57,7 @@
               ul
                 - @video.presenters.each do |presenter|
                   li
-                    a href=presenter_path(presenter)
+                    a href=(presenter.twitter.present? ? speaker_path(presenter.twitter) : presenter_path(presenter))
                       - if presenter.avatar.present?
                         img.responsive-img src=presenter.avatar
                         br
