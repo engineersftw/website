@@ -14,6 +14,11 @@ ActiveAdmin.register Episode do
       image_tag video.image1
     end
     column :title
+    column 'Organizations' do |video|
+      video.video_organizations.map do |video_org|
+        video_org.organization.title
+      end.join(', ')
+    end
     actions
   end
 
