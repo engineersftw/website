@@ -5,19 +5,7 @@ html
     link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /
     =stylesheet_link_tag 'application', media: 'all'
     meta name="viewport" content="width=device-width, initial-scale=1.0" /
-    meta property="og:site_name" content="Engineers.SG"
-    meta property="og:title" content="Engineers.SG" /
-    meta property="og:type" content="website" /
-    meta property="og:description" content="We are a not-for-profit community initiative, created to help document the Singapore Tech and Startup Scene." /
-    meta property="og:url" content="http://engineers.sg/" /
-    meta property="og:image" content="https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg" /
-    meta property="fb:app_id" content="1636558033282778" /
-
-    meta name="twitter:card" content="summary" /
-    meta name="twitter:site" content="@engineersftw" /
-    meta name="twitter:title" content="Engineers.SG" /
-    meta name="twitter:description" content="We are a not-for-profit community initiative, created to help document the Singapore Tech and Startup Scene." /
-    meta name="twitter:image" content="https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg" /
+    ==yield :social_share_headers
     =csrf_meta_tags
     =auto_discovery_link_tag(:atom, feed_url(format: "atom"), title: "Engineers.SG - ATOM Feed")
   body

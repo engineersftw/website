@@ -1,6 +1,4 @@
 class WelcomeController < ApplicationController
-  layout 'conferences', only: [:conferences]
-
   def index
     @recent_episodes = Episode.limit(8).order('published_at DESC')
   end
