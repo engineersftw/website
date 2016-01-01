@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
   def index
-    @organizations = Organization.order('title ASC')
+    @organizations, @no_logo = Organization.order('title ASC').partition{|organization| organization.image.present? }
   end
 
   def show
