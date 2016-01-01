@@ -18,11 +18,7 @@ ActiveAdmin.register Organization do
 
     affected_videos = VideoOrganization.where(organization_id: ids)
     affected_videos.each do |video_org|
-      if video_org.episode.video_organizations.map(&:organization_id).include?(merge_id)
-        video_org.destroy
-      else
-        video_org.update(organization_id: merge_id)
-      end
+      video_org.update(organization_id: merge_id)
     end
 
     batch_action_collection.find(ids).each do |organization|
