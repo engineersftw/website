@@ -4,7 +4,7 @@
       h4 Presenters
       p The presenters we recorded.
     - @presenters.each do |presenter|
-      .col.s6.l3.m4
+      .col.s12.l3.m6
         a href=presenter_path(presenter)
           h5.truncate= presenter.name
           .thumbnail
@@ -12,6 +12,6 @@
 
   .row
     - @no_avatar.each do |presenter|
-      .col.s6.l4
+      .col.s12.l4.m6
         a href=presenter_path(presenter)
           h5.truncate= presenter.name
