@@ -42,7 +42,7 @@
               ul
                 - @video.presenters.each do |presenter|
                   li
-                    a href=speaker_path(presenter)
+                    a href=presenter_path(presenter)
                       - if presenter.avatar.present?
                         img.responsive-img src=presenter.avatar
                         br

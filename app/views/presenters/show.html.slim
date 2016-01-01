@@ -1,9 +1,13 @@
 .container
   .row
     .col.s12
-      h4= @presenter.name
-      - if @presenter.avatar.present?
-        = image_tag @presenter.avatar
+      h4= "Presenter: #{@presenter.name}"
+  - if @presenter.avatar.present?
+    .row
+      .col.s12.l3.m6
+        = image_tag @presenter.avatar, class: 'responsive-img'
+  .row
+    .col.s12
       - if @presenter.byline.present?
         h5= @presenter.byline
       - if @presenter.biography.present?
