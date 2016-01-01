@@ -13,7 +13,8 @@
       - if @presenter.biography.present?
         p=@presenter.biography
       - if @presenter.twitter.present?
-        p=link_to "@#{@presenter.twitter}", "https://twitter.com/#{@presenter.twitter}", target: '_blank'
+        p
+          a.twitter-follow-button data-show-count="false" data-size="large" target="_blank" href="https://twitter.com/#{@presenter.twitter}"= "Follow @#{@presenter.twitter}"
       - if @presenter.website.present?
         p
           | Website:
