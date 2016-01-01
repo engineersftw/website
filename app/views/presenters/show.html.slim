@@ -35,7 +35,7 @@
           | Website:
           =< link_to @presenter.website, @presenter.website, target: '_blank'
     .col.s12
-      span= "#{@episodes.count} videos found."
+      h5= "#{@episodes.count} videos found."
   .videos.row
     - @episodes.each do |video|
       ==render partial: 'shared/video', locals: {video: video}

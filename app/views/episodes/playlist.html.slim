@@ -19,7 +19,7 @@
       h4= @playlist.name
       p=@playlist.description
     .col.s12
-      span= "#{@episodes.count} videos found."
+      h5= "#{@episodes.count} videos found."
   .videos.row
     - @episodes.each do |video|
       ==render partial: 'shared/video', locals: {video: video}

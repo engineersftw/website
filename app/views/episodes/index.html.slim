@@ -6,7 +6,7 @@
       h4 All Videos
       p Listing of the videos we record at local tech meetups/events.
     .col.s12
-      span= "#{@episodes.count} videos found."
+      h5= "#{@episodes.count} videos found."
   .videos.row
     - @episodes.each do |video|
       ==render partial: 'shared/video', locals: {video: video}

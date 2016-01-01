@@ -27,24 +27,22 @@
   - if @organization.twitter.present?
     .row
       .col.s12
-        p
-          a.twitter-follow-button data-show-count="false" data-size="large" target="_blank" href="https://twitter.com/#{@organization.twitter}"= "Follow @#{@organization.twitter}"
+        a.twitter-follow-button data-show-count="false" data-size="large" target="_blank" href="https://twitter.com/#{@organization.twitter}"= "Follow @#{@organization.twitter}"
 
   - if @organization.website.present?
     .row
       .col.s12
-        p
-          | Website:
-          =< link_to @organization.website, @organization.website, target: '_blank'
+        | Website:
+        =< link_to @organization.website, @organization.website, target: '_blank'
 
   - if @organization.description.present?
     .row
       .col.s12
-        p= auto_link(simple_format(@organization.description))
+        = auto_link(simple_format(@organization.description))
 
   .row
     .col.s12
-      span= "#{@episodes.count} videos found."
+      h5= "#{@episodes.count} videos found."
   .videos.row
     - @episodes.each do |video|
       ==render partial: 'shared/video', locals: {video: video}
