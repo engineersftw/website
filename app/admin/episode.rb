@@ -16,8 +16,13 @@ ActiveAdmin.register Episode do
     column :title
     column 'Organizations' do |video|
       video.video_organizations.map do |video_org|
-        video_org.organization.title
-      end.join(', ')
+        link_to video_org.organization.title, admin_organization_path(video_org.organization)
+      end.join(', ').html_safe
+    end
+    column 'Presenters' do |video|
+      video.video_presenters.map do |video_presenter|
+        link_to video_presenter.presenter.name, admin_presenter_path(video_presenter.presenter)
+      end.join(', ').html_safe
     end
     actions
   end
