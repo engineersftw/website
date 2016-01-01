@@ -26,7 +26,7 @@
       - if @presenter.byline.present?
         h5= @presenter.byline
       - if @presenter.biography.present?
-        p=@presenter.biography
+        p= auto_link(simple_format(@presenter.biography))
       - if @presenter.twitter.present?
         p
           a.twitter-follow-button data-show-count="false" data-size="large" target="_blank" href="https://twitter.com/#{@presenter.twitter}"= "Follow @#{@presenter.twitter}"

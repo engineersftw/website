@@ -17,7 +17,7 @@
   .row
     .col.s12
       h4= @organization.title
-      p=@organization.description
+      p= auto_link(simple_format(@organization.description))
       - if @organization.twitter.present?
         p=link_to "@#{@organization.twitter}", "https://twitter.com/#{@organization.twitter}", target: '_blank'
       - if @organization.website.present?
