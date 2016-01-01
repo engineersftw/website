@@ -19,11 +19,7 @@ ActiveAdmin.register Presenter do
 
     affected_videos = VideoPresenter.where(presenter_id: ids)
     affected_videos.each do |video_presenter|
-      if video_presenter.episode.video_presenters.map(&:presenter_id).include?(merge_id)
-        video_presenter.destroy
-      else
-        video_presenter.update(presenter_id: merge_id)
-      end
+      video_presenter.update(presenter_id: merge_id)
     end
 
     batch_action_collection.find(ids).each do |presenter|
