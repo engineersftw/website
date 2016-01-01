@@ -5,7 +5,7 @@ namespace :engineerssg do
 
     youtube_service = YoutubeService.new
     Playlist.active.each do |playlist|
-      puts 'Retrieving Playlist Info from YouTube... for' + playlist.playlist_id
+      puts 'Retrieving Playlist Info from YouTube... for ' + playlist.playlist_id
 
       playlist_info = youtube_service.fetch_playlist_details(playlist.playlist_id)
       playlist.name = playlist_info.snippet.title
@@ -13,10 +13,6 @@ namespace :engineerssg do
       playlist.description = playlist_info.snippet.description
       playlist.image = playlist_info.snippet.thumbnails.high.url
       playlist.save
-
-      if playlist.playlist_category.title == 'Conference'
-        organization = Organization.find_or_create_by(title: playlist.name)
-      end
 
       items = youtube_service.retrieve_playlist(playlist.playlist_id)
       puts "#{items.count} items found..."
@@ -31,10 +27,6 @@ namespace :engineerssg do
         episode.image2 = item[:image2]
         episode.image3 = item[:image3]
         episode.save
-
-        if playlist.playlist_category.title == 'Conference'
-          VideoOrganization.find_or_create_by(organization: organization, episode: episode)
-        end
 
         playlist_item = PlaylistItem.find_or_initialize_by(playlist: playlist, episode: episode)
         playlist_item.sort_order = index
