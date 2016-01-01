@@ -17,13 +17,32 @@
   .row
     .col.s12
       h4= @organization.title
-      p= auto_link(simple_format(@organization.description))
-      - if @organization.twitter.present?
-        p=link_to "@#{@organization.twitter}", "https://twitter.com/#{@organization.twitter}", target: '_blank'
-      - if @organization.website.present?
+
+  - if @organization.image.present?
+    .row
+      .col.s12.l3.m6
+        .thumbnail
+          img.responsive-img src=@organization.image
+
+  - if @organization.twitter.present?
+    .row
+      .col.s12
+        p
+          a.twitter-follow-button data-show-count="false" data-size="large" target="_blank" href="https://twitter.com/#{@organization.twitter}"= "Follow @#{@organization.twitter}"
+
+  - if @organization.website.present?
+    .row
+      .col.s12
         p
           | Website:
           =< link_to @organization.website, @organization.website, target: '_blank'
+
+  - if @organization.description.present?
+    .row
+      .col.s12
+        p= auto_link(simple_format(@organization.description))
+
+  .row
     .col.s12
       span= "#{@episodes.count} videos found."
   .videos.row
