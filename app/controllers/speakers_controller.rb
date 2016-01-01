@@ -1,6 +1,6 @@
 class SpeakersController < ApplicationController
   def index
-    @presenters = Presenter.order('name ASC')
+    @presenters, @no_avatar = Presenter.order('name ASC').partition{|presenter| presenter.avatar.present? }
   end
 
   def show
