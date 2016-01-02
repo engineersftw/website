@@ -10,7 +10,7 @@ class PresentersController < ApplicationController
   end
 
   def alias
-    @presenter = Presenter.find_by(twitter: params[:id])
+    @presenter = Presenter.where("lower(twitter)=?", params[:id].downcase).first
     return redirect_to(presenters_path) unless @presenter.active?
     @episodes = @presenter.episodes.order('published_at DESC')
 
