@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122164359) do
+ActiveRecord::Schema.define(version: 20160109004417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20151122164359) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "byline"
+    t.string   "avatar_url"
   end
 
   add_index "presenters", ["twitter"], name: "index_presenters_on_twitter", using: :btree

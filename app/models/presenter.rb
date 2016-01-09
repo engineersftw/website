@@ -8,6 +8,8 @@ class Presenter < ActiveRecord::Base
     elsif email.present?
       hash = Digest::MD5.hexdigest email.downcase.strip
       return "http://gravatar.com/avatar/#{hash}?s=#{size}&d=retro"
+    elsif avatar_url.present?
+      return avatar_url
     end
   end
 end

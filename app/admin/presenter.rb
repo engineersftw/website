@@ -1,5 +1,5 @@
 ActiveAdmin.register Presenter do
-  permit_params :id, :name, :byline, :biography, :twitter, :email, :website, :active
+  permit_params :id, :name, :byline, :biography, :twitter, :email, :website, :active, :avatar_url
   config.sort_order = 'name_asc'
 
   filter :name
