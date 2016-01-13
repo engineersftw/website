@@ -17,28 +17,41 @@
   .row
     .col.s12
       h4= @organization.title
+    .col.s12.hide-on-small-only
+      h5 Latest Video
+    .col.l8.hide-on-small-only
+      .video.video-container
+        iframe allowfullscreen="true" frameborder="0" height="486" src="http://www.youtube.com/embed/#{@episodes.first.video_id}" type="text/html" width="864"
+      .card.card-panel
+        - featured_video = @episodes.first
+        .row
+          .col.s12
+            h5= featured_video.title
+          .col.s12
+            | &nbsp;
+            a.twitter-share-button data-text="#{featured_video.title}" data-url=episode_url(featured_video) data-via="engineersftw" href="https://twitter.com/share" Tweet
+            .fb-share-button.left data-href=episode_url(featured_video) data-layout="button_count"
+          .col.s12
+            = auto_link(simple_format(featured_video.description))
+    .col.s12.l4
+      .row
+        - if @organization.image.present?
+          .col.s12
+            .thumbnail
+              img.responsive-img src=@organization.image
 
-  - if @organization.image.present?
-    .row
-      .col.s12.l3.m6
-        .thumbnail
-          img.responsive-img src=@organization.image
+        - if @organization.twitter.present?
+          .col.s12
+            a.twitter-follow-button data-show-count="false" data-size="large" target="_blank" href="https://twitter.com/#{@organization.twitter}"= "Follow @#{@organization.twitter}"
 
-  - if @organization.twitter.present?
-    .row
-      .col.s12
-        a.twitter-follow-button data-show-count="false" data-size="large" target="_blank" href="https://twitter.com/#{@organization.twitter}"= "Follow @#{@organization.twitter}"
+        - if @organization.website.present?
+          .col.s12
+            | Website:
+            =< link_to @organization.website, @organization.website, target: '_blank'
 
-  - if @organization.website.present?
-    .row
-      .col.s12
-        | Website:
-        =< link_to @organization.website, @organization.website, target: '_blank'
-
-  - if @organization.description.present?
-    .row
-      .col.s12
-        = auto_link(simple_format(@organization.description))
+        - if @organization.description.present?
+          .col.s12
+            = auto_link(simple_format(@organization.description))
 
   .row
     .col.s12
@@ -46,4 +59,3 @@
   .videos.row
     - @episodes.each do |video|
       ==render partial: 'shared/video', locals: {video: video}
-
