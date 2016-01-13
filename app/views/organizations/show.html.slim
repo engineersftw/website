@@ -35,8 +35,7 @@
       .row
         - if @organization.image.present?
           .col.s12
-            .thumbnail
-              img.responsive-img src=@organization.image
+            img.responsive-img src=@organization.image
 
         - if @organization.twitter.present?
           .col.s12
