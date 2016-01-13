@@ -18,21 +18,19 @@
     .col.s12
       h4= @organization.title
     .col.s12.hide-on-small-only
-      h5 Latest Video
+      h5 Latest Videos
     .col.l8.hide-on-small-only
-      .video.video-container
-        iframe allowfullscreen="true" frameborder="0" height="486" src="http://www.youtube.com/embed/#{@episodes.first.video_id}" type="text/html" width="864"
-      .card.card-panel
-        - featured_video = @episodes.first
-        .row
-          .col.s12
-            h5= featured_video.title
-          .col.s12
-            | &nbsp;
-            a.twitter-share-button data-text="#{featured_video.title}" data-url=episode_url(featured_video) data-via="engineersftw" href="https://twitter.com/share" Tweet
-            .fb-share-button.left data-href=episode_url(featured_video) data-layout="button_count"
-          .col.s12
-            = auto_link(simple_format(featured_video.description))
+      .row
+        - @episodes.first(4).each do |featured_video|
+          .col.l6.m12
+            .card.hoverable
+              .card-image
+                a.watch-video href=video_path(featured_video)
+                  img.responsive-img src="#{featured_video.image2}" alt="#{featured_video.title}"
+              .card-content
+                a.watch-video href=video_path(featured_video)
+                  h5= featured_video.title
+
     .col.s12.l4
       .row
         - if @organization.image.present?
@@ -55,7 +53,7 @@
 
   .row
     .col.s12
-      h5= "#{@episodes.count} videos found."
+      h5= "All Videos (#{@episodes.count})"
   .videos.row
     - @episodes.each do |video|
       ==render partial: 'shared/video', locals: {video: video}
