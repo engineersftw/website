@@ -21,7 +21,7 @@ ActiveAdmin.register Episode do
     end
     column 'Presenters' do |video|
       video.video_presenters.map do |video_presenter|
-        link_to video_presenter.presenter.name, admin_presenter_path(video_presenter.presenter)
+        link_to video_presenter.presenter.try(:name), admin_presenter_path(video_presenter.presenter)
       end.join(', ').html_safe
     end
     actions
