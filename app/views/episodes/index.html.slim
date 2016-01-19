@@ -6,7 +6,23 @@
       h4 All Videos
       p Listing of the videos we record at local tech meetups/events.
     .col.s12
-      h5= "#{@episodes.count} videos found."
+      h5= "#{@total_records} videos found."
+      p=page_entries_info @episodes, :entry_name => 'video'
   .videos.row
     - @episodes.each do |video|
       ==render partial: 'shared/video', locals: {video: video}
+
+  .row
+    .col.s12
+      ul.pagination.center
+        li class=(@current_page==1 ? 'disabled' : 'waves-effect')
+          a href=episodes_path(page:@current_page-1)
+            i.material-icons chevron_left
+
+        - (1..@episodes.total_pages).each do |n|
+          li class=(n==@current_page ? 'active' : 'waves-effect')
+            a(href=episodes_path(page:n))= n
+
+        li class=(@current_page==@episodes.total_pages ? 'disabled' : 'waves-effect')
+          a href=episodes_path(page:@current_page+1)
+            i.material-icons chevron_right

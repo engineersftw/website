@@ -1,13 +1,8 @@
 class EpisodesController < ApplicationController
   def index
-    @episodes = Episode.all.order('published_at DESC')
-    @total_records = @episodes.count
-
-    if params[:page]
-      @current_page = params[:page]
-      @episodes = @episodes.page(@current_page)
-      @total_records = @episodes.total_count
-    end
+    @current_page = (params[:page] || 1).to_i
+    @episodes = Episode.all.order('published_at DESC').page(@current_page)
+    @total_records = @episodes.total_count
   end
 
   def playlist
