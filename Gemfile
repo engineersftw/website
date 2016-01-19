@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'google-api-client'
 gem 'rails_autolink'
 gem 'puma'
+gem 'puma_worker_killer'
 
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
