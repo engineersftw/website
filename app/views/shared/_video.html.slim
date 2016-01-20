@@ -5,7 +5,7 @@
         img.responsive-img src="#{video.image2}" alt="#{video.title}"
     .card-content
       a href=video_path(video)
-        span.video-title.card-title.grey-text.text-darken-4.truncate
+        span.video-title.card-title.grey-text.text-darken-4.truncate title="#{video.title}"
           = video.title
     .card-action
       a.watch-video href=video_path(video) data-video-title="#{video.title}" data-video-id="#{video.video_id}" Watch
