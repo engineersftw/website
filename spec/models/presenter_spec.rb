@@ -26,7 +26,15 @@ RSpec.describe Presenter, type: :model do
     context 'has avatar url' do
       subject{ build :presenter, :with_avatar_url }
 
-      it 'displays avatar from Gravatar' do
+      it 'displays avatar from Avatar URL' do
+        expect(subject.avatar).to eq subject.avatar_url
+      end
+    end
+
+    context 'when more than one field is set' do
+      subject{ build :presenter, :with_avatar_url, :with_twitter }
+
+      it 'avatar_url takes precedence' do
         expect(subject.avatar).to eq subject.avatar_url
       end
     end
