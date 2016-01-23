@@ -19,7 +19,7 @@
       h4 Presenters
       p The presenters we recorded.
     - @presenters.each do |presenter|
-      .col.s4.l2
+      .col.s12.m4.l3
         a href=(presenter.twitter.present? ? speaker_path(presenter.twitter) : presenter_path(presenter))
           h6.truncate= presenter.name
           .thumbnail
