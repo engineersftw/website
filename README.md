@@ -59,7 +59,7 @@ rbenv global 2.3.0
 gem install bundler
 ```
 
-2. Install the rest of the Ruby Gems needed for the app (including 
+2. Install the rest of the Ruby Gems needed for the app (including
 
 	```
 bundle install
@@ -70,7 +70,7 @@ bundle install
 1. You will need [Postgres](http://www.postgresql.org) installed and started.
 
 	> For newbies, I'd suggest that you download and install [PostGres Mac App](http://postgresapp.com).
-	
+
 2. Create the database
 
 	```
@@ -91,17 +91,23 @@ bundle exec rake db:seed
 
 ### Start the development web server
 
-1. You can start the local development web server with the following command:
+1. Prepare the environment file (one time exercise)
+
+  ```
+cp env.sample .env
+```
+
+2. You can start the local development web server with the following command:
 
 	```
 foreman start
 ```
 
-2. You can now visit the local development site at [http://localhost:3000](http://localhost:3000).
+3. You can now visit the local development site at [http://localhost:3000](http://localhost:3000).
 
-3. The Admin panel is accessible at [http://localhost:3000/admin](http://localhost:3000/admin). The admin login email is `admin@engineers.sg` and default password is `password`.
+4. The Admin panel is accessible at [http://localhost:3000/admin](http://localhost:3000/admin). The admin login email is `admin@engineers.sg` and default password is `password`.
 
-4. To stop the dev server, just press `ctrl` + `c` on your keyboard to stop the foreman process.
+5. To stop the dev server, just press `ctrl` + `c` on your keyboard to stop the foreman process.
 
 ## Contributing
 
