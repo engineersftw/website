@@ -24,6 +24,7 @@ gem 'cancancan'
 gem 'feature'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'twitter'
 
 group :development, :test do
   gem 'dotenv-rails'

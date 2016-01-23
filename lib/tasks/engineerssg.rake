@@ -88,4 +88,26 @@ namespace :engineerssg do
       puts '=============================='
     end
   end
+
+  desc 'Twitter profile images'
+  task fetch_twitter_avatar: :environment do
+
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_API_KEY']
+      config.consumer_secret     = ENV['TWITTER_API_SECRET']
+      config.bearer_token        = ENV['TWITTER_BEARER_TOKEN']
+    end
+
+    presenters = Presenter.where("twitter <> ''").all
+
+    presenters.map(&:twitter).each_slice(100) do |presenter_slice|
+      client.users(*presenter_slice).each do |user|
+        presenter = presenters.find{|u| u.twitter.downcase == user.screen_name.downcase}
+        avatar_image = user.profile_image_uri_https(:original).to_s.gsub(/\_normal$/, '')
+
+        puts "#{presenter.try(:name)} - #{user.screen_name} - #{avatar_image}"
+        presenter.update(avatar_url: avatar_image) if presenter
+      end
+    end
+  end
 end
