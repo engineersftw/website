@@ -7,7 +7,7 @@
     .col.s12.l9
       h5 Latest Video
       .video.video-container
-        iframe allowfullscreen="true" frameborder="0" height="486" src="//www.youtube.com/embed/#{@recent_episodes.first.video_id}" type="text/html" width="864"
+        #player
       .card.card-panel
         - featured_video = @recent_episodes.first
         .row
@@ -39,3 +39,38 @@
   .row
     .col.s12.center
       a.btn.btn-large.waves-effect.waves-light href="/episodes/" More Videos
+
+javascript:
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '486',
+      width: '864',
+      videoId: '#{featured_video.video_id}',
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  var started_playing = false
+  function onPlayerStateChange(event) {
+    if (event.data < 0) {
+      ga('send', 'event', 'FeaturedVideo', 'loaded', '#{featured_video.title}', #{featured_video.id});
+    }
+    if (event.data == YT.PlayerState.PLAYING) {
+      if (!started_playing) {
+        ga('send', 'event', 'FeaturedVideo', 'started_play', '#{featured_video.title}', #{featured_video.id});
+        started_playing = true;
+      }
+    }
+    if (event.data == YT.PlayerState.ENDED) {
+      ga('send', 'event', 'FeaturedVideo', 'ended', '#{featured_video.title}', #{featured_video.id});
+    }
+  }
