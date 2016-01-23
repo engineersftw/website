@@ -1,0 +1,3 @@
+exclude_paths:
+- spec/**/*
+- app/assets/javascripts/chosen.jquery.js
