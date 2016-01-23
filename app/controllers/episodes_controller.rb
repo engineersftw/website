@@ -19,6 +19,11 @@ class EpisodesController < ApplicationController
     @video = Episode.find(params[:id])
   end
 
+  def alias
+    @video = Episode.find(params[:id])
+    redirect_to video_slug_path(title: @video.title.parameterize, id: @video.id)
+  end
+
   private
 
   def search_param

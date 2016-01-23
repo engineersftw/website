@@ -28,8 +28,10 @@ Rails.application.routes.draw do
   get 'bookings' => 'welcome#bookings'
   get 'live' => 'welcome#live'
 
-  get 'v/:id', to: 'episodes#show', as: 'video'
-  get 's/:id', to: 'presenters#alias', as: 'speaker'
+  get 'v/:id', to: 'episodes#alias', as: 'video'
+  get 'video/*title--:id', to: 'episodes#show', as: 'video_slug'
+  get 's/:id', to: redirect('/presenter/%{id}'), as: 'speaker'
+  get 'presenter/:id', to: 'presenters#slug', as: 'presenter_slug'
   get ':id', to: 'episodes#show', as: 'video_shortcut', constraints: { id: /[0-9]+/ }
 
   # Example of regular route:
