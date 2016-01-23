@@ -25,11 +25,25 @@ gem 'feature'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+group :development, :test do
+  gem 'dotenv-rails'
+  gem 'rspec-rails'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'spring-commands-rspec'
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+end
+
 group :development do
   gem 'foreman'
   gem 'spring'
-  gem 'pry-rails'
-  gem 'dotenv-rails'
   gem 'seed_dump'
 end
 
