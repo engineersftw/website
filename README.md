@@ -1,5 +1,8 @@
 #Engineers.SG Website
 
+[![Build Status](https://travis-ci.org/engineersftw/website.svg?branch=develop)](https://travis-ci.org/engineersftw/website)
+[![Code Climate](https://codeclimate.com/github/engineersftw/website/badges/gpa.svg)](https://codeclimate.com/github/engineersftw/website)
+
 ## Development Setup
 
 ### Getting the source code
