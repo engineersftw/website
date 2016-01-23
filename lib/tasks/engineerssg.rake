@@ -103,7 +103,7 @@ namespace :engineerssg do
     presenters.map(&:twitter).each_slice(100) do |presenter_slice|
       client.users(*presenter_slice).each do |user|
         presenter = presenters.find{|u| u.twitter.downcase == user.screen_name.downcase}
-        avatar_image = user.profile_image_uri_https(:original).to_s.gsub(/\_normal$/, '')
+        avatar_image = user.profile_image_uri_https(:bigger).to_s.gsub(/\_normal$/, '')
 
         puts "#{presenter.try(:name)} - #{user.screen_name} - #{avatar_image}"
         presenter.update(avatar_url: avatar_image) if presenter

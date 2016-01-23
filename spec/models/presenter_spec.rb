@@ -19,7 +19,7 @@ RSpec.describe Presenter, type: :model do
       subject{ build :presenter, email: 'user@example.com' }
 
       it 'displays avatar from Gravatar' do
-        expect(subject.avatar).to eq "https://gravatar.com/avatar/b58996c504c5638798eb6b511e6f49af?s=256&d=retro"
+        expect(subject.avatar).to eq "https://gravatar.com/avatar/b58996c504c5638798eb6b511e6f49af?s=200&d=retro"
       end
     end
 

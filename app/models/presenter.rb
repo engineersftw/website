@@ -2,7 +2,7 @@ class Presenter < ActiveRecord::Base
   has_many :video_presenters, dependent: :destroy
   has_many :episodes, through: :video_presenters
 
-  def avatar(size=256)
+  def avatar(size=200)
     if avatar_url.present?
       return avatar_url
     elsif email.present?
