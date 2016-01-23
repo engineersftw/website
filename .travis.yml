@@ -19,6 +19,7 @@ deploy:
     secure: jmZjV6+9yhdtXHp35lVsfKn9hN2SPKSW4qU69vj1w53X8KdZE8xuykW+tyTF/XosiKobk2lmV0y2u176u/P9IL1TEsINLOBZ9IZwbkiPOyw+nuBXC8EKzs8CDKUtX4aXRape3mJrTHV3ibGqUQ50AKrDsgbYaO0xafYRMmhIDeo=
   app:
     develop: engineerssg-staging
+    master: murmuring-shore-8908
   on:
     repo: engineersftw/website
   run: rake db:migrate
