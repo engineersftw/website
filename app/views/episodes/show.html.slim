@@ -82,6 +82,25 @@ javascript:
     player = new YT.Player('player', {
       height: '486',
       width: '864',
-      videoId: '#{@video.video_id}'
+      videoId: '#{@video.video_id}',
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
     });
+  }
+
+  var started_playing = false
+  function onPlayerStateChange(event) {
+    if (event.data < 0) {
+      ga('send', 'event', 'Videos', 'loaded', '#{@video.title}', #{@video.id});
+    }
+    if (event.data == YT.PlayerState.PLAYING) {
+      if (!started_playing) {
+        ga('send', 'event', 'Videos', 'started_play', '#{@video.title}', #{@video.id});
+        started_playing = true;
+      }
+    }
+    if (event.data == YT.PlayerState.ENDED) {
+      ga('send', 'event', 'Videos', 'ended', '#{@video.title}', #{@video.id});
+    }
   }
