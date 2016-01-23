@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.3.0
+- 2.3.0
 branches:
   only:
   - master
@@ -10,7 +10,15 @@ addons:
 bundler_args: "--without production --jobs=3"
 cache: bundler
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database-travis.yml config/database.yml
-  - bundle exec rake db:schema:load RAILS_ENV=test
-
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database-travis.yml config/database.yml
+- bundle exec rake db:schema:load RAILS_ENV=test
+deploy:
+  provider: heroku
+  api_key:
+    secure: jmZjV6+9yhdtXHp35lVsfKn9hN2SPKSW4qU69vj1w53X8KdZE8xuykW+tyTF/XosiKobk2lmV0y2u176u/P9IL1TEsINLOBZ9IZwbkiPOyw+nuBXC8EKzs8CDKUtX4aXRape3mJrTHV3ibGqUQ50AKrDsgbYaO0xafYRMmhIDeo=
+  app:
+    develop: engineerssg-staging
+  on:
+    repo: engineersftw/website
+  run: rake db:migrate
