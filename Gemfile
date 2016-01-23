@@ -14,7 +14,7 @@ gem 'materialize-sass'
 gem 'autoprefixer-rails'
 
 gem 'jquery-rails'
-gem 'google-api-client'
+gem 'google-api-client', '~> 0.8.0'
 gem 'rails_autolink'
 gem 'puma'
 
@@ -30,6 +30,7 @@ group :development do
   gem 'spring'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'seed_dump'
 end
 
 group :production do
