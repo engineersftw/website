@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.3.0'
 
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -17,7 +17,6 @@ gem 'jquery-rails'
 gem 'google-api-client'
 gem 'rails_autolink'
 gem 'puma'
-gem 'puma_worker_killer'
 
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
@@ -27,6 +26,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 
 group :development do
+  gem 'foreman'
   gem 'spring'
   gem 'pry-rails'
   gem 'dotenv-rails'
