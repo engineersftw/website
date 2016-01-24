@@ -46,6 +46,7 @@ group :development do
   gem 'foreman'
   gem 'spring'
   gem 'seed_dump'
+  gem 'binding_of_caller'
 end
 
 group :production do
