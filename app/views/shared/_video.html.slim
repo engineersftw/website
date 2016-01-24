@@ -7,13 +7,13 @@
       .row
         .col.s12
           a.watch-video href=video_path(video)
-            span.card-title.grey-text.text-darken-4 title="#{video.title}"
+            span.card-title.grey-text.text-darken-4.flow-text title="#{video.title}"
               = video.title
         .col.s12
           h6.grey-text= video.published_at.strftime('%A, %e %B %Y')
       .details.row
         - video.organizations.each do |organization|
-          .col.s12.l6
+          .col.s6
             .row.valign-wrapper
               - if organization.image.present?
                 .col.s4
@@ -25,7 +25,7 @@
 
         - presenter = video.presenters.try(:first)
         - if presenter
-          .col.s12.l6
+          .col.s6
             .row.valign-wrapper
               - if presenter.avatar.present?
                 .col.s4
