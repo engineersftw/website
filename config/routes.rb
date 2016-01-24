@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get 'feed', to: 'episodes#index', format: 'atom'
 
   resources :organizations, only: [:index, :show]
-  resources :presenters, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -30,9 +29,13 @@ Rails.application.routes.draw do
 
   get 'v/:id', to: 'episodes#alias', as: 'video'
   get 'video/*title--:id', to: 'episodes#show', as: 'video_slug'
-  get 's/:id', to: redirect('/presenter/%{id}'), as: 'speaker'
-  get 'presenter/:id', to: 'presenters#slug', as: 'presenter_slug'
   get ':id', to: 'episodes#show', as: 'video_shortcut', constraints: { id: /[0-9]+/ }
+
+  get 'presenters', to: 'presenters#index', as: 'presenters'
+  get 'presenters/:id', to: 'presenters#alias', as: 'presenter'
+  get 's/:id', to: redirect('/presenter/%{id}'), as: 'speaker'
+  get 'presenter/*name--:id', to: 'presenters#show', as: 'presenter_name_slug'
+  get 'presenter/:id', to: 'presenters#slug', as: 'presenter_slug'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

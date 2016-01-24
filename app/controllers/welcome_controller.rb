@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @recent_episodes = Episode.limit(8).order('published_at DESC')
+    @recent_episodes = Episode.limit(9).order('published_at DESC')
   end
 
   def conferences

@@ -14,9 +14,18 @@ video{
   // transform: rotateY(-180deg);
 }
 
+
 .video{
-  span.video-title{
-    font-size: 1.2em;
+  span.card-title{
+    font-size: 1.4em !important;
+    line-height: 1.2em !important;
+  }
+  .card-content {
+    overflow: visible !important;
+    padding: 13px;
+    h6 {
+      font-size: 0.8em;
+    }
   }
 }
 

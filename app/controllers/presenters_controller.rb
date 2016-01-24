@@ -3,6 +3,11 @@ class PresentersController < ApplicationController
     @presenters, @no_avatar = Presenter.order('name ASC').partition{|presenter| presenter.avatar.present? }
   end
 
+  def alias
+    @presenter = Presenter.find(params[:id])
+    return redirect_to(presenter_name_slug_path(name: @presenter.name.parameterize, id: @presenter.id))
+  end
+
   def show
     @presenter = Presenter.find(params[:id])
     return redirect_to(presenters_path) unless @presenter.active?
