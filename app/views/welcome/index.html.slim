@@ -9,7 +9,7 @@
       .video.video-container
         #player
       .card.card-panel
-        - featured_video = @recent_episodes.first
+        - featured_video = @videos.first
         .row
           .col.s12
             h5= featured_video.title
@@ -35,8 +35,7 @@
     .col.s12
       h5 Recent Videos
   .row
-    - @recent_episodes.each_with_index do |video, index|
-      ==render partial: 'shared/video', locals: {video: video}
+    == render partial: 'shared/video', collection: @videos, as: :video
   .row
     .col.s12.center
       a.btn.btn-large.waves-effect.waves-light href="/episodes/" More Videos
