@@ -9,7 +9,7 @@
       h5= "#{@total_records} videos found."
       p=page_entries_info @episodes, :entry_name => 'video'
   .videos.row
-    == render partial: 'shared/video', collection: @videos, as: :video
+    == render partial: 'shared/video', collection: @episodes, as: :video
 
   .row
     .col.s12
