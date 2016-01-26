@@ -12,6 +12,7 @@ gem 'kaminari'
 gem "slim-rails"
 gem 'materialize-sass'
 gem 'autoprefixer-rails'
+gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
 gem 'google-api-client', '~> 0.8.0'
