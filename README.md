@@ -7,7 +7,7 @@
 
 ### Getting the source code
 
-The easiest way to do this is to check out the Git repository.
+The easiest way to do this is to check out the Git repository:
 
 ```
 git clone https://github.com/engineersftw/website.git
@@ -17,18 +17,18 @@ The git repository will be checked out into a local folder named `website`.
 
 ***(If you are keen on contributing to this project, do [fork this repository](https://help.github.com/articles/fork-a-repo/) and check out from your own fork of the Git repository.)***
 
-### Installing Ruby
+### Install Ruby
 
-1. Install [HomeBrew](http://brew.sh)
+1. Install [Homebrew](http://brew.sh).
 
-2. Install [rbenv](https://github.com/rbenv/rbenv)
+2. Install [rbenv](https://github.com/rbenv/rbenv):
 
 	```
 brew update
 brew install rbenv ruby-build
 ```
 
-3. Add `rbenv` support to your local profile
+3. Add `rbenv` support to your local profile:
 
 	```
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
@@ -41,28 +41,44 @@ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 echo 'eval "$(rbenv init -)"' >> ~/.zshrc
 ```
 
-3. Install the current Ruby version
+3. Install the current Ruby version:
 
 	```
 rbenv install -l
 rbenv install 2.3.0
 ```
 
-4. Use it globally
+4. Use it globally:
 
 	```
 rbenv global 2.3.0
 ```
 
+### Install PostgreSQL
+
+1. You will need [PostgreSQL](http://www.postgresql.org) installed and started.
+
+	> For newbies, I'd suggest that you download and install [Postgres Mac App](http://postgresapp.com). You may need to edit `config/database.yml` to [connect via TCP socket](http://postgresapp.com/documentation/configuration-ruby.html).
+	
+### Install Node.js
+
+1. Node.js is required for some of the Ruby gems. (There are [alternatives](https://github.com/sstephenson/execjs).) 
+
+	Install Node.js:
+
+	```
+brew install node
+```
+
 ### Install Rails
 
-1. Install Bundler
+1. Install [Bundler](http://bundler.io/):
 
 	```
 gem install bundler
 ```
 
-2. Install the rest of the Ruby Gems needed for the app (including
+2. Install the rest of the Ruby Gems needed for the app (including Ruby on Rails):
 
 	```
 bundle install
@@ -70,23 +86,20 @@ bundle install
 
 ### Prepare the Database
 
-1. You will need [Postgres](http://www.postgresql.org) installed and started.
 
-	> For newbies, I'd suggest that you download and install [PostGres Mac App](http://postgresapp.com).
-
-2. Create the database
+1. Create the database:
 
 	```
 bundle exec rake db:create
 ```
 
-3. Create the database tables
+2. Create the database tables:
 
 	```
 bundle exec rake db:migrate
 ```
 
-4. Prepare sample data
+3. Prepare sample data:
 
 	```
 bundle exec rake db:seed
@@ -94,7 +107,7 @@ bundle exec rake db:seed
 
 ### Start the development web server
 
-1. Prepare the environment file (one time exercise)
+1. Prepare the environment file (one time exercise):
 
   ```
 cp env.sample .env
@@ -108,7 +121,7 @@ foreman start
 
 3. You can now visit the local development site at [http://localhost:3000](http://localhost:3000).
 
-4. The Admin panel is accessible at [http://localhost:3000/admin](http://localhost:3000/admin). The admin login email is `admin@engineers.sg` and default password is `password`.
+4. The Admin panel is accessible at [http://localhost:3000/admin](http://localhost:3000/admin). The admin login email is `admin@engineers.sg` and the default password is `password`.
 
 5. To stop the dev server, just press `ctrl` + `c` on your keyboard to stop the foreman process.
 
