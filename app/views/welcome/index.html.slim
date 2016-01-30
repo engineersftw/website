@@ -12,8 +12,9 @@
         - featured_video = @videos.first
         .row
           .col.s12
-            h5= featured_video.title
-            h6.grey-text= featured_video.published_at.strftime('%A, %e %B %Y')
+            a.featured_video.span.grey-text.text-darken-4.flow-text href=video_path(featured_video) title="#{featured_video.title}"
+              h5 = featured_video.title
+              h6.grey-text= featured_video.published_at.strftime('%A, %e %B %Y')
           .col.s12
             | &nbsp;
             a.twitter-share-button data-text="#{featured_video.title}" data-url=episode_url(featured_video) data-via="engineersftw" href="https://twitter.com/share" Tweet
