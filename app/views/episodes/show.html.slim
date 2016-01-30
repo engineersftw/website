@@ -13,6 +13,8 @@
   meta name="twitter:description" content=@video.description /
   meta name="twitter:image" content=@video.image3 /
 
+  link rel="canonical" href=video_slug_url(title: @video.title.parameterize, id: @video.id) /
+
 .container
   .row
     .col.s12
