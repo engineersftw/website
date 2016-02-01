@@ -24,3 +24,5 @@ deploy:
   on:
     repo: engineersftw/website
   run: rake db:migrate
+notifications:
+  slack: teamtechladies:ps1NAx9fspD4RJobMG9vg2NE
