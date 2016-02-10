@@ -1,7 +1,7 @@
 class EpisodesController < ApplicationController
   def index
     @current_page = (params[:page] || 1).to_i
-    @episodes = Episode.all.order('published_at DESC').page(@current_page)
+    @episodes = Episode.active.order('published_at DESC').page(@current_page)
     @total_records = @episodes.total_count
   end
 
@@ -12,15 +12,15 @@ class EpisodesController < ApplicationController
 
   def search
     @search = search_param[:search]
-    @episodes = @search.present? ? Episode.where("lower(title) like :term or lower(description) like :term", {term: "%#{@search.downcase}%"}).order(:sort_order) : []
+    @episodes = @search.present? ? Episode.active.where("lower(title) like :term or lower(description) like :term", {term: "%#{@search.downcase}%"}).order(:sort_order) : []
   end
 
   def show
-    @video = Episode.find(params[:id])
+    @video = Episode.active.find(params[:id])
   end
 
   def alias
-    @video = Episode.find(params[:id])
+    @video = Episode.active.find(params[:id])
     redirect_to video_slug_path(title: @video.title.parameterize, id: @video.id)
   end
 

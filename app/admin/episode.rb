@@ -1,5 +1,5 @@
 ActiveAdmin.register Episode do
-  permit_params :id, :video_id, :title, :description, :published_at, :image1, :image2, :image3, :sort_order, video_organizations_attributes: [:id, :organization_id, :_destroy],
+  permit_params :id, :video_id, :title, :description, :published_at, :image1, :image2, :image3, :sort_order, :active, video_organizations_attributes: [:id, :organization_id, :_destroy],
     video_presenters_attributes: [:id, :presenter_id, :_destroy], video_links_attributes: [:id, :_destroy, :title, :url]
 
   config.sort_order = 'published_at_desc'
@@ -14,6 +14,7 @@ ActiveAdmin.register Episode do
       image_tag video.image1
     end
     column :title
+    column :active
     column 'Organizations' do |video|
       video.video_organizations.map do |video_org|
         link_to video_org.organization.title, admin_organization_path(video_org.organization)
@@ -40,11 +41,15 @@ ActiveAdmin.register Episode do
               row('Published At') { |v| v.published_at.strftime('%e-%b-%Y %l:%M%P') }
             end
           end
+          f.inputs do
+            f.input :active
+          end
         else
           f.inputs do
             f.input :video_id, label: 'YouTube Video ID'
             f.input :title
             f.input :description
+            f.input :active
           end
         end
       end
@@ -82,6 +87,7 @@ ActiveAdmin.register Episode do
       row('Description') { |v| simple_format(v.description) }
       row('Thumbnail') { |v| image_tag v.image2 }
       row('Published At') { |v| v.published_at.strftime('%e-%b-%Y %l:%M%P') }
+      row :active
     end
     panel 'Organizations' do
       table_for episode.organizations do

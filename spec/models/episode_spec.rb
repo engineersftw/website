@@ -10,4 +10,14 @@ RSpec.describe Episode, type: :model do
     it { should have_many(:presenters).through(:video_presenters) }
     it { should have_many(:video_links).dependent(:destroy) }
   end
+
+  describe 'scope' do
+    describe 'active' do
+      let!(:video1) { FactoryGirl.create :episode, active: true }
+      let!(:video2) { FactoryGirl.create :episode, active: false }
+      it 'only shows active' do
+        expect(Episode.active).to contain_exactly video1
+      end
+    end
+  end
 end

@@ -10,4 +10,6 @@ class Episode < ActiveRecord::Base
   accepts_nested_attributes_for :video_organizations, allow_destroy: true
   accepts_nested_attributes_for :video_presenters, allow_destroy: true
   accepts_nested_attributes_for :video_links, allow_destroy: true
+
+  scope :active, -> { where(active: true) }
 end
