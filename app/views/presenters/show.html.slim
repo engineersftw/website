@@ -37,6 +37,4 @@
     .col.s12
       h5= "#{@episodes.count} videos found."
   .videos.row
-    - @episodes.each do |video|
-      ==render partial: 'shared/video', locals: {video: video}
-
+    ==render partial: 'shared/video', collection: @episodes, as: :video
