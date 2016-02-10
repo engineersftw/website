@@ -129,7 +129,7 @@ foreman start
 
 ### Fork this repository
 
-Please [fork this repository](https://help.github.com/articles/fork-a-repo/) and send us [pull requests](https://help.github.com/articles/using-pull-requests/).
+Please [fork this repository](https://help.github.com/articles/fork-a-repo/) and send us [pull requests](https://help.github.com/articles/using-pull-requests/) to the `develop` branch.
 
 ### Testing your code
 
