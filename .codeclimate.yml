@@ -37,7 +37,11 @@ ratings:
   - "**.py"
 exclude_paths:
 - config/**/*
+- bin/**/*
 - db/**/*
 - spec/**/*
 - vendor/**/*
 - app/assets/javascripts/chosen.jquery.js
+- app/assets/stylesheets/chosen.css
+- .rubocop.yml
+
