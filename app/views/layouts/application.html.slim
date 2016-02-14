@@ -9,11 +9,14 @@ html
     =csrf_meta_tags
     =auto_discovery_link_tag(:atom, feed_url(format: "atom"), title: "Engineers.SG - ATOM Feed")
   body
-    ==render 'shared/fb'
-    ==render 'shared/nav_bar'
-    ==render 'shared/ga'
+    - cache('page_headers') do
+      ==render 'shared/fb'
+      ==render 'shared/nav_bar'
+      ==render 'shared/ga'
 
     ==yield
 
-    ==render 'shared/footer'
+    - cache('page_footer') do
+      ==render 'shared/footer'
+
     =javascript_include_tag 'application'
