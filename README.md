@@ -102,7 +102,7 @@ bundle exec rake db:migrate
 3. Prepare sample data:
 
 	```
-bundle exec rake db:seed
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -d website_development db/snapshot.dump
 ```
 
 ### Start the development web server
@@ -121,7 +121,7 @@ foreman start
 
 3. You can now visit the local development site at [http://localhost:3000](http://localhost:3000).
 
-4. The Admin panel is accessible at [http://localhost:3000/admin](http://localhost:3000/admin). The admin login email is `admin@engineers.sg` and the default password is `password`.
+4. The Admin panel is accessible at [http://localhost:3000/admin](http://localhost:3000/admin). The admin login email is `admin@engineers.sg` and the default password is `password1234`.
 
 5. To stop the dev server, just press `ctrl` + `c` on your keyboard to stop the foreman process.
 
