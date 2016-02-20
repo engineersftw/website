@@ -149,6 +149,12 @@ All the views are written in [Slim](http://slim-lang.com) - a lightweight templa
 
 All template files should end with the `.html.slim` extension.
 
+## Contributors
+
+- [Michael Cheng](https://github.com/miccheng)
+- [Valentine Chua](https://github.com/valentine)
+- [Sahil Bajaj](https://github.com/spinningarrow)
+
 ## License
 
 This software is released under the MIT License.
