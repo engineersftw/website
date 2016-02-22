@@ -59,10 +59,10 @@ rbenv global 2.3.0
 1. You will need [PostgreSQL](http://www.postgresql.org) installed and started.
 
 	> For newbies, I'd suggest that you download and install [Postgres Mac App](http://postgresapp.com). You may need to edit `config/database.yml` to [connect via TCP socket](http://postgresapp.com/documentation/configuration-ruby.html).
-	
+
 ### Install Node.js
 
-1. Node.js is required for some of the Ruby gems. (There are [alternatives](https://github.com/sstephenson/execjs).) 
+1. Node.js is required for some of the Ruby gems. (There are [alternatives](https://github.com/sstephenson/execjs).)
 
 	Install Node.js:
 
@@ -154,6 +154,7 @@ All template files should end with the `.html.slim` extension.
 - [Michael Cheng](https://github.com/miccheng)
 - [Valentine Chua](https://github.com/valentine)
 - [Sahil Bajaj](https://github.com/spinningarrow)
+- [Ted Johansson](https://github.com/drenmi)
 
 ## License
 
