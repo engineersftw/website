@@ -151,11 +151,12 @@ All template files should end with the `.html.slim` extension.
 
 ## Contributors
 
-- [Michael Cheng](https://github.com/miccheng)
+- [Michael Cheng](https://gidthub.com/miccheng)
 - [Valentine Chua](https://github.com/valentine)
 - [Sahil Bajaj](https://github.com/spinningarrow)
 - [Ted Johansson](https://github.com/drenmi)
 - [Casie Millhouse-Singh](https://github.com/casielane)
+- [Oon Xin Tian](https://github.com/oxtian)
 
 ## License
 
