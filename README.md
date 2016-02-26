@@ -157,6 +157,7 @@ All template files should end with the `.html.slim` extension.
 - [Ted Johansson](https://github.com/drenmi)
 - [Casie Millhouse-Singh](https://github.com/casielane)
 - [Oon Xin Tian](https://github.com/oxtian)
+- [Sharon Yeo](https://github.com/codingsharon)
 
 ## License
 
