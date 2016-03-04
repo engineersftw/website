@@ -72,20 +72,15 @@ video{
   }
 }
 
-.input-field 
+.input-field {
   .prefix.active {
     color: #3C74A3;
   }
-
-input[type=text]:focus:not([readonly]) {
-  border-bottom: 1px solid #3C74A3;
-  box-shadow: 0 1px 0 0 #3C74A3;
-  & + label.active {
-    color: #3C74A3;
+  input:focus:not([readonly]) {
+    border-bottom: 1px solid #3C74A3;
+    box-shadow: 0 1px 0 0 #3C74A3;
+    & + label.active {
+      color: #3C74A3;
+    }
   }
 }
-
-
-
-
-
