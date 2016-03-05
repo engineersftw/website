@@ -9,7 +9,7 @@ RSpec.describe MailchimpService do
     MailchimpService.new
   }
 
-  xdescribe 'subscribe' do
+  describe 'subscribe' do
     it 'returns true' do
       expect(subject.subscribe(email, first_name, last_name)).to be
     end
