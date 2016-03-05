@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MailchimpService do
   let(:email) { 'me@example.com' }
-  let(:first_name) { 'Steve' }
-  let(:last_name) { 'Jobs' }
+  let(:full_name) { 'Steve Jobs' }
 
   subject {
     MailchimpService.new
@@ -11,7 +10,7 @@ RSpec.describe MailchimpService do
 
   describe 'subscribe' do
     it 'returns true' do
-      expect(subject.subscribe(email, first_name, last_name)).to be
+      expect(subject.subscribe(email, full_name)).to be
     end
 
     xdescribe 'validation' do
@@ -19,21 +18,21 @@ RSpec.describe MailchimpService do
         let(:bad_email) { 'bad&&&&@example' }
 
         it 'returns false' do
-          expect(subject.subscribe(bad_email, first_name, last_name)).not_to be
+          expect(subject.subscribe(bad_email, full_name)).not_to be
         end
       end
       describe 'no email' do
         let(:no_email) { '' }
 
         it 'returns false' do
-          expect(subject.subscribe(no_email, first_name, last_name)).not_to be
+          expect(subject.subscribe(no_email, full_name)).not_to be
         end
       end
       describe 'no first name' do
-        let(:no_first_name) { '' }
+        let(:no_full_name) { '' }
 
         it 'returns false' do
-          expect(subject.subscribe(email, no_first_name, last_name)).not_to be
+          expect(subject.subscribe(email, no_full_name)).not_to be
         end
       end
     end
