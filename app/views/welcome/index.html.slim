@@ -22,16 +22,17 @@
           .col.s12
             = auto_link(simple_format(featured_video.description))
     .col.s12.l3.hide-on-small-only
-      .row.newsletter_border
+      form.row.newsletter_border method="post" action="/subscribers"
+        input name="authenticity_token" value="#{form_authenticity_token}" type="hidden"
         .col.s12
           .newsletter_header Join The Newsletter
-        .input-field.col.s12 
+        .col.s12.input-field
           i.material-icons.prefix account_circle
-          input.validate id="perm_identity prefix" type="text"
+          input.validate id="perm_identity prefix" type="text" name="first_name"
           label for="perm_identity prefix" Your Name
-        .input-field.col.s12
+        .col.s12.input-field
           i.material-icons.prefix email
-          input.validate id="email prefix" type="email"
+          input.validate id="email prefix" type="email" name="email"
           label for="email prefix" data-error="Invalid email!" data-success="Valid email!" Your Email
         button.button_style.col.s6.btn.waves-effect.waves-light submit name="action"  
       .row
