@@ -1,6 +1,6 @@
 class MailchimpService
 
-  def subscribe(email, name)
+  def subscribe(email, first_name)
     # stuff that subscribe does
     true
   end
