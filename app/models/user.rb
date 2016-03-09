@@ -4,12 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:twitter]
 
-  private
-
-  def subscriber_user_to_mailing_list
-    SubscribeUserToMailingListJob.perform_later(self)
-  end
-
   def password_required?
     provider.present? ? false : super
   end
