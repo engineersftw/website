@@ -10,7 +10,7 @@ class SubscribersController < ApplicationController
 		redirect_to root_path, notice: "Welcome to the mailing list!"
 	else
 		# oh no!
-		redirect_to root_path, error: "Sorry, something went wrong."
+		redirect_to root_path, alert: "Sorry, something went wrong."
 	end
   end
 
