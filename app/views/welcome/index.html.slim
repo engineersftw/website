@@ -22,6 +22,20 @@
           .col.s12
             = auto_link(simple_format(featured_video.description))
     .col.s12.l3.hide-on-small-only
+      form.row.newsletter_border method="post" action="/subscribers"
+        input name="authenticity_token" value="#{form_authenticity_token}" type="hidden"
+        .col.s12
+          .newsletter_header Join The Newsletter
+          == render partial: 'shared/error_messages', locals: { error: flash }
+        .col.s12.input-field
+          i.material-icons.prefix account_circle
+          input.validate id="perm_identity prefix" type="text" name="first_name" required=""
+          label for="perm_identity prefix" Your Name
+        .col.s12.input-field
+          i.material-icons.prefix email
+          input.validate id="email prefix" type="email" name="email" required=""
+          label for="email prefix" data-error="Invalid email!" data-success="Valid email!" Your Email
+        button.button_style.col.s6.btn.waves-effect.waves-light submit name="action"
       .row
         .col.s12
           h5 Social Media

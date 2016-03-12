@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'feed', to: 'episodes#index', format: 'atom'
 
   resources :organizations, only: [:index, :show]
+  resources :subscribers, only: [:create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
