@@ -15,4 +15,8 @@ class WelcomeController < ApplicationController
   def goto_playlist
     redirect_to 'http://j.mp/sgmeetups'
   end
+
+  def events
+    @events = []
+  end
 end
