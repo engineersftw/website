@@ -5,9 +5,28 @@
     .col.s12
       h4 Events
       p The Singapore Tech scene is indeed vibrant. Just look at the sheer number of events listed on these fabulous websites.
+
+    .col.s12
+      h4 WeBuild.SG
+
+      p
+        a> (href="https://webuild.sg/" target="_blank") WeBuild.SG
+        | is a list of free open events and open source libraries for the curious folks who love to make things!
+
+    .col.s12
+      ul.collection
+        - @events.first(6).each do |event|
+          li.collection-item
+            h5=event["name"]
+            blockquote= event["group_name"]
+            p
+              strong=event["formatted_time"]
+            p=event["location"]
+            - button_text = event["rsvp_count"].present? ? "Join #{event["rsvp_count"]} others" : "Join now"
+            a.btn.waves-effect.waves-light (href=event["url"] target="_blank")= button_text
+
     .col.s12
       .collection
-        a.collection-item (href="https://webuild.sg/" target="_blank") WeBuild.SG
         a.collection-item (href="http://thelist.sg/" target="_blank") TheList.SG
         a.collection-item (href="http://connections.sg/" target="_blank") Connections.SG
         a.collection-item (href="http://hackerspace.sg/calendar/hackerspacesg-events/" target="_blank") Hackerspace.SG
