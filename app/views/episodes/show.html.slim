@@ -72,6 +72,10 @@
                   li
                     a href=link.url target="_blank" =link.title
 
+  .row
+    .col.s12.m12.l10
+      .fb-comments data-href=video_url(@video) data-numposts="5" data-mobile="true"
+
 javascript:
   var tag = document.createElement('script');
 
@@ -106,3 +110,4 @@ javascript:
       ga('send', 'event', 'Videos', 'ended', '#{@video.title}', #{@video.id});
     }
   }
+
