@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe WelcomeController, type: :controller do
-  describe "#events" do
+  xdescribe "#events" do
     it "fetches events from WeBuild" do
       get :events
 
