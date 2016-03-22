@@ -28,6 +28,8 @@ gem 'omniauth-twitter'
 gem 'twitter'
 
 gem "gibbon"
+gem "rest-client"
+gem "redis-rails"
 
 group :development, :test do
   gem 'dotenv-rails'
