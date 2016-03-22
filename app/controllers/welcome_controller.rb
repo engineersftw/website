@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
   end
 
   def events
-    @events = get_events
+    @events = Rails.cache.fetch('webuild_events') { get_events }
   end
 
   private
