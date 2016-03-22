@@ -38,8 +38,6 @@
           = auto_link(simple_format(@video.description))
         .col.s12
           a(href="javascript:window.history.back()") &laquo; Back
-        .col.s12
-          .fb-comments data-href=video_url(@video) data-numposts="5"
 
     - if Feature.active?(:video_sidebar) && (@video.organizations.present? || @video.organizations.present? || @video.video_links.present?)
       .col.s12.l2
@@ -73,6 +71,10 @@
                 - @video.video_links.each do |link|
                   li
                     a href=link.url target="_blank" =link.title
+
+  .row
+    .col.s12.m12.l10
+      .fb-comments data-href=video_url(@video) data-numposts="5" data-mobile="true"
 
 javascript:
   var tag = document.createElement('script');
