@@ -1,4 +1,6 @@
 class Episode < ActiveRecord::Base
+  acts_as_taggable
+
   has_many :playlist_items, dependent: :destroy
   has_many :playlists, through: :playlist_items
   has_many :video_organizations, dependent: :destroy

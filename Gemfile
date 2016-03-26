@@ -30,6 +30,7 @@ gem 'twitter'
 gem "gibbon"
 gem "rest-client"
 gem "redis-rails"
+gem 'acts-as-taggable-on'
 
 group :development, :test do
   gem 'dotenv-rails'
