@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 's/:id', to: redirect('/presenter/%{id}'), as: 'speaker'
   get 'presenter/*name--:id', to: 'presenters#show', as: 'presenter_name_slug'
   get 'presenter/:id', to: 'presenters#slug', as: 'presenter_slug'
+  get 'tags/:tag', to: 'episodes#index', as: :tag
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
