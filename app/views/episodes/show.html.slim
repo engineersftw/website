@@ -71,6 +71,11 @@
                 - @video.video_links.each do |link|
                   li
                     a href=link.url target="_blank" =link.title
+          - if @video.tag_list.present?
+            .col.s12
+              h5 Tags
+              p= @video.tag_list
+
 
   .row
     .col.s12.m12.l10
