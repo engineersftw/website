@@ -1,5 +1,5 @@
 ActiveAdmin.register Episode do
-  permit_params :id, :video_id, :title, :description, :published_at, :image1, :image2, :image3, :sort_order, :active, video_organizations_attributes: [:id, :organization_id, :_destroy],
+  permit_params :id, :video_id, :title, :description, :published_at, :image1, :image2, :image3, :tag_list, :sort_order, :active, video_organizations_attributes: [:id, :organization_id, :_destroy],
     video_presenters_attributes: [:id, :presenter_id, :_destroy], video_links_attributes: [:id, :_destroy, :title, :url]
 
   config.sort_order = 'published_at_desc'
@@ -41,6 +41,7 @@ ActiveAdmin.register Episode do
               row('Published At') { |v| v.published_at.strftime('%e-%b-%Y %l:%M%P') }
             end
           end
+          f.inputs :tag_list, label: 'Tags'
           f.inputs do
             f.input :active
           end
@@ -86,6 +87,7 @@ ActiveAdmin.register Episode do
       row :title
       row('Description') { |v| simple_format(v.description) }
       row('Thumbnail') { |v| image_tag v.image2 }
+      row('Tags') {|v| v.tag_list }
       row('Published At') { |v| v.published_at.strftime('%e-%b-%Y %l:%M%P') }
       row :active
     end

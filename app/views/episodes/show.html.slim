@@ -71,6 +71,11 @@
                 - @video.video_links.each do |link|
                   li
                     a href=link.url target="_blank" =link.title
+          - if @video.tag_list.present?
+            .col.s12
+              h5 Tags             
+              p= raw @video.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+
 
   .row
     .col.s12.m12.l10

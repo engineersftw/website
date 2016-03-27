@@ -1,0 +1,24 @@
+- content_for :social_share_headers do
+  meta property="og:site_name" content="Engineers.SG"
+  meta property="og:title" content="Playlist: #{@playlist.name} - Engineers.SG" /
+  meta property="og:description" content=@playlist.description /
+  meta property="og:url" content=playlist_url(@playlist) /
+  meta property="og:image" content=@playlist.image /
+  meta property="og:type" content="website" /
+  meta property="fb:app_id" content="1636558033282778" /
+
+  meta name="twitter:card" content="summary" /
+  meta name="twitter:site" content="@engineersftw" /
+  meta name="twitter:title" content="Playlist: #{@playlist.name} - Engineers.SG" /
+  meta name="twitter:description" content=@playlist.description /
+  meta name="twitter:image" content=@playlist.image /
+
+.container
+  .row
+    .col.s12
+      h4= @playlist.name
+      p=@playlist.description
+    .col.s12
+      h5= "#{@episodes.count} videos found."
+  .videos.row
+    == render partial: 'shared/video', collection: @episodes, as: :video

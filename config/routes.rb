@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'bookings' => 'welcome#bookings'
   get 'live' => 'welcome#live'
 
+  get 'videos/:tag', to: 'episodes#index', as: :tag
   get 'v/:id', to: 'episodes#alias', as: 'video'
   get 'video/*title--:id', to: 'episodes#show', as: 'video_slug'
   get ':id', to: 'episodes#show', as: 'video_shortcut', constraints: { id: /[0-9]+/ }
