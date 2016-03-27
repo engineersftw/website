@@ -1,7 +1,9 @@
 class EpisodesController < ApplicationController
   def index
+    @episodes = Episode.tagged_with(params[:tag]) if params[:tag]
+    @episodes ||= Episode.all
     @current_page = (params[:page] || 1).to_i
-    @episodes = Episode.active.order('published_at DESC').page(@current_page)
+    @episodes = @episodes.active.order('published_at DESC').page(@current_page)
     @total_records = @episodes.total_count
   end
 

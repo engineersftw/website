@@ -73,8 +73,8 @@
                     a href=link.url target="_blank" =link.title
           - if @video.tag_list.present?
             .col.s12
-              h5 Tags
-              p= @video.tag_list
+              h5 Tags             
+              p= raw @video.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
 
 
   .row

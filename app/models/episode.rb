@@ -15,11 +15,4 @@ class Episode < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
 
-  def tags_listing
-    tag_list.join(", ")
-  end
-
-  def tags_listing=(tags)
-    self.tag_list = tags
-  end
 end
