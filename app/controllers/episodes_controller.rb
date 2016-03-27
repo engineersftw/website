@@ -5,6 +5,8 @@ class EpisodesController < ApplicationController
     @current_page = (params[:page] || 1).to_i
     @episodes = @episodes.active.order('published_at DESC').page(@current_page)
     @total_records = @episodes.total_count
+
+
   end
 
   def playlist
