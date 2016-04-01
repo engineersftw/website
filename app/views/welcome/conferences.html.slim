@@ -18,6 +18,7 @@
     .col.s12
       h4 Conferences
       p We have been actively involved in recording local tech conferences too.
+    - cache ('all_conferences') do
     - @conferences.each do |playlist|
       .col.s12.l4.m6
         a href=playlist_path(playlist)
