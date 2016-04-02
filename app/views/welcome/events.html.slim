@@ -15,6 +15,7 @@
 
     .col.s12
       ul.collection
+    - cache('all_events') do
         - @events.first(6).each do |event|
           li.row.collection-item
             div.col.s12.l7
