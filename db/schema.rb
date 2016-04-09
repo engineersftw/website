@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326035113) do
+ActiveRecord::Schema.define(version: 20160409020959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,17 @@ ActiveRecord::Schema.define(version: 20160326035113) do
   end
 
   add_index "presenters", ["twitter"], name: "index_presenters_on_twitter", using: :btree
+
+  create_table "sub_playlists", force: :cascade do |t|
+    t.integer  "playlist_id",                 null: false
+    t.integer  "sub_playlist_id",             null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "sequence",        default: 1, null: false
+  end
+
+  add_index "sub_playlists", ["playlist_id"], name: "index_sub_playlists_on_playlist_id", using: :btree
+  add_index "sub_playlists", ["sub_playlist_id"], name: "index_sub_playlists_on_sub_playlist_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
