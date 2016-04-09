@@ -5,12 +5,10 @@ class EpisodesController < ApplicationController
     @current_page = (params[:page] || 1).to_i
     @episodes = @episodes.active.order('published_at DESC').page(@current_page)
     @total_records = @episodes.total_count
-
-
   end
 
   def playlist
-    @playlist = Playlist.find(params[:id])
+    @playlist = is_number?(params[:id]) ? Playlist.find(params[:id]) : Playlist.find_by_slug(params[:id])
     @episodes = @playlist.playlist_items.order('sort_order ASC').map(&:episode)
   end
 
@@ -32,5 +30,15 @@ class EpisodesController < ApplicationController
 
   def search_param
     params.permit(:search)
+  end
+
+  def is_number?(string)
+    no_commas =  string.gsub(',', '')
+    matches = no_commas.match(/-?\d+(?:\.\d+)?/)
+    if !matches.nil? && matches.size == 1 && matches[0] == no_commas
+      true
+    else
+      false
+    end
   end
 end

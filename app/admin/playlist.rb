@@ -1,5 +1,5 @@
 ActiveAdmin.register Playlist do
-  permit_params :id, :playlist_category_id, :playlist_id, :name, :description, :website, :hashtag, :image, :publish_date, :active
+  permit_params :id, :playlist_category_id, :playlist_id, :name, :description, :website, :hashtag, :slug, :image, :publish_date, :active
 
   config.sort_order = 'publish_date_desc'
 

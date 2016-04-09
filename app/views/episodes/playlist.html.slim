@@ -23,7 +23,7 @@
         ul
           - @playlist.conference_tracks.each do |track|
             li
-              = link_to track.name, playlist_path(track)
+              = link_to track.name, playlist_path( track.slug.present? ? track.slug : track.id )
     .col.s12
       h5= "#{@episodes.count} videos found."
   .videos.row

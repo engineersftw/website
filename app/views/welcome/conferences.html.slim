@@ -21,6 +21,6 @@
     - cache('all_conferences') do
       - @conferences.each do |playlist|
         .col.s12.l4.m6
-          a href=playlist_path(playlist)
+          a href=playlist_path( playlist.slug.present? ? playlist.slug : playlist.id )
             h5.truncate= playlist.name
             img.responsive-img src=playlist.image
