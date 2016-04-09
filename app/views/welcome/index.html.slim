@@ -73,6 +73,8 @@
             div.col.s12.l3
               - button_text = event["rsvp_count"].present? ? "Join #{event["rsvp_count"]} others" : "Join now"
               a.btn.waves-effect.waves-light (href=event["url"] target="_blank")= button_text
+    .col.s12.center
+      a.btn.btn-large.waves-effect.waves-light href="/events/" View more events
 
 javascript:
   var tag = document.createElement('script');
