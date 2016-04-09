@@ -9,10 +9,6 @@ class WelcomeController < ApplicationController
     @conferences = Playlist.where(playlist_category_id: conference_category).where(active: true).order('publish_date DESC')
   end
 
-  def live
-    render layout: 'live'
-  end
-
   def events
     @events = get_events
   end
