@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     @videos = Episode.active.limit(6).order('published_at DESC')
+    @events = get_events
   end
 
   def conferences
@@ -8,23 +9,21 @@ class WelcomeController < ApplicationController
     @conferences = Playlist.where(playlist_category_id: conference_category).where(active: true).order('publish_date DESC')
   end
 
+  def live
+    render layout: 'live'
+  end
+
+  def events
+    @events = get_events
+  end
+
   def goto_playlist
     redirect_to 'http://j.mp/sgmeetups'
   end
 
-  def events
-    @events = Rails.cache.fetch('webuild_events') { get_events }
-  end
-
   private
 
-  def get_events(event_url='https://webuild.sg/api/v1/events')
-    begin
-      response = RestClient.get event_url
-      response_json = JSON.parse(response.body)
-      response_json["events"]
-    rescue
-      []
-    end
+  def get_events
+    WebuildEventsService.new.get_events
   end
 end
