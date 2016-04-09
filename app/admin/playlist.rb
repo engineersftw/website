@@ -1,5 +1,5 @@
 ActiveAdmin.register Playlist do
-  permit_params :id, :playlist_id, :name, :description, :publish_date, :active
+  permit_params :id, :playlist_category_id, :playlist_id, :name, :description, :website, :hashtag, :image, :publish_date, :active
 
   config.sort_order = 'publish_date_desc'
 
@@ -10,8 +10,8 @@ ActiveAdmin.register Playlist do
     id_column
     column :publish_date
     column :playlist_category
-    column 'Thumbnail' do |org|
-      image_tag org.image, width: 150
+    column 'Thumbnail' do |pl|
+      image_tag pl.image, width: 150
     end
     column :name
     column :active
