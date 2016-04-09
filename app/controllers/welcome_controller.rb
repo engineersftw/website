@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     @videos = Episode.active.limit(6).order('published_at DESC')
-    get_events
+    @events = get_events
   end
 
   def conferences
@@ -14,7 +14,7 @@ class WelcomeController < ApplicationController
   end
 
   def events
-    get_events
+    @events = get_events
   end
 
   def goto_playlist
@@ -24,6 +24,6 @@ class WelcomeController < ApplicationController
   private
 
   def get_events
-    @events = WebuildEventsService.new.get_events
+    WebuildEventsService.new.get_events
   end
 end
