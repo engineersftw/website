@@ -37,6 +37,7 @@ ActiveAdmin.register Episode do
           f.input :video_id, label: 'Video ID'
           f.input :title
           f.input :description
+          f.input :published_at
           f.input :active
         end
         f.inputs do
