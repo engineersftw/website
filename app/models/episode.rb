@@ -1,6 +1,8 @@
 class Episode < ActiveRecord::Base
   acts_as_taggable
 
+  enum video_site: { youtube: 1, vimeo: 2 }
+
   has_many :playlist_items, dependent: :destroy
   has_many :playlists, through: :playlist_items
   has_many :video_organizations, dependent: :destroy

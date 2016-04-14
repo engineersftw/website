@@ -24,7 +24,10 @@
       .row
         .col.s12
           .video.video-container
-            #player
+            - if @video.video_site == 'youtube'
+              #player
+            - elsif @video.video_site == 'vimeo'
+              iframe allowfullscreen="" frameborder="0" height="281" mozallowfullscreen="" src="https://player.vimeo.com/video/#{@video.video_id}" webkitallowfullscreen="" width="500"
       .row
         .col.s12
           | &nbsp;
@@ -73,7 +76,7 @@
                     a href=link.url target="_blank" =link.title
           - if @video.tag_list.present?
             .col.s12
-              h5 Tags             
+              h5 Tags
               p= raw @video.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
 
 
