@@ -7,9 +7,12 @@
     .col.s12.l9
       h5 Latest Video
       .video.video-container
-        #player
-      .card.card-panel
         - featured_video = @videos.first
+        - if featured_video.video_site == 'youtube'
+          #player
+        - elsif featured_video.video_site == 'vimeo'
+          iframe allowfullscreen="" frameborder="0" height="281" mozallowfullscreen="" src="https://player.vimeo.com/video/#{featured_video.video_id}" webkitallowfullscreen="" width="500"
+      .card.card-panel
         .row
           .col.s12
             a.featured_video.span.grey-text.text-darken-4.flow-text href=video_path(featured_video) title="#{featured_video.title}"
