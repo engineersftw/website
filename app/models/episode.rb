@@ -17,4 +17,27 @@ class Episode < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
 
+  before_validation :pull_video_info
+
+  def pull_video_info
+    if video_id.present? && video_site.present? && title.empty?
+      if (video_site == 'vimeo')
+        video_info = VimeoService.new.get_video(video_id)
+      elsif (video_site == 'youtube')
+        video_info = YoutubeService.new.get_video(video_id)
+      end
+
+      if video_info.present?
+        assign_attributes(
+          title: video_info.title,
+          published_at: video_info.published_at,
+          description: video_info.description,
+          image1: video_info.image1,
+          image2: video_info.image2,
+          image3: video_info.image3
+        )
+      end
+    end
+  end
+
 end

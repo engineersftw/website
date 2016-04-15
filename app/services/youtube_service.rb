@@ -45,6 +45,26 @@ class YoutubeService
     api_response.data.items.first unless api_response.data.items.empty?
   end
 
+  def get_video(video_id)
+    opts = {
+      part: 'snippet',
+      id: video_id
+    }
+    api_response = api_client.execute!(api_method: youtube.videos.list, parameters: opts)
+    video_item = api_response.data.items.first
+
+    Episode.new(
+      video_site: 'youtube',
+      video_id: video_id,
+      title: video_item.snippet.title,
+      published_at: video_item.snippet.publishedAt,
+      description: video_item.snippet.description,
+      image1: video_item.snippet.thumbnails.default.url,
+      image2: video_item.snippet.thumbnails.medium.url,
+      image3: video_item.snippet.thumbnails.high.url
+    )
+  end
+
   private
 
   def api_client
