@@ -31,7 +31,7 @@
       .row
         .col.s12
           | &nbsp;
-          a.twitter-share-button data-text="#{@video.title}" data-url=video_url(@video) data-via="engineersftw" href="https://twitter.com/share" Tweet
+          a.twitter-share-button data-text="#{twitter_share_text(@video)}" data-url=video_url(@video) href="https://twitter.com/share" Tweet
           .fb-share-button.left data-href=episode_url(@video) data-layout="button_count"
         .col.s12
           strong

@@ -20,7 +20,7 @@
               h6.grey-text= featured_video.published_at.strftime('%A, %e %B %Y')
           .col.s12
             | &nbsp;
-            a.twitter-share-button data-text="#{featured_video.title}" data-url=episode_url(featured_video) data-via="engineersftw" href="https://twitter.com/share" Tweet
+            a.twitter-share-button data-text="#{twitter_share_text(featured_video)}" data-url=episode_url(featured_video) href="https://twitter.com/share" Tweet
             .fb-share-button.left data-href=episode_url(featured_video) data-layout="button_count"
           .col.s12
             = auto_link(simple_format(featured_video.description))
