@@ -17,4 +17,17 @@ ActiveAdmin.register Playlist do
     column :active
     actions
   end
+
+  form do |f|
+    f.inputs 'Playlist' do
+      f.input :playlist_category_id, as: :select, collection: PlaylistCategory.all
+      f.input :playlist_id
+      f.input :name
+      f.input :description
+      f.input :image
+      f.input :website
+      f.input :slug
+    end
+    f.actions
+  end
 end
