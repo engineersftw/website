@@ -1,5 +1,5 @@
 ActiveAdmin.register Episode do
-  permit_params :id, :video_site, :video_id, :title, :description, :published_at, :image1, :image2, :image3, :tag_list, :sort_order, :active, video_organizations_attributes: [:id, :organization_id, :_destroy],
+  permit_params :id, :video_site, :video_id, :title, :description, :image1, :image2, :image3, :tag_list, :sort_order, :active, video_organizations_attributes: [:id, :organization_id, :_destroy],
     video_presenters_attributes: [:id, :presenter_id, :_destroy], video_links_attributes: [:id, :_destroy, :title, :url]
 
   config.sort_order = 'published_at_desc'
@@ -37,7 +37,6 @@ ActiveAdmin.register Episode do
           f.input :video_id, label: 'Video ID'
           f.input :title
           f.input :description
-          f.input :published_at
           f.input :active
         end
         f.inputs do
