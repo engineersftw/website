@@ -1,0 +1,30 @@
+.container
+  .row
+    .col.s12
+      h4 Facebook Live
+  .row
+    .col.s12
+      button#liveButton.btn Create Live Stream To Facebook
+      javascript:
+        document.getElementById('liveButton').onclick = function() {
+          FB.ui({
+            display: 'popup',
+            method: 'live_broadcast',
+            phase: 'create',
+        }, function(response) {
+            if (!response.id) {
+              alert('dialog canceled');
+              return;
+            }
+            alert('stream url:' + response.secure_stream_url);
+            FB.ui({
+              display: 'popup',
+              method: 'live_broadcast',
+              phase: 'publish',
+              broadcast_data: response,
+            }, function(response) {
+            alert("video status: \n" + response.status);
+            });
+          });
+        };
+

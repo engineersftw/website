@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'conferences' => 'welcome#conferences'
   get 'bookings' => 'welcome#bookings'
   get 'live' => 'welcome#live'
+  get 'fb_live' => 'welcome#fb_live'
 
   get 'videos/:tag', to: 'episodes#index', as: :tag
   get 'v/:id', to: 'episodes#alias', as: 'video'
