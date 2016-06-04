@@ -4,28 +4,39 @@
   .row
     .col.s12
       h4.grey-text Welcome to Engineers.SG
-    .col.s12.l9
-      h5 Latest Video
-      .video.video-container
-        - featured_video = @videos.first
-        - if featured_video.video_site == 'youtube'
-          #player
-        - elsif featured_video.video_site == 'vimeo'
-          iframe allowfullscreen="" frameborder="0" height="281" mozallowfullscreen="" src="https://player.vimeo.com/video/#{featured_video.video_id}" webkitallowfullscreen="" width="500"
-      .card.card-panel
-        .row
-          .col.s12
-            a.featured_video.span.grey-text.text-darken-4.flow-text href=video_path(featured_video) title="#{featured_video.title}"
-              h5 = featured_video.title
-              h6.grey-text= featured_video.published_at.strftime('%A, %e %B %Y')
-          .col.s12
-            | &nbsp;
-            a.twitter-share-button data-text="#{twitter_share_text(featured_video)}" data-url=episode_url(featured_video) href="https://twitter.com/share" Tweet
-            .fb-share-button.left data-href=episode_url(featured_video) data-layout="button_count"
-          .col.s12
-            = auto_link(simple_format(featured_video.description))
-    .col.s12.l3.hide-on-small-only
-      form.row.newsletter_border method="post" action="/subscribers"
+
+    .col.s12.l8
+      h5 Latest Videos
+      == render partial: 'shared/video_large', collection: @videos, as: :video
+      .center
+        a.btn.btn-large.waves-effect.waves-light href="/episodes/" More Videos
+
+    .col.s12.l4
+      .row
+        .col.s12
+          h5 Events
+          p
+            a> (href="https://webuild.sg/" target="_blank") WeBuild.SG
+            | is a list of free open events and open source libraries for the curious folks who love to make things!
+        .col.s12
+          ul.collection
+            == render partial: 'shared/event_nomap', collection: @events.first(6), as: :event
+
+        .col.s12.center
+          a.btn.btn-large.waves-effect.waves-light href="/events/" View more events
+
+      .row.hide-on-small-only
+        .col.s12
+          h5 Social Media
+          .fb-page data-adapt-container-width="true" data-hide-cover="false" data-href="https://www.facebook.com/engineersftw/" data-show-facepile="true" data-show-posts="false" data-small-header="false"
+            .fb-xfbml-parse-ignore
+              blockquote cite="https://www.facebook.com/engineersftw/"
+                a href="https://www.facebook.com/engineersftw/"  Engineers.SG
+      .row.hide-on-small-only
+        .col.s12
+          a.twitter-timeline data-widget-id="664100397691244544" href="https://twitter.com/engineersftw"  Tweets by @engineersftw
+
+      form.row.newsletter_border.hide-on-small-only method="post" action="/subscribers"
         input name="authenticity_token" value="#{form_authenticity_token}" type="hidden"
         .col.s12
           .newsletter_header Join The Newsletter
@@ -39,77 +50,3 @@
           input.validate id="email prefix" type="email" name="email" required=""
           label for="email prefix" data-error="Invalid email!" data-success="Valid email!" Your Email
         button.button_style.col.s6.btn.waves-effect.waves-light submit name="action"
-      .row
-        .col.s12
-          h5 Social Media
-          .fb-page data-adapt-container-width="true" data-hide-cover="false" data-href="https://www.facebook.com/engineersftw/" data-show-facepile="true" data-show-posts="false" data-small-header="false"
-            .fb-xfbml-parse-ignore
-              blockquote cite="https://www.facebook.com/engineersftw/"
-                a href="https://www.facebook.com/engineersftw/"  Engineers.SG
-      .row
-        .col.s12
-          a.twitter-timeline data-widget-id="664100397691244544" href="https://twitter.com/engineersftw"  Tweets by @engineersftw
-  .row
-    .col.s12
-      h5 Recent Videos
-  .row
-    == render partial: 'shared/video', collection: @videos, as: :video
-  .row
-    .col.s12.center
-      a.btn.btn-large.waves-effect.waves-light href="/episodes/" More Videos
-  .row
-    .col.s12
-      h4 Events
-      p
-        a> (href="https://webuild.sg/" target="_blank") WeBuild.SG
-        | is a list of free open events and open source libraries for the curious folks who love to make things!
-    .col.s12
-      ul.collection
-        - @events.first(6).each do |event|
-          li.row.collection-item
-            div.col.s12.l9
-              h5=event["name"]
-              blockquote= event["group_name"]
-              p
-                strong=event["formatted_time"]
-              p=event["location"]
-            div.col.s12.l3
-              - button_text = event["rsvp_count"].present? ? "Join #{event["rsvp_count"]} others" : "Join now"
-              a.btn.waves-effect.waves-light (href=event["url"] target="_blank")= button_text
-    .col.s12.center
-      a.btn.btn-large.waves-effect.waves-light href="/events/" View more events
-
-javascript:
-  var tag = document.createElement('script');
-
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '486',
-      width: '864',
-      videoId: '#{featured_video.video_id}',
-      events: {
-        'onStateChange': onPlayerStateChange
-      }
-    });
-  }
-
-  var started_playing = false
-  function onPlayerStateChange(event) {
-    if (event.data < 0) {
-      ga('send', 'event', 'FeaturedVideo', 'loaded', '#{featured_video.title}', #{featured_video.id});
-    }
-    if (event.data == YT.PlayerState.PLAYING) {
-      if (!started_playing) {
-        ga('send', 'event', 'FeaturedVideo', 'started_play', '#{featured_video.title}', #{featured_video.id});
-        started_playing = true;
-      }
-    }
-    if (event.data == YT.PlayerState.ENDED) {
-      ga('send', 'event', 'FeaturedVideo', 'ended', '#{featured_video.title}', #{featured_video.id});
-    }
-  }

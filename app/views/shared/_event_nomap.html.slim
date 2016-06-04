@@ -1,0 +1,12 @@
+li.row.collection-item
+  div.col.s12
+    h5=event["name"]
+    blockquote= event["group_name"]
+    p
+      strong=event["formatted_time"]
+    p=event["location"]
+
+    - button_text = event["rsvp_count"].present? ? "Join #{event["rsvp_count"]} others" : "Join now"
+    p.center
+      a.btn.waves-effect.waves-light (href=event["url"] target="_blank")= button_text
+

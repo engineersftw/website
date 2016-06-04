@@ -16,22 +16,7 @@
     .col.s12
       ul.collection
         - cache('all_events') do
-          - @events.each do |event|
-            li.row.collection-item
-              div.col.s12.l7
-                h5=event["name"]
-                blockquote= event["group_name"]
-                p
-                  strong=event["formatted_time"]
-                p=event["location"]
-                - button_text = event["rsvp_count"].present? ? "Join #{event["rsvp_count"]} others" : "Join now"
-                a.btn.waves-effect.waves-light (href=event["url"] target="_blank")= button_text
-              div.col.s12.l5.right
-                /img.responsive-img src="https://maps.googleapis.com/maps/api/staticmap?size=500x300&center=#{event['latitude']},#{event['longitude']}&zoom=18&markers=#{event['latitude']},#{event['longitude']}"
-                - if event['longitude'].present? && event['latitude'].present?
-                  img.responsive-img src="https://maps.googleapis.com/maps/api/staticmap?size=500x300&center=#{event['latitude']},#{event['longitude']}&zoom=18&markers=#{event['latitude']},#{event['longitude']}"
-                - else
-                  img.responsive-img src="https://maps.googleapis.com/maps/api/staticmap?size=500x300&center=#{event['location']}&zoom=18"
+          == render partial: 'shared/event_with_map', collection: @events, as: :event
 
     .col.s12
       .collection
