@@ -14,7 +14,7 @@ class EpisodesController < ApplicationController
 
   def search
     @search = search_param[:search]
-    @episodes = @search.present? ? Episode.active.where("lower(title) like :term or lower(description) like :term", {term: "%#{@search.downcase}%"}).order(:sort_order) : []
+    @episodes = @search.present? ? Episode.active.where("lower(title) like :term or lower(description) like :term", {term: "%#{@search.downcase}%"}).order('published_at DESC') : []
   end
 
   def show
