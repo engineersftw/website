@@ -1,6 +1,6 @@
 class EpisodesController < ApplicationController
   def index
-    @episodes = Episode.acrive.tagged_with(params[:tag]) if params[:tag]
+    @episodes = Episode.active.tagged_with(params[:tag]) if params[:tag]
     @episodes ||= Episode.acive.all
     @current_page = (params[:page] || 1).to_i
     @episodes = @episodes.active.order('published_at DESC').page(@current_page)
