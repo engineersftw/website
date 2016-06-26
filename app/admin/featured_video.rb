@@ -14,6 +14,7 @@ ActiveAdmin.register FeaturedVideo do
     end
     column :sequence
     column :active
+    actions
   end
 
   index as: :sortable do
