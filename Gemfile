@@ -20,6 +20,7 @@ gem 'rails_autolink'
 gem 'puma'
 
 gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'active_admin-sortable_tree'
 gem 'devise'
 gem 'cancancan'
 gem 'feature'

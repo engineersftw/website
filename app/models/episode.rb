@@ -10,6 +10,7 @@ class Episode < ActiveRecord::Base
   has_many :video_presenters, dependent: :destroy
   has_many :presenters, through: :video_presenters
   has_many :video_links, dependent: :destroy
+  has_many :featured_videos, dependent: :destroy
 
   accepts_nested_attributes_for :video_organizations, allow_destroy: true
   accepts_nested_attributes_for :video_presenters, allow_destroy: true

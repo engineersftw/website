@@ -3,10 +3,15 @@
 .container
   .row
     .col.s12
-      h4.grey-text Welcome to Engineers.SG
+      h5.grey-text Welcome to Engineers.SG
 
     .col.s12.l8
-      h5 Latest Videos
+      - if @featured_videos.present?
+        h4 Featured
+        == render partial: 'shared/video_large', collection: @featured_videos, as: :video
+        hr size=1
+
+      h4 Latest Videos
       == render partial: 'shared/video_large', collection: @videos, as: :video
       .center
         a.btn.btn-large.waves-effect.waves-light href="/episodes/" More Videos

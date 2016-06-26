@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
+    @featured_videos = FeaturedVideo.active.order('sequence ASC').map{ |f| f.episode }
     @videos = Episode.active.limit(6).order('published_at DESC')
     @events = get_events
   end
