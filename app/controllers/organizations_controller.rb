@@ -6,6 +6,6 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     return redirect_to(organizations_path) unless @organization.active?
-    @episodes = @organization.episodes.order('published_at DESC')
+    @episodes = @organization.episodes.active.order('published_at DESC')
   end
 end
