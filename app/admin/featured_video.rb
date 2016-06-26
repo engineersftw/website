@@ -1,6 +1,7 @@
 ActiveAdmin.register FeaturedVideo do
   permit_params :id, :episode_id, :sequence, :active
 
+  config.filters = false
   config.sort_order = 'sequence_asc'
   sortable tree: false, sorting_attribute: :sequence
 
