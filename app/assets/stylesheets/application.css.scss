@@ -48,6 +48,19 @@ video{
   }
 }
 
+// Prevents the nav bar buttons from cutting into the branding
+ul.nav-mobile {
+
+  a {
+    padding: 0 12px;
+  }
+
+  i {
+    margin-right: 5px;
+  }
+
+}
+
 @media screen and (max-width: 1200px){
   .nav-mobile span{
     display: none;
