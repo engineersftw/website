@@ -110,4 +110,27 @@ namespace :engineerssg do
       end
     end
   end
+
+  desc 'Update view count'
+  task fetch_video_stats: :environment do
+    puts 'Retrieving YouTube Videos...'
+
+    youtube_service = YoutubeService.new
+    Episode.where(video_site: Episode.video_sites[:youtube]).find_in_batches(batch_size: 50) do |batch|
+      video_ids = batch.map(&:video_id)
+      youtube_videos = youtube_service.fetch_video_stats(video_ids)
+
+      batch_update = {}
+      youtube_videos.each do |video_item|
+        # puts "Updating view count for #{video_item.id} with #{video_item.statistics.viewCount}"
+
+        episode = batch.select{|v| v.video_id == video_item.id }.first
+        batch_update[episode.id] = { view_count: video_item.statistics.viewCount }
+      end
+
+      puts 'Batch update now...'
+      puts batch_update
+      Episode.update( batch_update.keys, batch_update.values )
+    end
+  end
 end

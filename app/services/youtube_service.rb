@@ -65,10 +65,29 @@ class YoutubeService
     )
   end
 
+  def fetch_video_stats(video_ids=[])
+    video_ids_string = video_ids.join(',')
+
+    opts = {
+        part: 'statistics',
+        id: video_ids_string,
+        maxResults: 50
+    }
+    api_response = api_client.execute!(api_method: youtube.videos.list, parameters: opts)
+
+    api_response.data.items
+  end
+
   private
 
+  def authorization
+    @authorization ||= GoogleAuthService.new.client(access_token: ENV["YOUTUBE_ACCESS_TOKEN"], refresh_token: ENV["YOUTUBE_REFRESH_TOKEN"]).tap do |client|
+        client.refresh!
+      end
+  end
+
   def api_client
-    @google_api_client ||= Google::APIClient.new(key: ENV['GOOGLE_DEV_KEY'], authorization: nil, application_name: 'Engineers.SG', application_version: '1.0.0')
+    @google_api_client ||= Google::APIClient.new(authorization: authorization, application_name: 'Engineers.SG', application_version: '1.0.0')
   end
 
   def youtube
