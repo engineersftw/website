@@ -70,3 +70,27 @@ ul.nav-mobile {
 .details .row {
   margin-bottom: 0px !important;
 }
+
+.share-stats {
+  .share-btn {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    padding-top: 2px;
+    &.fb {
+      padding-top: 0px;
+    }
+  }
+}
+
+.youtube-view-count {
+  display: block;
+  background: $primary-color;
+  color: #fefefe;
+  font-size: 0.75em;
+  font-weight: 500;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 3px 5px 1px 5px;
+}

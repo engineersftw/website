@@ -11,6 +11,9 @@
               = video.title
         .col.s12
           h6.grey-text= video.published_at.strftime('%A, %e %B %Y')
+        .col.s12.share-stats
+          .share-btn
+            span.youtube-view-count= "#{video.view_count} views"
       .details.row
         - video.organizations.each do |organization|
           .col.s6
