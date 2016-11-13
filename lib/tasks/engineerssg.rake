@@ -132,5 +132,28 @@ namespace :engineerssg do
       puts batch_update
       Episode.update( batch_update.keys, batch_update.values )
     end
+
+    puts '=================================================='
+    puts 'Retrieving Vimeo Videos...'
+
+    vimeo_batch_update = {}
+
+    vimeo_episodes = Episode.where(video_site: Episode.video_sites[:vimeo]).all
+    puts "Updating video stats for #{vimeo_episodes.count} videos."
+
+    vimeo_service = VimeoService.new
+    vimeo_videos = vimeo_service.get_uploaded_videos
+
+    vimeo_videos.each do |video_item|
+      episode = vimeo_episodes.select{ |v| v.video_id == video_item[:video_id] }.first
+
+      next if episode.nil?
+
+      vimeo_batch_update[episode.id] = {view_count: video_item[:view_count]}
+    end
+
+    puts 'Batch update now...'
+    puts vimeo_batch_update
+    Episode.update( vimeo_batch_update.keys, vimeo_batch_update.values )
   end
 end
