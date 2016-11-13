@@ -20,13 +20,13 @@
       p The local tech and startup communities that we support.
     - @organizations.each do |organization|
       .col.s6.l3.m4
-        a href=organization_path(organization)
+        a href=organization_alias_path(organization)
           h5.truncate= organization.title
           .thumbnail
             img.responsive-img src=organization.image
   .row
     - @no_logo.each do |organization|
       .col.s6.l4
-        a href=organization_path(organization)
+        a href=organization_alias_path(organization)
           h5.truncate= organization.title
 

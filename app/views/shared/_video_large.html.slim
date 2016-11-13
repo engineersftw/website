@@ -27,10 +27,10 @@
           .row.valign-wrapper
             - if organization.image.present?
               .col.s4
-                a href=organization_path(organization)
+                a href=organization_alias_path(organization)
                   img.responsive-img.circle src=organization.image
             .col class=(organization.image.present? ? 's8' : 's12')
-              a href=organization_path(organization)
+              a href=organization_alias_path(organization)
                 h6=organization.title
 
       - presenter = video.presenters.try(:first)

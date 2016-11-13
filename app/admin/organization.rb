@@ -1,5 +1,5 @@
 ActiveAdmin.register Organization do
-  permit_params :id, :title, :description, :website, :twitter, :contact_person, :image, :active
+  permit_params :id, :title, :description, :website, :twitter, :contact_person, :image, :active, :slug
   config.sort_order = 'title_asc'
 
   filter :title
@@ -29,7 +29,7 @@ ActiveAdmin.register Organization do
       end
     end
 
-    redirect_to collection_path, alert: "Organizations have been merged."
+    redirect_to collection_path, alert: 'Organizations have been merged.'
   end
 
   index do
