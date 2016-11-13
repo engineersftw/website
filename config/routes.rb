@@ -42,6 +42,10 @@ Rails.application.routes.draw do
   get 'organization/*name--:id', to: 'organizations#show', as: 'organization_name'
   get 'organizations/:id', to: 'organizations#alias', as: 'organization_show', constraints: { id: /[0-9]+/ }
   get 'organization/:id', to: 'organizations#alias', as: 'organization_alias', constraints: { id: /[0-9]+/ }
+  get 'org/:id', to: 'organizations#alias', constraints: { id: /[0-9]+/ }
+  get 'o/:id', to: 'organizations#alias', constraints: { id: /[0-9]+/ }
+  get 'organizations/:id', to: 'organizations#show', as: 'organization_show_slug'
+  get 'organization/:id', to: 'organizations#show', as: 'organization_slug'
 
   if Rails.env.development?
     get 'googleauth/start', to: 'google_auth#start'
