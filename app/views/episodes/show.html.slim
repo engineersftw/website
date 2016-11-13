@@ -59,7 +59,7 @@
               ul
                 - @video.organizations.each do |organization|
                   li
-                    a href=organization_path(organization)
+                    a href=organization_alias_path(organization)
                       - if organization.image.present?
                         img.responsive-img src=organization.image
                         br
