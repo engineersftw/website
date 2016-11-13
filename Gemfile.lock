@@ -204,7 +204,6 @@ GEM
     multipart-post (2.0.0)
     naught (1.1.0)
     netrc (0.10.3)
-    newrelic_rpm (3.14.3.313)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     oauth (0.4.7)
@@ -405,7 +404,6 @@ DEPENDENCIES
   jquery-rails
   kaminari
   materialize-sass
-  newrelic_rpm
   omniauth
   omniauth-twitter
   pg
