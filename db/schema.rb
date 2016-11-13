@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626053255) do
+ActiveRecord::Schema.define(version: 20161112153420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,9 +44,31 @@ ActiveRecord::Schema.define(version: 20160626053255) do
     t.integer  "sort_order"
     t.boolean  "active",       default: true, null: false
     t.integer  "video_site",   default: 1,    null: false
+    t.integer  "view_count",   default: 0
   end
 
   add_index "episodes", ["video_id"], name: "index_episodes_on_video_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",                           null: false
+    t.integer  "organization_id",                null: false
+    t.text     "description"
+    t.string   "formatted_time"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string   "location"
+    t.string   "event_url",                      null: false
+    t.string   "platform",                       null: false
+    t.string   "platform_id",                    null: false
+    t.float    "lat"
+    t.float    "lng"
+    t.boolean  "active",          default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "events", ["organization_id"], name: "index_events_on_organization_id", using: :btree
+  add_index "events", ["platform_id"], name: "index_events_on_platform_id", using: :btree
 
   create_table "featured_videos", force: :cascade do |t|
     t.integer "episode_id",                null: false

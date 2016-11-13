@@ -11,10 +11,13 @@
         a.video.span.grey-text.text-darken-4.flow-text href=video_path(video) title="#{video.title}"
           h5 = video.title
           h6.grey-text= video.published_at.strftime('%A, %e %B %Y')
-      .col.s12
-        | &nbsp;
-        a.twitter-share-button data-text="#{twitter_share_text(video)}" data-url=episode_url(video) href="https://twitter.com/share" Tweet
-        .fb-share-button.left data-href=episode_url(video) data-layout="button_count"
+      .col.s12.share-stats
+        .share-btn
+          span.youtube-view-count= "#{video.view_count} views"
+        .share-btn.fb
+          .fb-share-button data-href=episode_url(video) data-layout="button_count"
+        .share-btn
+          a.twitter-share-button data-text="#{twitter_share_text(video)}" data-url=episode_url(video) href="https://twitter.com/share" Tweet
       .col.s12
         = auto_link(simple_format(video.description))
 
