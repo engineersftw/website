@@ -94,3 +94,17 @@ ul.nav-mobile {
   border-radius: 3px;
   padding: 3px 5px 1px 5px;
 }
+
+.sponsor {
+  display: inline-block;
+  background: #78211F;
+  font-size: 0.75em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 4px 8px 2px 8px;
+  color: #fff;
+  a {
+    color: #fff;
+  }
+}

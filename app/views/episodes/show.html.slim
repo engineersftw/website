@@ -29,10 +29,18 @@
             - elsif @video.video_site == 'vimeo'
               iframe allowfullscreen="" frameborder="0" height="281" mozallowfullscreen="" src="https://player.vimeo.com/video/#{@video.video_id}" webkitallowfullscreen="" width="500"
       .row
-        .col.s12
-          | &nbsp;
-          a.twitter-share-button data-text="#{twitter_share_text(@video)}" data-url=video_url(@video) href="https://twitter.com/share" Tweet
-          .fb-share-button.left data-href=episode_url(@video) data-layout="button_count"
+        .col.s12.m6.share-stats
+          .share-btn
+            span.youtube-view-count= "#{@video.view_count} views"
+          .share-btn.fb
+            .fb-share-button data-href=episode_url(@video) data-layout="button_count"
+          .share-btn
+            a.twitter-share-button data-text="#{twitter_share_text(@video)}" data-url=episode_url(@video) href="https://twitter.com/share" Tweet
+        .col.s12.m6.right-align
+          span.sponsor
+            | Benefitted from this video? &nbsp;
+            = link_to 'Click here to Support our efforts', support_us_path
+
         .col.s12
           strong
             | Published on:
