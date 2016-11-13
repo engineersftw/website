@@ -2,7 +2,7 @@
   meta property="og:site_name" content="Engineers.SG"
   meta property="og:title" content="Organization: #{@organization.title} - Engineers.SG" /
   meta property="og:description" content=(@organization.description.present? ? @organization.description : 'One of the local tech and startup community that we support.') /
-  meta property="og:url" content=organization_url(@organization) /
+  meta property="og:url" content=organization_alias_url(name: @organization.title.parameterize, id: @organization.id) /
   meta property="og:image" content=(@organization.image.present? ? @organization.image : 'https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg') /
   meta property="og:type" content="website" /
   meta property="fb:app_id" content="1636558033282778" /
@@ -12,6 +12,8 @@
   meta name="twitter:title" content="Organization: #{@organization.title} - Engineers.SG" /
   meta name="twitter:description" content=(@organization.description.present? ? @organization.description : 'One of the local tech and startup community that we support.') /
   meta name="twitter:image" content=(@organization.image.present? ? @organization.image : 'https://pbs.twimg.com/profile_images/530374167581843459/LhAoHDYO.jpeg') /
+
+  link rel="canonical" href=organization_alias_url(name: @organization.title.parameterize, id: @organization.id) /
 
 .container
   .row
