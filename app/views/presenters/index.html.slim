@@ -18,15 +18,5 @@
     .col.s12
       h4 Presenters
       p The presenters we recorded.
-    - @presenters.each do |presenter|
-      .col.s12.m4.l3
-        a href=(presenter.twitter.present? ? speaker_path(presenter.twitter) : presenter_path(presenter.id))
-          h6.truncate= presenter.name
-          .thumbnail
-            img.responsive-img src=presenter.avatar
 
-  .row
-    - @no_avatar.each do |presenter|
-      .col.s12.l4.m6
-        a href=presenter_path(presenter.id)
-          h5.truncate= presenter.name
+  = react_component('PresentersBlock', {presenters: @presenters, no_avatar: @no_avatar}, {prerender: true})

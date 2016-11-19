@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get ':id', to: 'episodes#show', as: 'video_shortcut', constraints: { id: /[0-9]+/ }
 
   get 'presenters', to: 'presenters#index', as: 'presenters'
+  get 'presenters/search', to: 'presenters#search', as: 'presenters_search'
   get 'presenters/:id', to: 'presenters#alias', as: 'presenter'
   get 's/:id', to: redirect('/presenter/%{id}'), as: 'speaker'
   get 'presenter/*name--:id', to: 'presenters#show', as: 'presenter_name_slug'

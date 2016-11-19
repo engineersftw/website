@@ -66,6 +66,10 @@ GEM
     autoprefixer-rails (6.3.3)
       execjs
       json
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -89,6 +93,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
+    connection_pool (2.2.0)
     debug_inspector (0.0.2)
     devise (3.5.6)
       bcrypt (~> 3.0)
@@ -272,6 +277,13 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
+    react-rails (1.4.1)
+      babel-transpiler (>= 0.7.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      rails (>= 3.2)
+      tilt
     redis (3.2.1)
     redis-actionpack (4.0.0)
       actionpack (~> 4)
@@ -414,6 +426,7 @@ DEPENDENCIES
   rails (= 4.2.5.1)
   rails_12factor
   rails_autolink
+  react-rails
   redis-rails
   rest-client
   rspec-rails
