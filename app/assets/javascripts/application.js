@@ -16,6 +16,7 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require lodash.core
 //= require_tree .
 
 $( document ).ready(function(){
