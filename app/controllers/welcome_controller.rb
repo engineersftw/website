@@ -14,6 +14,10 @@ class WelcomeController < ApplicationController
     @events = get_events
   end
 
+  def screenshots
+    @screenshots_base_url = ENV['SCREENSHOT_SVC_BASE_URL']
+  end
+
   def goto_playlist
     redirect_to 'http://j.mp/sgmeetups'
   end
