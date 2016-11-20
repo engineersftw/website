@@ -9,6 +9,7 @@ var ScreenshotBlock = React.createClass({
       that.setState({
         currentIndex: Number(data.last)
       });
+      $('img[usemap]').rwdImageMaps();
     });
 
     var that = this;
@@ -18,8 +19,24 @@ var ScreenshotBlock = React.createClass({
     );
   },
 
+  componentWillMount: function () {
+    document.addEventListener("keydown", this.handleKeyUp, false);
+  },
+
   componentWillUnmount: function() {
     clearInterval(this.timerID);
+    document.removeEventListener("keydown", this.handleKeyUp, false);
+  },
+
+  handleKeyUp: function(e) {
+    if (e.keyCode == 37) {
+      e.preventDefault();
+      this.prevImage();
+    }
+    if (e.keyCode == 39) {
+      e.preventDefault();
+      this.nextImage();
+    }
   },
 
   fetchScreenshotInfo: function(callback) {
@@ -43,9 +60,7 @@ var ScreenshotBlock = React.createClass({
   currentImage: function() {
     var imgBlock = "";
     if (this.state.currentIndex > 0) {
-      imgBlock = <div className="curent-screen">
-        <img className="responsive-img" src={this.props.baseUrl + "snapshot" + this.lpad(this.state.currentIndex, 5) + "." + this.state.imgExtension} />
-      </div>;
+      imgBlock = <img className="screen-snapshot responsive-img" useMap="#navmap" src={this.props.baseUrl + "snapshot" + this.lpad(this.state.currentIndex, 5) + "." + this.state.imgExtension} />;
     }
     return imgBlock;
   },
@@ -67,11 +82,24 @@ var ScreenshotBlock = React.createClass({
     this.setState({currentIndex: newIndex});
   },
 
+  goLatest: function() {
+    var newIndex = this.state.maxIndex;
+    this.setState({currentIndex: newIndex});
+  },
+
   render: function() {
     return <div className="screenshots">
-      {this.currentImage()}
+      <div className="curent-screen">
+        <map name="navmap">
+          <area href="javascript:;" shape="rect" coords="0,0,960,1080" alt="Previous Screenshot" title="Previous Screenshot" onClick={this.prevImage} />
+          <area href="javascript:;" shape="rect" coords="960,0,1920,1080" alt="Next Screenshot" title="Previous Screenshot" onClick={this.nextImage} />
+        </map>
+        {this.currentImage()}
+      </div>
       <div className="screen-navs center-align">
         <button className="btn" onClick={this.prevImage}>&laquo; Previous</button>
+        &nbsp;
+        <button className="btn" onClick={this.goLatest}>Latest Screenshot</button>
         &nbsp;
         <button className="btn" onClick={this.nextImage}>Next &raquo;</button>
       </div>
