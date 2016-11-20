@@ -1,0 +1,7 @@
+==render partial: 'shared/default_social_share_headers'
+
+.container
+  .row
+    .col.s12
+      h4 Current Screenshot
+      = react_component('ScreenshotBlock', {baseUrl: 'http://stream.engineers.sg/screens/'})
