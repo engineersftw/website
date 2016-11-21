@@ -97,9 +97,9 @@ var ScreenshotBlock = React.createClass({
         {this.currentImage()}
       </div>
       <div className="screen-navs center-align">
-        <button className="btn" onClick={this.prevImage}>&laquo; Previous</button>
+        <button className="btn" onClick={this.prevImage}>&laquo; Prev</button>
         &nbsp;
-        <button className="btn" onClick={this.goLatest}>Latest Screenshot</button>
+        <button className="btn" onClick={this.goLatest}>Latest</button>
         &nbsp;
         <button className="btn" onClick={this.nextImage}>Next &raquo;</button>
       </div>
