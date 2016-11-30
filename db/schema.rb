@@ -49,27 +49,6 @@ ActiveRecord::Schema.define(version: 20161113082712) do
 
   add_index "episodes", ["video_id"], name: "index_episodes_on_video_id", using: :btree
 
-  create_table "events", force: :cascade do |t|
-    t.string   "name",                           null: false
-    t.integer  "organization_id",                null: false
-    t.text     "description"
-    t.string   "formatted_time"
-    t.datetime "start_at"
-    t.datetime "end_at"
-    t.string   "location"
-    t.string   "event_url",                      null: false
-    t.string   "platform",                       null: false
-    t.string   "platform_id",                    null: false
-    t.float    "lat"
-    t.float    "lng"
-    t.boolean  "active",          default: true
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
-  add_index "events", ["organization_id"], name: "index_events_on_organization_id", using: :btree
-  add_index "events", ["platform_id"], name: "index_events_on_platform_id", using: :btree
-
   create_table "featured_videos", force: :cascade do |t|
     t.integer "episode_id",                null: false
     t.integer "sequence",   default: 0,    null: false
