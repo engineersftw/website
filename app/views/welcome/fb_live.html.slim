@@ -16,14 +16,14 @@
               alert('dialog canceled');
               return;
             }
-            alert('stream url:' + response.secure_stream_url);
+            alert('stream url:' + response.stream_url);
             FB.ui({
               display: 'popup',
               method: 'live_broadcast',
               phase: 'publish',
               broadcast_data: response,
             }, function(response) {
-            alert("video status: \n" + response.status);
+              alert("video status: \n" + response.status);
             });
           });
         };
