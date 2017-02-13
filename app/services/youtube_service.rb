@@ -17,16 +17,18 @@ class YoutubeService
       }
       api_response = api_client.execute!(api_method: youtube.playlist_items.list, parameters: opts)
       api_response.data.items.each do |playlist_item|
-        item = {
-          video_id: playlist_item.snippet.resourceId.videoId,
-          title: playlist_item.snippet.title,
-          published_at: playlist_item.snippet.publishedAt,
-          description: playlist_item.snippet.description,
-          image1: playlist_item.snippet.thumbnails.default.url,
-          image2: playlist_item.snippet.thumbnails.medium.url,
-          image3: playlist_item.snippet.thumbnails.high.url
-        }
-        items << item
+        if playlist_item.snippet.thumbnails.present?
+          item = {
+            video_id: playlist_item.snippet.resourceId.videoId,
+            title: playlist_item.snippet.title,
+            published_at: playlist_item.snippet.publishedAt,
+            description: playlist_item.snippet.description,
+            image1: playlist_item.snippet.thumbnails.default.url,
+            image2: playlist_item.snippet.thumbnails.medium.url,
+            image3: playlist_item.snippet.thumbnails.high.url
+          }
+          items << item
+        end
       end
 
       next_page_token = api_response.next_page_token
