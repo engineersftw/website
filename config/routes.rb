@@ -49,6 +49,12 @@ Rails.application.routes.draw do
   get 'organizations/:id', to: 'organizations#show', as: 'organization_show_slug'
   get 'organization/:id', to: 'organizations#show', as: 'organization_slug'
 
+  scope :api, defaults: {format: :json} do
+    get '/organizations', to: 'api#organizations'
+    get '/presenters', to: 'api#presenters'
+  end
+
+
   if Rails.env.development?
     get 'googleauth/start', to: 'google_auth#start'
     get 'googleauth/callback', to: 'google_auth#callback'
