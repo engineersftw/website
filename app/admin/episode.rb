@@ -7,7 +7,36 @@ ActiveAdmin.register Episode do
   filter :title
   filter :description
 
+  batch_action :assign_organization_to, form: -> {
+    {
+        organization: Organization.order('title ASC').pluck(:title, :id),
+    }
+  } do |ids, inputs|
+    organization_id = inputs[:organization].to_i
+
+    batch_action_collection.find(ids).each do |episode|
+      episode.video_organizations.where(organization_id: organization_id).first_or_create
+    end
+
+    redirect_to collection_path, alert: 'Episodes have been assigned an Organization.'
+  end
+
+  batch_action :assign_presenter_to, form: -> {
+    {
+        presenter: Presenter.order('name ASC').pluck(:name, :id),
+    }
+  } do |ids, inputs|
+    presenter_id = inputs[:presenter].to_i
+
+    batch_action_collection.find(ids).each do |episode|
+      episode.video_presenters.where(presenter_id: presenter_id).first_or_create
+    end
+
+    redirect_to collection_path, alert: 'Episodes have been assigned a Presenter.'
+  end
+
   index do
+    selectable_column
     id_column
     column :published_at
     column :video_site
