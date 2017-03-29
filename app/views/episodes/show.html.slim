@@ -27,7 +27,7 @@
             - if @video.video_site == 'youtube'
               #player
             - elsif @video.video_site == 'vimeo'
-              iframe allowfullscreen="" frameborder="0" height="281" mozallowfullscreen="" src="https://player.vimeo.com/video/#{@video.video_id}" webkitallowfullscreen="" width="500"
+              iframe allowfullscreen=true frameborder="0" height="281" src="https://player.vimeo.com/video/#{@video.video_id}" width="500"
       .row
         .col.s12.m6.share-stats
           .share-btn
