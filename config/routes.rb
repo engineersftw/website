@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_config = ActiveAdmin::Devise.config
   devise_config[:controllers][:omniauth_callbacks] = 'users/omniauth_callbacks'
   devise_for :users, devise_config
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :organizations, only: [:index]
   resources :subscribers, only: [:create]
+  resources :event_management, except: :destroy
 
   root 'welcome#index'
   get 'about' => 'welcome#about'

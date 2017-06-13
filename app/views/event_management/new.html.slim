@@ -1,0 +1,16 @@
+.container
+  .row
+    .col.s12
+      h2 New Event
+
+  = form_for @event, { url:event_management_index_path , html:{class: 'row'} } do | form |
+    .col.s12
+      label Events
+    .col.s12
+      = form.select(:webuild_id, @webuild_events.collect{ |event| [ "#{event['name']} - #{event['group_name']}", event['id'] ]}, {}, {class: 'browser-default chosen-select'} )
+
+
+    .col.s12.input-field
+      button.btn.waves-effect.waves-light name="action" type="submit"
+        | Submit
+        i.material-icons.right send

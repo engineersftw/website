@@ -1,0 +1,11 @@
+
+.container
+  .row
+    .col.s12
+      h2 Events Covered
+
+  .row
+    .col.s12
+      ul.collection
+        == render partial: 'shared/event_nomap', collection: @events, as: :event
+

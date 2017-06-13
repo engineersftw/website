@@ -22,4 +22,10 @@
 $( document ).ready(function(){
   $(".button-collapse").sideNav();
   $('select').material_select();
+
+  var chosen_option = {
+    no_results_text: 'No results matched',
+    width: '500px'
+  }
+  $('.chosen-select').chosen(chosen_option);
 });
