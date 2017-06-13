@@ -2,9 +2,9 @@
   .card-image
     .video.video-container
       - if video.video_site == 'youtube'
-        iframe width="560" height="315" src="https://www.youtube.com/embed/#{video.video_id}" frameborder="0" allowfullscreen
+        iframe allowfullscreen=true frameborder="0" width="560" height="315" src="https://www.youtube.com/embed/#{video.video_id}"
       - elsif video.video_site == 'vimeo'
-        iframe allowfullscreen="" frameborder="0" height="281" mozallowfullscreen="" src="https://player.vimeo.com/video/#{video.video_id}" webkitallowfullscreen="" width="500"
+        iframe allowfullscreen=true frameborder="0" width="500" height="281" src="https://player.vimeo.com/video/#{video.video_id}"
   .card-content
     .row
       .col.s12
