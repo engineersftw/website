@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113082712) do
+ActiveRecord::Schema.define(version: 20170613025910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,27 @@ ActiveRecord::Schema.define(version: 20161113082712) do
   end
 
   add_index "episodes", ["video_id"], name: "index_episodes_on_video_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.string   "webuild_id",                                              null: false
+    t.string   "group_id",                                                null: false
+    t.string   "platform",                                                null: false
+    t.string   "name",                                                    null: false
+    t.text     "description"
+    t.string   "location"
+    t.string   "url"
+    t.string   "group_name"
+    t.string   "group_url"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.decimal  "latitude",       precision: 15, scale: 10
+    t.decimal  "longitude",      precision: 15, scale: 10
+    t.boolean  "to_be_recorded",                           default: true
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+  end
+
+  add_index "events", ["webuild_id", "group_id", "platform"], name: "index_events_on_webuild_id_and_group_id_and_platform", using: :btree
 
   create_table "featured_videos", force: :cascade do |t|
     t.integer "episode_id",                null: false
