@@ -10,7 +10,7 @@ namespace :engineerssg do
       playlist_info = youtube_service.fetch_playlist_details(playlist.playlist_id)
       playlist.name = playlist_info.snippet.title
       playlist.publish_date = playlist_info.snippet.published_at
-      playlist.description = playlist_info.snippet.description
+      playlist.description = playlist_info.snippet.description if playlist.description.empty?
       playlist.image = playlist_info.snippet.thumbnails.high.url
       playlist.save
 
@@ -20,9 +20,9 @@ namespace :engineerssg do
       items.each_with_index do |item, index|
         episode = Episode.find_or_initialize_by(video_id: item[:video_id])
 
-        episode.title = item[:title]
+        episode.title = item[:title] if episode.title.empty?
         episode.published_at = item[:published_at]
-        episode.description = item[:description]
+        episode.description = item[:description] if episode.description.empty?
         episode.image1 = item[:image1]
         episode.image2 = item[:image2]
         episode.image3 = item[:image3]
