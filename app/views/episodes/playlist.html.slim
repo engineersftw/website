@@ -17,7 +17,7 @@
   .row
     .col.s12
       h4= @playlist.name
-      p=@playlist.description
+      p=auto_link(simple_format(@playlist.description)
     - if @playlist.sub_playlists.present?
       .col.s12
         ul
