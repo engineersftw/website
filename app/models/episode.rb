@@ -21,7 +21,7 @@ class Episode < ActiveRecord::Base
   before_validation :pull_video_info
 
   def pull_video_info
-    if video_id.present? && video_site.present? && title.empty?
+    if video_id.present? && video_site.present? && title.blank?
       if (video_site == 'vimeo')
         video_info = VimeoService.new.get_video(video_id)
       elsif (video_site == 'youtube')
