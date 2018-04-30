@@ -105,7 +105,7 @@ javascript:
       height: '486',
       width: '864',
       videoId: '#{@video.video_id}',
-      rel: 0,
+      playerVars: { 'rel': 0, 'modestbranding': 1, 'ytp-pause-overlay': 0 },
       events: {
         'onStateChange': onPlayerStateChange
       }

@@ -2,7 +2,7 @@
   .card-image
     .video.video-container
       - if video.video_site == 'youtube'
-        iframe allowfullscreen=true frameborder="0" width="560" height="315" src="https://www.youtube.com/embed/#{video.video_id}?ytp-pause-overlay=0"
+        iframe allowfullscreen=true frameborder="0" width="560" height="315" src="https://www.youtube.com/embed/#{video.video_id}?modestbranding=1&rel=0&ytp-pause-overlay=0"
       - elsif video.video_site == 'vimeo'
         iframe allowfullscreen=true frameborder="0" width="500" height="281" src="https://player.vimeo.com/video/#{video.video_id}"
   .card-content
