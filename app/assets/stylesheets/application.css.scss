@@ -2,117 +2,113 @@
 $primary-color: #3C74A3 !default;
 @import "materialize";
 @import "subscribers";
-
-video{
-  width: 1280px;
-  height: 720px;
-  border: 1px solid white;
-  outline: 1px solid #ccc;
-  z-index: 5;
+video {
+    width: 1280px;
+    height: 720px;
+    border: 1px solid white;
+    outline: 1px solid #ccc;
+    z-index: 5;
 }
 
-#myvideo{
-  // transform: rotateY(-180deg);
+#myvideo {
+    // transform: rotateY(-180deg);
 }
 
-.video{
-  span.card-title{
-    font-size: 1.4em !important;
-    line-height: 1.2em !important;
-  }
-  .card-content {
-    overflow: visible !important;
-    padding: 13px;
-    h6 {
-      font-size: 0.8em;
+.video {
+    span.card-title {
+        font-size: 1.4em !important;
+        line-height: 1.2em !important;
     }
-  }
-  .card.medium {
-    height: 430px;
-  }
+    .card-content {
+        overflow: visible !important;
+        padding: 13px;
+        h6 {
+            font-size: 0.8em;
+        }
+    }
+    .card.medium {
+        height: 430px;
+    }
 }
 
-.thumbnail{
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 20px;
-
-  img {
-    position: absolute;
-    margin: auto;
-    min-height: 100%;
-    min-width: 100%;
-    left: -100%;
-    right: -100%;
-    top: -100%;
-    bottom: -100%;
-    object-fit: scale-down;
-  }
+.thumbnail {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    img {
+        position: absolute;
+        margin: auto;
+        min-height: 100%;
+        min-width: 100%;
+        left: -100%;
+        right: -100%;
+        top: -100%;
+        bottom: -100%;
+        object-fit: scale-down;
+    }
 }
 
 // Prevents the nav bar buttons from cutting into the branding
 ul.nav-mobile {
-
-  a {
-    padding: 0 12px;
-  }
-
-  i {
-    margin-right: 5px;
-  }
-
+    a {
+        padding: 0 12px;
+    }
+    i {
+        margin-right: 5px;
+    }
 }
 
-@media screen and (max-width: 1200px){
-  .nav-mobile span{
-    display: none;
-  }
+@media screen and (max-width: 1300px) {
+    .nav-mobile span {
+        display: none;
+    }
 }
 
 .details .row {
-  margin-bottom: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 .share-stats {
-  .share-btn {
-    display: block;
-    float: left;
-    margin-right: 5px;
-    padding-top: 2px;
-    &.fb {
-      padding-top: 0px;
+    .share-btn {
+        display: block;
+        float: left;
+        margin-right: 5px;
+        padding-top: 2px;
+        &.fb {
+            padding-top: 0px;
+        }
     }
-  }
 }
 
 .youtube-view-count {
-  display: block;
-  background: $primary-color;
-  color: #fefefe;
-  font-size: 0.75em;
-  font-weight: 500;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  padding: 3px 5px 1px 5px;
+    display: block;
+    background: $primary-color;
+    color: #fefefe;
+    font-size: 0.75em;
+    font-weight: 500;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 3px 5px 1px 5px;
 }
 
 .sponsor {
-  display: inline-block;
-  background: #78211F;
-  font-size: 0.75em;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  padding: 4px 8px 2px 8px;
-  color: #fff;
-  a {
+    display: inline-block;
+    background: #78211F;
+    font-size: 0.75em;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 4px 8px 2px 8px;
     color: #fff;
-  }
+    a {
+        color: #fff;
+    }
 }
 
-img[usemap], map area{
-  outline: none;
+img[usemap],
+map area {
+    outline: none;
 }
