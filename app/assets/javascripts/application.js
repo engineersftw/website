@@ -12,14 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require materialize-sprockets
+//= require materialize
 //= require react
 //= require react_ujs
 //= require components
 //= require lodash.core
 //= require_tree .
 
-$( document ).ready(function(){
-  $(".button-collapse").sideNav();
-  $('select').material_select();
+$(document).ready(function() {
+    Materialize.updateTextFields();
+    $(".button-collapse").sideNav();
+    $('select').material_select();
 });
