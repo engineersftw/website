@@ -10,7 +10,7 @@ gem 'jbuilder'
 gem 'kaminari'
 
 gem "slim-rails"
-gem 'materialize-sass'
+gem 'materialize-sass', '~> 0.97.5'
 gem 'autoprefixer-rails'
 gem 'therubyracer', platforms: :ruby
 
@@ -32,7 +32,7 @@ gem "gibbon"
 gem "rest-client"
 gem "redis-rails"
 gem 'acts-as-taggable-on'
-gem 'react-rails'
+gem 'react-rails', '~> 1.4', '>= 1.4.1'
 
 group :development, :test do
   gem 'dotenv-rails'

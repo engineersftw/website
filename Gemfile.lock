@@ -208,7 +208,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    materialize-sass (0.100.2)
+    materialize-sass (0.97.8)
       sass (~> 3.3)
     memoist (0.16.0)
     memoizable (0.4.2)
@@ -295,7 +295,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    react-rails (2.4.4)
+    react-rails (1.11.0)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
@@ -434,7 +434,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari
-  materialize-sass
+  materialize-sass (~> 0.97.5)
   omniauth
   omniauth-twitter
   pg (~> 0.21.0)
@@ -445,7 +445,7 @@ DEPENDENCIES
   rails (= 4.2.10)
   rails_12factor
   rails_autolink
-  react-rails
+  react-rails (~> 1.4, >= 1.4.1)
   redis-rails
   rest-client
   rspec-rails
