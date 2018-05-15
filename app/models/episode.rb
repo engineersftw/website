@@ -25,7 +25,7 @@ class Episode < ActiveRecord::Base
       if (video_site == 'vimeo')
         video_info = VimeoService.new.get_video(video_id)
       elsif (video_site == 'youtube')
-        video_info = YoutubeService.new.get_video(video_id)
+        video_info = YoutubeService.new(access_token: ENV["YOUTUBE_ACCESS_TOKEN"], refresh_token: ENV["YOUTUBE_REFRESH_TOKEN"]).get_video(video_id)
       end
 
       if video_info.present?

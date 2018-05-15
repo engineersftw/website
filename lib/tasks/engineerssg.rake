@@ -3,7 +3,8 @@ namespace :engineerssg do
   task update_playlist: :environment do
     puts 'Starting to pull YouTube Playlist'
 
-    youtube_service = YoutubeService.new
+    youtube_service = YoutubeService.new(access_token: ENV["YOUTUBE_ACCESS_TOKEN"], refresh_token: ENV["YOUTUBE_REFRESH_TOKEN"])
+
     Playlist.active.each do |playlist|
       puts 'Retrieving Playlist Info from YouTube... for ' + playlist.playlist_id
 
@@ -18,17 +19,17 @@ namespace :engineerssg do
       puts "#{items.count} items found..."
 
       items.each_with_index do |item, index|
-        episode = Episode.find_or_initialize_by(video_id: item[:video_id])
+        video = episode = Episode.find_or_initialize_by(video_id: item[:video_id])
 
-        episode.title = item[:title] if episode.title.try(:blank?)
-        episode.published_at = item[:published_at]
-        episode.description = item[:description] if episode.description.blank?
-        episode.image1 = item[:image1]
-        episode.image2 = item[:image2]
-        episode.image3 = item[:image3]
-        episode.save
+        video.title = item[:title]
+        video.description = item[:description]
+        video.published_at = item[:published_at]
+        video.image1 = item[:image1]
+        video.image2 = item[:image2]
+        video.image3 = item[:image3]
+        video.save
 
-        playlist_item = PlaylistItem.find_or_initialize_by(playlist: playlist, episode: episode)
+        playlist_item = PlaylistItem.find_or_initialize_by(playlist: playlist, episode: video)
         playlist_item.sort_order = index
         playlist_item.save
       end
@@ -115,17 +116,17 @@ namespace :engineerssg do
   task fetch_video_stats: :environment do
     puts 'Retrieving YouTube Videos...'
 
-    youtube_service = YoutubeService.new
+    youtube_service = YoutubeService.new(access_token: ENV["YOUTUBE_ACCESS_TOKEN"], refresh_token: ENV["YOUTUBE_REFRESH_TOKEN"])
+
     Episode.where(video_site: Episode.video_sites[:youtube]).find_in_batches(batch_size: 50) do |batch|
       video_ids = batch.map(&:video_id)
       youtube_videos = youtube_service.fetch_video_stats(video_ids)
 
       batch_update = {}
       youtube_videos.each do |video_item|
-        # puts "Updating view count for #{video_item.id} with #{video_item.statistics.viewCount}"
 
         episode = batch.select{|v| v.video_id == video_item.id }.first
-        batch_update[episode.id] = { view_count: video_item.statistics.viewCount }
+        batch_update[episode.id] = { view_count: video_item.statistics.view_count }
       end
 
       puts 'Batch update now...'

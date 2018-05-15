@@ -15,7 +15,7 @@ gem 'autoprefixer-rails'
 gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
-gem 'google-api-client', '~> 0.8.0'
+gem 'google-api-client', '~> 0.11'
 gem 'rails_autolink'
 gem 'puma'
 
