@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   scope :api, defaults: {format: :json} do
     get '/organizations', to: 'api#organizations'
     get '/presenters', to: 'api#presenters'
+    get '/events', to: 'api#events'
   end
 
 

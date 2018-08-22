@@ -25,6 +25,6 @@ class WelcomeController < ApplicationController
   private
 
   def get_events
-    WebuildEventsService.new.get_events
+    WebuildEventsService.new.parse_events
   end
 end

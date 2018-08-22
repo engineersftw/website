@@ -1,15 +1,25 @@
 class WebuildEventsService
-  def get_events(event_url=ENV['WEBUILDSG_EVENT_URL'])
-    event_url = 'https://webuild.sg/api/v1/events' if event_url.nil?
+  def fetch_events
+    Rails.cache.fetch('all_events') do
+      response = RestClient.get event_url
+      response.body
+    end
+  end
 
+  def parse_events
     begin
-      Rails.cache.fetch('all_events') do
-        response = RestClient.get event_url
-        response_json = JSON.parse(response.body)
-        response_json["events"]
-      end
-    rescue
+      response_txt = fetch_events
+      response_json = JSON.parse(response_txt)
+
+      response_json["events"]
+    rescue => e
       []
     end
+  end
+
+  private
+
+  def event_url
+    ENV['WEBUILDSG_EVENT_URL'] || 'http://api-webuild.7e14.starter-us-west-2.openshiftapps.com/events'
   end
 end
