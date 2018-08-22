@@ -33,6 +33,7 @@ gem "rest-client"
 gem "redis-rails"
 gem 'acts-as-taggable-on'
 gem 'react-rails', '~> 1.4', '>= 1.4.1'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   gem 'dotenv-rails'
