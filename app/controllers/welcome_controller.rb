@@ -22,6 +22,10 @@ class WelcomeController < ApplicationController
     redirect_to 'http://j.mp/sgmeetups'
   end
 
+  def cal
+    render inline: WebuildEventsService.new.fetch_cal, content_type: "text/calendar"
+  end
+
   private
 
   def get_events

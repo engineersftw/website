@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'about' => 'welcome#about'
   get 'events' => 'welcome#events'
+  get 'cal' => 'welcome#cal'
   get 'conferences' => 'welcome#conferences'
   get 'bookings' => 'welcome#bookings'
   get 'live' => 'welcome#live'
@@ -54,7 +55,6 @@ Rails.application.routes.draw do
     get '/presenters', to: 'api#presenters'
     get '/events', to: 'api#events'
   end
-
 
   if Rails.env.development?
     get 'googleauth/start', to: 'google_auth#start'
