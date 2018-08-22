@@ -1,6 +1,6 @@
 class WebuildEventsService
   def fetch_events
-    Rails.cache.fetch('all_events') do
+    Rails.cache.fetch('all_upcoming_events') do
       response = RestClient.get event_url
       response.body
     end
