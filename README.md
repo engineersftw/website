@@ -34,9 +34,9 @@ The git repository will be checked out into a local folder named `website`.
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
     echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
     ```
-    
+
     If you are using `zsh`:
-    
+
     ```
     echo 'eval "$(rbenv init -)"' >> ~/.zshrc
     ```
@@ -74,7 +74,7 @@ The git repository will be checked out into a local folder named `website`.
 
 1. Node.js is required for some of the Ruby gems. (There are [alternatives](https://github.com/sstephenson/execjs).)
 
-	Install Node.js:
+    Install Node.js:
 
     ```
     brew install node
