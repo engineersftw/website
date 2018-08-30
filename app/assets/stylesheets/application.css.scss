@@ -108,22 +108,21 @@ ul.nav-mobile {
     }
 }
 
-.date-marker {
-    border: none;
-    padding: 10px 40px !important;
-    // WeBuild tribute red:
-    // background-color: #C11A18 !important;
-    // Engineers.SG blue:
-    background-color: #3C74A3 !important;
-    color: white;
-    font-weight: bold;
-    &:not(:first-child) {
-        margin-top: 3em !important;
-    }
-}
-
 .events-list {
     border: none;
+    .date-marker {
+        border: none;
+        padding: 10px 40px !important;
+        // WeBuild tribute red:
+        // background-color: #C11A18 !important;
+        // Engineers.SG blue:
+        background-color: #3C74A3 !important;
+        color: white;
+        font-weight: bold;
+        &:not(:first-child) {
+            margin-top: 3em !important;
+        }
+    }
     .event-item {
         border: 1px solid #e0e0e0;
         border-top: none;
