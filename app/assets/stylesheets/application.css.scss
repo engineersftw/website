@@ -108,6 +108,21 @@ ul.nav-mobile {
     }
 }
 
+.date-marker {
+    border: none;
+    padding: 10px 40px !important;
+    // WeBuild tribute red:
+    // background-color: #C11A18 !important;
+    // Engineers.SG blue:
+    background-color: #3C74A3 !important;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 1em !important;
+    &:not(:first-child) {
+        margin-top: 3em !important;
+    }
+}
+
 img[usemap],
 map area {
     outline: none;
