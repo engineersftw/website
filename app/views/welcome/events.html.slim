@@ -15,7 +15,7 @@
         | )
 
     .col.s12
-      ul.collection
+      ul.collection.events-list
         - current_day = ''
         - cache('all_events') do
           - @events.each do |event|
