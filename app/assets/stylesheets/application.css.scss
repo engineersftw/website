@@ -112,15 +112,15 @@ ul.nav-mobile {
     border: none;
     .date-marker {
         border: none;
-        padding: 10px 40px !important;
+        padding: 10px 40px;
         // WeBuild tribute red:
         // background-color: #C11A18 !important;
         // Engineers.SG blue:
-        background-color: #3C74A3 !important;
+        background-color: #3C74A3;
         color: white;
         font-weight: bold;
         &:not(:first-child) {
-            margin-top: 3em !important;
+            margin-top: 3em;
         }
     }
     .event-item {
