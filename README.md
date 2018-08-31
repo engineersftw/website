@@ -1,4 +1,4 @@
-#Engineers.SG Website
+# [Engineers.SG website](https://engineers.sg/)
 
 [![Build Status](https://travis-ci.org/engineersftw/website.svg?branch=develop)](https://travis-ci.org/engineersftw/website)
 [![Code Climate](https://codeclimate.com/github/engineersftw/website/badges/gpa.svg)](https://codeclimate.com/github/engineersftw/website)
@@ -9,7 +9,7 @@
 
 The easiest way to do this is to check out the Git repository:
 
-```
+```bash
 git clone https://github.com/engineersftw/website.git
 ```
 
@@ -23,35 +23,35 @@ The git repository will be checked out into a local folder named `website`.
 
 2. Install [rbenv](https://github.com/rbenv/rbenv):
 
-    ```
+    ```bash
     brew update
     brew install rbenv ruby-build
     ```
 
 3. Add `rbenv` support to your local profile:
 
-    ```
+    ```bash
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
     echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
     ```
-    
+
     If you are using `zsh`:
-    
-    ```
+
+    ```bash
     echo 'eval "$(rbenv init -)"' >> ~/.zshrc
     ```
 
 3. Install the current Ruby version:
 
-    ```
+    ```bash
     rbenv install -l
-    rbenv install 2.3.0
+    rbenv install 2.4.4
     ```
 
 4. Use it globally:
 
-    ```
-    rbenv global 2.3.0
+    ```bash
+    rbenv global 2.4.4
     ```
 
 ### Install PostgreSQL
@@ -60,13 +60,23 @@ The git repository will be checked out into a local folder named `website`.
 
     > For newbies, I'd suggest that you download and install [Postgres Mac App](http://postgresapp.com). You may need to edit `config/database.yml` to [connect via TCP socket](http://postgresapp.com/documentation/configuration-ruby.html).
 
+2. Ensure that the PostgreSQL binaries are on your path.  If you are using Postgres Mac App, you can do that like this:
+
+    ```bash
+    echo 'export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"' >> ~/.bash_profile
+
+    source ~/.bash_profile
+    ```
+
+    This will provide access to `pg_restore` and `pg_config` (which is needed later to compile the `pg` gem).
+
 ### Install Node.js
 
 1. Node.js is required for some of the Ruby gems. (There are [alternatives](https://github.com/sstephenson/execjs).)
 
-	Install Node.js:
+    Install Node.js:
 
-    ```
+    ```bash
     brew install node
     ```
 
@@ -74,13 +84,13 @@ The git repository will be checked out into a local folder named `website`.
 
 1. Install [Bundler](http://bundler.io/):
 
-    ```
+    ```bash
     gem install bundler
     ```
 
 2. Install the rest of the Ruby Gems needed for the app (including Ruby on Rails):
 
-    ```
+    ```bash
     bundle install
     ```
 
@@ -89,19 +99,19 @@ The git repository will be checked out into a local folder named `website`.
 
 1. Create the database:
 
-    ```
+    ```bash
     bundle exec rake db:create
     ```
 
 2. Create the database tables:
 
-    ```
+    ```bash
     bundle exec rake db:migrate
     ```
 
 3. Prepare sample data:
 
-    ```
+    ```bash
     pg_restore --verbose --clean --no-acl --no-owner -h localhost -d website_development db/snapshot.dump
     ```
 
@@ -109,13 +119,13 @@ The git repository will be checked out into a local folder named `website`.
 
 1. Prepare the environment file (one time exercise):
 
-    ```
+    ```bash
     cp env.sample .env
     ```
 
 2. You can start the local development web server with the following command:
 
-    ```
+    ```bash
     foreman start
     ```
 
