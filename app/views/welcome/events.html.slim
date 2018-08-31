@@ -15,9 +15,18 @@
         | )
 
     .col.s12
-      ul.collection
+      ul.collection.events-list
+        - current_day = ''
         - cache('all_events') do
-          == render partial: 'shared/event_with_map', collection: @events, as: :event
+          - @events.each do |event|
+            - event_time = Time.at(event['unix_start_time'])
+            - event_day = event_time.strftime("%A, #{event_time.day.ordinalize} %B")
+            - if event_day != current_day
+              - current_day = event_day
+              li.row.collection-item.date-marker
+                h5 = current_day
+
+            == render partial: 'shared/event_with_map', locals: { event: event }
 
     .col.s12
       .collection
