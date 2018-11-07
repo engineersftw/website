@@ -189,7 +189,7 @@ GEM
     logging (2.2.2)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -210,7 +210,7 @@ GEM
     multipart-post (2.0.0)
     naught (1.1.0)
     netrc (0.11.0)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     oauth (0.5.4)
     omniauth (1.8.1)
@@ -423,6 +423,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari
+  loofah (>= 2.2.3)
   materialize-sass (~> 0.97.5)
   omniauth
   omniauth-twitter
