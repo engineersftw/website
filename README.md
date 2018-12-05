@@ -45,13 +45,7 @@ The git repository will be checked out into a local folder named `website`.
 
     ```bash
     rbenv install -l
-    rbenv install 2.4.4
-    ```
-
-4. Use it globally:
-
-    ```bash
-    rbenv global 2.4.4
+    rbenv install 2.5.3
     ```
 
 ### Install PostgreSQL
