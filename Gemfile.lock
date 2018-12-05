@@ -194,7 +194,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    materialize-sass (0.97.8)
+    materialize-sass (0.100.2)
       sass (~> 3.3)
     memoist (0.16.0)
     memoizable (0.4.2)
@@ -332,7 +332,7 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
-    sass (3.5.7)
+    sass (3.7.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -424,7 +424,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   loofah (>= 2.2.3)
-  materialize-sass (~> 0.97.5)
+  materialize-sass (~> 0.100)
   omniauth
   omniauth-twitter
   pg (~> 0.21.0)
@@ -454,4 +454,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.1
+   1.17.1

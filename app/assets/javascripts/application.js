@@ -17,10 +17,11 @@
 //= require react_ujs
 //= require components
 //= require lodash.core
-//= require_tree .
 
 $(document).ready(function() {
-    Materialize.updateTextFields();
-    $(".button-collapse").sideNav();
-    $('select').material_select();
+  Materialize.updateTextFields();
+  $(".button-collapse").sideNav();
+  $('select').material_select();
 });
+
+//= require_tree .
