@@ -44,7 +44,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'spring-commands-rspec'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
 end
 
