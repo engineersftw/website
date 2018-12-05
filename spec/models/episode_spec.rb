@@ -13,8 +13,8 @@ RSpec.describe Episode, type: :model do
 
   describe 'scope' do
     describe 'active' do
-      let!(:video1) { FactoryGirl.create :episode, active: true }
-      let!(:video2) { FactoryGirl.create :episode, active: false }
+      let!(:video1) { FactoryBot.create :episode, active: true }
+      let!(:video2) { FactoryBot.create :episode, active: false }
       it 'only shows active' do
         expect(Episode.active).to contain_exactly video1
       end

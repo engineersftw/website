@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :episode do
     video_id { SecureRandom::hex(10) }
     title { Faker::Name.name }
