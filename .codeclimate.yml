@@ -42,6 +42,6 @@ exclude_paths:
 - spec/**/*
 - vendor/**/*
 - app/assets/javascripts/chosen.jquery.js
+- app/assets/javascripts/lodash.core.js
 - app/assets/stylesheets/chosen.css
 - .rubocop.yml
-
