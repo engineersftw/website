@@ -45,7 +45,7 @@ The git repository will be checked out into a local folder named `website`.
 
     ```bash
     rbenv install -l
-    rbenv install 2.5.3
+    rbenv install 2.6.2
     ```
 
 ### Install PostgreSQL
