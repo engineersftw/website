@@ -43,38 +43,38 @@
             label for="user_details" Your Email
             input.user_details maxlength="200" name="os1" type="email"
         .row.center-align
-          .input-field.btn type="button" Pay with Stripe
+          .input-field.btn.waves-effect.waves-light.pay-with-stripe type="button" Pay with Stripe
 
 
 javascript:
   (function() {
     const stripe = Stripe('pk_test_cnydRVmI6aUKzk7GOr4v8QqT');
 
-    const checkoutButton = document.getElementsByClassName('pay-with-stripe')[0];
+    const checkoutButtons = document.getElementsByClassName('pay-with-stripe');
 
-    checkoutButton.addEventListener('click', function () {
+    for (let i = 0; i < checkoutButtons.length; i++) {
+      checkoutButtons[i].addEventListener('click', () => {
+        const chosenOption = document.getElementsByTagName('select')[i].value;
+        const customerEmail = document.getElementsByClassName('user_details')[i].value;
 
-      const chosenOption = document.getElementsByTagName('select')[0].value;
-      const customerEmail = document.getElementsByClassName('user_details')[0].value;
+        const productType = chosenOption.includes('plan_') ? 'plan' : 'sku';
 
-      const productType = chosenOption.includes('plan_') ? 'plan' : 'sku';
-
-      const checkoutOptions = {
-        items: [{ [productType]: chosenOption, quantity: 1}],
-        successUrl: 'https://success.com',
-        cancelUrl: 'https://canceled.com'
-      }
-
-      customerEmail ? checkoutOptions["customerEmail"] = customerEmail : null;
-
-      stripe.redirectToCheckout(checkoutOptions)
-      .then(function (result) {
-        if (result.error) {
-          var displayError = document.getElementById('error-message');
-          displayError.textContent = result.error.message;
+        const checkoutOptions = {
+          items: [{ [productType]: chosenOption, quantity: 1}],
+          successUrl: 'https://success.com',
+          cancelUrl: 'https://canceled.com'
         }
-      });
 
-    })
+        customerEmail ? checkoutOptions["customerEmail"] = customerEmail : null;
+
+        stripe.redirectToCheckout(checkoutOptions)
+        .then(function (result) {
+          if (result.error) {
+            var displayError = document.getElementById('error-message');
+            displayError.textContent = result.error.message;
+          }
+        });
+      });
+    }
 
   })();
