@@ -2,12 +2,14 @@ source 'https://rubygems.org'
 
 ruby '2.6.5'
 
-gem 'rails', '5.1.1'
+gem 'rails', '~> 5.2'
 gem 'pg', '~> 0.21.0'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'jbuilder'
 gem 'kaminari'
+
+gem 'bootsnap'
 
 gem "slim-rails"
 gem 'materialize-sass', '~> 0.100'
