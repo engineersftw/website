@@ -35,24 +35,25 @@
     .col.s12
       h4 Support Us
 
-      - support_plans.keys.each do |plan|
-        .col.s12.l5
+  .row
+    - support_plans.keys.each do |plan|
+      .col.s12.l5
 
-          h5 = support_plans[plan][:title]
+        h5 = support_plans[plan][:title]
 
-          form
-            .row
-              .input-field.col.s12
-                select id="#{support_plans[plan][:id]}" name="os0"
-                  - support_plans[plan][:payment_options].each do |payment_option|
-                    option value="#{payment_option[:stripe_code]}" = payment_option[:label]
-                label id="#{support_plans[plan][:id]}" = support_plans[plan][:label]
-            .row
-              .input-field.col.s12
-                label for="user_details" Your Email
-                input.user_details maxlength="200" name="os1" type="email"
-            .row.center-align
-              .input-field.btn.waves-effect.waves-light.pay-with-stripe type="button" Pay with Stripe
+        form
+          .row
+            .input-field.col.s12
+              select id="#{support_plans[plan][:id]}" name="os0"
+                - support_plans[plan][:payment_options].each do |payment_option|
+                  option value="#{payment_option[:stripe_code]}" = payment_option[:label]
+              label id="#{support_plans[plan][:id]}" = support_plans[plan][:label]
+          .row
+            .input-field.col.s12
+              label for="user_details" Your Email
+              input.user_details maxlength="200" name="os1" type="email"
+          .row.center-align
+            .input-field.btn.waves-effect.waves-light.pay-with-stripe type="button" Pay with Stripe
 
 
 javascript:
