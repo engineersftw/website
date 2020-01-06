@@ -1,4 +1,4 @@
-class Playlist < ActiveRecord::Base
+class Playlist < ApplicationRecord
   has_many :playlist_items
   has_many :episodes, through: :playlist_items
   has_many :sub_playlists

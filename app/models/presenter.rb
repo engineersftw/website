@@ -1,4 +1,4 @@
-class Presenter < ActiveRecord::Base
+class Presenter < ApplicationRecord
   has_many :video_presenters, dependent: :destroy
   has_many :episodes, through: :video_presenters
 

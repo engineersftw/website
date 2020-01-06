@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.6.5'
 
-gem 'rails', '4.2.11'
+gem 'rails', '5.1.1'
 gem 'pg', '~> 0.21.0'
 gem 'sass-rails'
 gem 'uglifier'
@@ -57,6 +57,7 @@ group :development do
   gem 'spring'
   gem 'seed_dump'
   gem 'binding_of_caller'
+  gem 'listen'
 end
 
 group :production do

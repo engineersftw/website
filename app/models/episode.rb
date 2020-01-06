@@ -1,4 +1,4 @@
-class Episode < ActiveRecord::Base
+class Episode < ApplicationRecord
   acts_as_taggable
 
   enum video_site: { youtube: 1, vimeo: 2 }
