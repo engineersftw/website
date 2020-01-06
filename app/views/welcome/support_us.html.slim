@@ -1,49 +1,58 @@
 ==render partial: 'shared/default_social_share_headers'
 ==javascript_include_tag 'https://js.stripe.com/v3/'
 
+
+- support_plans = {\
+  :recurring => {\
+    :id => "supporter_tiers",
+    :title => "Monthly contribution",
+    :label => "Supporter Tiers (Monthly)",
+    :payment_options => [\
+      { :label => "SG$ 5 monthly — Bronze Tier",    :stripe_code => "plan_GUrWr2rit6cSEf"  },
+      { :label => "SG$ 10 monthly — Silver Tier",   :stripe_code => "plan_GUrb4xAI1URQlA" },
+      { :label => "SG$ 25 monthly — Gold Tier",     :stripe_code => "tba" },
+      { :label => "SG$ 50 monthly — Platinum Tier", :stripe_code => "tba" },
+   ]\
+  },
+
+  :one_time => {\
+    :id => "one_time_support",
+    :title => "One time contribution",
+    :label => "One time show of support",
+    :payment_options => [\
+      { :label => "SG$ 50 — Pat on the back",                 :stripe_code => "sku_GUxHCEVXCupNww"   },
+      { :label => "SG$ 150 — Awesome Job",                    :stripe_code => "sku_GUxILT6HSJkZbH" },
+      { :label => "SG$ 300 — True Believer",                  :stripe_code => "tba" },
+      { :label => "SG$ 900 — Shining glory of the community", :stripe_code => "tba" },
+   ]\
+  },
+
+}
+
+
 .container
   .row
     .col.s12
       h4 Support Us
-  .row
-    .col.s12.l5
-      h5 Monthly contribution
-      form
-        .row
-          .input-field.col.s12
-            select#supporter_tiers name="os0"
-              option value="plan_GUrWr2rit6cSEf" SG$ 5 monthly — Bronze Tier
-              option value="plan_GUrb4xAI1URQlA" SG$ 10 monthly — Silver Tier
-              option value="GoldPlanID" SG$ 25 monthly — Gold Tier
-              option value="PlatinumPlanID" SG$ 50 monthly — Platinum Tier
 
-            label for="supporter_tiers" Supporter Tiers (Monthly)
-        .row
-          .input-field.col.s12
-            label for="user_details" Your Email
-            input.user_details maxlength="200" name="os1" type="email"
-        .row.center-align
-          .input-field.btn.waves-effect.waves-light.pay-with-stripe type="button" Pay with Stripe
+      - support_plans.keys.each do |plan|
+        .col.s12.l5
 
+          h5 = support_plans[plan][:title]
 
-    .col.s12.offset-l2.l5
-      h5 One time contribution
-      form
-        .row
-          .input-field.col.s12
-            select#one_time_support name="os0"
-              option value="sku_GUxHCEVXCupNww" SG$ 50 — Pat on the back
-              option value="sku_GUxILT6HSJkZbH"  SG$ 150 — Awesome Job
-              option value="tb-id"  SG$ 300 — True Believer
-              option value="sg-id"  SG$ 900 — Shining glory of the community
-
-            label for="one_time_support" One time show of support
-        .row
-          .input-field.col.s12
-            label for="user_details" Your Email
-            input.user_details maxlength="200" name="os1" type="email"
-        .row.center-align
-          .input-field.btn.waves-effect.waves-light.pay-with-stripe type="button" Pay with Stripe
+          form
+            .row
+              .input-field.col.s12
+                select id="#{support_plans[plan][:id]}" name="os0"
+                  - support_plans[plan][:payment_options].each do |payment_option|
+                    option value="#{payment_option[:stripe_code]}" = payment_option[:label]
+                label id="#{support_plans[plan][:id]}" = support_plans[plan][:label]
+            .row
+              .input-field.col.s12
+                label for="user_details" Your Email
+                input.user_details maxlength="200" name="os1" type="email"
+            .row.center-align
+              .input-field.btn.waves-effect.waves-light.pay-with-stripe type="button" Pay with Stripe
 
 
 javascript:
