@@ -1,4 +1,5 @@
 ==render partial: 'shared/default_social_share_headers'
+==javascript_include_tag 'https://js.stripe.com/v3/'
 
 .container
   .row
@@ -7,52 +8,73 @@
   .row
     .col.s12.l5
       h5 Monthly contribution
-      form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"
-        input name="cmd" type="hidden" value="_s-xclick" /
-        input name="hosted_button_id" type="hidden" value="2DR3PAGNZQ42W" /
-        input name="on0" type="hidden" value="Supporter Tiers (Monthly)"
-        input name="on1" type="hidden" value="Your Twitter / GitHub username" /
-        input name="currency_code" type="hidden" value="SGD" /
+      form
         .row
           .input-field.col.s12
             select#supporter_tiers name="os0"
-              option value="Bronze Tier" Bronze Tier : $5.00 SGD - monthly
-              option value="Silver Tier"  Silver Tier : $10.00 SGD - monthly
-              option value="Gold Tier"  Gold Tier : $25.00 SGD - monthly
-              option value="Platinum Tier" Platinum Tier : $50.00 SGD - monthly
+              option value="plan_GUrWr2rit6cSEf" SG$ 5 monthly — Bronze Tier
+              option value="plan_GUrb4xAI1URQlA" SG$ 10 monthly — Silver Tier
+              option value="GoldPlanID" SG$ 25 monthly — Gold Tier
+              option value="PlatinumPlanID" SG$ 50 monthly — Platinum Tier
+
             label for="supporter_tiers" Supporter Tiers (Monthly)
         .row
           .input-field.col.s12
-            label for="user_details" Your Twitter / GitHub username
-            input#user_details maxlength="200" name="os1" type="text" /
-        .row
-          .input-field.col.s12.center-align
-            input alt="PayPal – The safer, easier way to pay online!" border="0" name="submit" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_subscribeCC_LG.gif" type="image" /
-            img alt="" border="0" height="1" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" /
+            label for="user_details" Your Email
+            input.user_details maxlength="200" name="os1" type="email"
+        .row.center-align
+          .input-field.btn.waves-effect.waves-light.pay-with-stripe type="button" Pay with Stripe
+
 
     .col.s12.offset-l2.l5
       h5 One time contribution
-      form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"
-        input name="cmd" type="hidden" value="_s-xclick" /
-        input name="hosted_button_id" type="hidden" value="CATUSYY3YX2N2" /
-        input name="on0" type="hidden" value="One time show of support" /
-        input name="on1" type="hidden" value="Your Twitter / GitHub username" /
-        input name="currency_code" type="hidden" value="SGD" /
+      form
         .row
           .input-field.col.s12
             select#one_time_support name="os0"
-              option value="Pat on the back"  Pat on the back $50.00 SGD
-              option value="Awesome Job"  Awesome Job $150.00 SGD
-              option value="True Believer"  True Believer $300.00 SGD
-              option value="Shining glory of the community"  Shining glory of the community $900.00 SGD
+              option value="sku_GUxHCEVXCupNww" SG$ 50 — Pat on the back
+              option value="sku_GUxILT6HSJkZbH"  SG$ 150 — Awesome Job
+              option value="tb-id"  SG$ 300 — True Believer
+              option value="sg-id"  SG$ 900 — Shining glory of the community
+
             label for="one_time_support" One time show of support
         .row
           .input-field.col.s12
-            input#user_details2 maxlength="200" name="os1" type="text" /
-            label for ="user_details2" Your Twitter / GitHub username
-        .row
-          .input-field.col.s12.center-align
-            input alt="PayPal – The safer, easier way to pay online!" border="0" name="submit" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_paynowCC_LG.gif" type="image" /
-            img alt="" border="0" height="1" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" /
+            label for="user_details" Your Email
+            input.user_details maxlength="200" name="os1" type="email"
+        .row.center-align
+          .input-field.btn type="button" Pay with Stripe
 
 
+javascript:
+  (function() {
+    const stripe = Stripe('pk_test_cnydRVmI6aUKzk7GOr4v8QqT');
+
+    const checkoutButton = document.getElementsByClassName('pay-with-stripe')[0];
+
+    checkoutButton.addEventListener('click', function () {
+
+      const chosenOption = document.getElementsByTagName('select')[0].value;
+      const customerEmail = document.getElementsByClassName('user_details')[0].value;
+
+      const productType = chosenOption.includes('plan_') ? 'plan' : 'sku';
+
+      const checkoutOptions = {
+        items: [{ [productType]: chosenOption, quantity: 1}],
+        successUrl: 'https://success.com',
+        cancelUrl: 'https://canceled.com'
+      }
+
+      customerEmail ? checkoutOptions["customerEmail"] = customerEmail : null;
+
+      stripe.redirectToCheckout(checkoutOptions)
+      .then(function (result) {
+        if (result.error) {
+          var displayError = document.getElementById('error-message');
+          displayError.textContent = result.error.message;
+        }
+      });
+
+    })
+
+  })();
