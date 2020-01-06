@@ -1,22 +1,25 @@
 language: ruby
 rvm:
-- 2.6.5
+  - 2.6.5
 sudo: false
 addons:
-  postgresql: '9.3'
+  postgresql: '9.4'
+services:
+  - postgresql
 branches:
   only:
-  - master
-  - develop
+    - master
+    - develop
 bundler_args: "--without production --jobs=3"
 cache: bundler
 before_install:
-- gem update --system
-- gem update bundler
+  - gem update --system
+  - gem update bundler
 before_script:
-- psql -c 'create database travis_ci_test;' -U postgres
-- cp config/database-travis.yml config/database.yml
-- bundle exec rake db:schema:load RAILS_ENV=test
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database-travis.yml config/database.yml
+script:
+  - bundle exec rake db:schema:load RAILS_ENV=test
 deploy:
   provider: heroku
   api_key:
