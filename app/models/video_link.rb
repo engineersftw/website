@@ -1,3 +1,3 @@
-class VideoLink < ActiveRecord::Base
+class VideoLink < ApplicationRecord
   belongs_to :episode
 end

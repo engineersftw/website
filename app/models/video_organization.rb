@@ -1,4 +1,4 @@
-class VideoOrganization < ActiveRecord::Base
+class VideoOrganization < ApplicationRecord
   belongs_to :episode
   belongs_to :organization
 

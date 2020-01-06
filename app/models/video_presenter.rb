@@ -1,4 +1,4 @@
-class VideoPresenter < ActiveRecord::Base
+class VideoPresenter < ApplicationRecord
   belongs_to :episode
   belongs_to :presenter
 
