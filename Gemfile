@@ -26,7 +26,7 @@ gem 'active_admin-sortable_tree'
 gem 'devise'
 gem 'cancancan'
 gem 'feature'
-gem 'omniauth'
+gem 'omniauth-rails'
 gem 'omniauth-twitter'
 gem 'twitter'
 

@@ -236,6 +236,9 @@ GEM
     omniauth-oauth (1.1.0)
       oauth
       omniauth (~> 1.0)
+    omniauth-rails (0.6.0)
+      omniauth
+      rails
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
@@ -453,7 +456,7 @@ DEPENDENCIES
   listen
   loofah (>= 2.2.3)
   materialize-sass (~> 0.100)
-  omniauth
+  omniauth-rails
   omniauth-twitter
   pg (~> 0.21.0)
   pry
