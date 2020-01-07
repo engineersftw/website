@@ -1,4 +1,5 @@
 //= require active_admin/base
+//= require chosen.jquery.js
 
 $(document).ready(function(){
   var chosen_option = {

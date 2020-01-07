@@ -3,7 +3,6 @@ ActiveAdmin.register FeaturedVideo do
 
   config.filters = false
   config.sort_order = 'sequence_asc'
-  sortable tree: false, sorting_attribute: :sequence
 
   index do
     selectable_column
@@ -15,13 +14,6 @@ ActiveAdmin.register FeaturedVideo do
     end
     column :sequence
     column :active
-    actions
-  end
-
-  index as: :sortable do
-    label do |t|
-      "#{t.episode.title}"
-    end
     actions
   end
 
