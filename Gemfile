@@ -31,7 +31,7 @@ gem 'twitter'
 
 gem "gibbon"
 gem "rest-client"
-gem "redis-rails"
+gem "redis"
 gem 'acts-as-taggable-on'
 gem 'react-rails', '~> 1.4', '>= 1.4.1'
 gem 'rack-cors', require: 'rack/cors'
