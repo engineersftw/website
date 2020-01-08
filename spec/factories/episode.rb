@@ -6,6 +6,6 @@ FactoryBot.define do
     image1 { Faker::Avatar.image }
     image2 { Faker::Avatar.image }
     image3 { Faker::Avatar.image }
-    description { Faker::Lorem.paragraph(2) }
+    description { Faker::Lorem.paragraph(sentence_count: 2) }
   end
 end
