@@ -14,7 +14,7 @@ gem 'bootsnap'
 gem "slim-rails"
 gem 'materialize-sass', '~> 0.100'
 gem 'autoprefixer-rails'
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer'
 
 gem 'jquery-rails'
 gem 'google-api-client', '~> 0.11'
