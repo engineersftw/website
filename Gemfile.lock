@@ -24,18 +24,17 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activeadmin (1.4.3)
-      arbre (>= 1.1.1)
-      coffee-rails
+    activeadmin (2.6.0)
+      arbre (~> 1.2, >= 1.2.1)
       formtastic (~> 3.1)
-      formtastic_i18n
-      inherited_resources (>= 1.9.0)
-      jquery-rails (>= 4.2.0)
-      kaminari (>= 0.15)
-      railties (>= 4.2, < 5.3)
-      ransack (>= 1.8.7)
-      sass (~> 3.1)
-      sprockets (< 4.1)
+      formtastic_i18n (~> 0.4)
+      inherited_resources (~> 1.7)
+      jquery-rails (~> 4.2)
+      kaminari (~> 1.0, >= 1.0.1)
+      railties (>= 5.2, < 6.1)
+      ransack (~> 2.1, >= 2.1.1)
+      sassc-rails (~> 2.1)
+      sprockets (>= 3.0, < 4.1)
     activejob (5.2.4.1)
       activesupport (= 5.2.4.1)
       globalid (>= 0.3.6)
@@ -81,9 +80,6 @@ GEM
     byebug (10.0.2)
     cancancan (2.2.0)
     coderay (1.1.2)
-    coffee-rails (5.0.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 5.2.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -414,13 +410,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin (~> 1.4.3)
+  activeadmin (~> 2)
   acts-as-taggable-on
   autoprefixer-rails
   better_errors
   binding_of_caller
   bootsnap
   cancancan
+  coffee-script
   devise
   dotenv-rails
   factory_bot_rails
