@@ -24,11 +24,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_admin-sortable_tree (2.0.0)
-      activeadmin (>= 1.1)
-      coffee-rails
-      jquery-rails
-      sass (~> 3.1)
     activeadmin (1.4.3)
       arbre (>= 1.1.1)
       coffee-rails
@@ -435,7 +430,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_admin-sortable_tree
   activeadmin (~> 1.4.3)
   acts-as-taggable-on
   autoprefixer-rails
