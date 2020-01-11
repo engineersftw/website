@@ -1,4 +1,4 @@
-User.create!(email: 'admin@engineers.sg', password: 'password', password_confirmation: 'password1234')
+User.create!(email: 'admin@engineers.sg', password: 'password1234', password_confirmation: 'password1234')
 
 meetup = PlaylistCategory.find_by(title: 'Meetup')
 conference = PlaylistCategory.find_by(title: 'Conference')
