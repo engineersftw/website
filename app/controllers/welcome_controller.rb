@@ -26,6 +26,11 @@ class WelcomeController < ApplicationController
     render inline: WebuildEventsService.new.fetch_cal, content_type: "text/calendar"
   end
 
+  def support_us
+    @stripe_publishable_key = ENV['STRIPE_PUBLISHABLE_KEY']
+    @support_plans = STRIPE_SUPPORT_PLANS
+  end
+
   private
 
   def get_events
