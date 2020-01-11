@@ -7,18 +7,18 @@
       h4 Support Us
 
   .row
-    - @support_plans.keys.each do |plan|
+    - @support_plans.each do |_, plan|
       .col.s12.l5
 
-        h5 = @support_plans[plan][:title]
+        h5 = plan[:title]
 
         form
           .row
             .input-field.col.s12
-              select id=@support_plans[plan][:id] name="os0"
-                - @support_plans[plan][:payment_options].each do |payment_option|
+              select id=plan[:id] name="os0"
+                - plan[:payment_options].each do |payment_option|
                   option(value=payment_option[:stripe_code])= payment_option[:label]
-              label id="#{@support_plans[plan][:id]}" = @support_plans[plan][:label]
+              label for=plan[:id] = plan[:label]
           .row
             .input-field.col.s12
               label for="user_details" Your Email
