@@ -1,6 +1,6 @@
 if Rails.env.production?
-  STRIPE_SUPPORT_PLANS={
-    recurring: {
+  STRIPE_SUPPORT_PLANS=[
+    {
       id: "supporter_tiers",
       title: "Monthly contribution",
       label: "Supporter Tiers (Monthly)",
@@ -11,7 +11,7 @@ if Rails.env.production?
         { label: "SG$ 50 monthly — Platinum Tier", stripe_code: "plan_GWjYzoPnJvGTyq" },
       ]
     },
-    one_time: {
+    {
       id: "one_time_support",
       title: "One time contribution",
       label: "One time show of support",
@@ -23,10 +23,10 @@ if Rails.env.production?
         { label: "SG$ 1500 — OMG! Thank you!", stripe_code: "sku_GWjcgKL4GURrtF" },
       ]
     }
-  }
+  ]
 else
-  STRIPE_SUPPORT_PLANS={
-    recurring: {
+  STRIPE_SUPPORT_PLANS=[
+    {
       id: "supporter_tiers",
       title: "Monthly contribution",
       label: "Supporter Tiers (Monthly)",
@@ -37,7 +37,7 @@ else
         { label: "SG$ 50 monthly — Platinum Tier", stripe_code: "plan_GVKM9TWVewLF3j" },
       ]
     },
-    one_time: {
+    {
       id: "one_time_support",
       title: "One time contribution",
       label: "One time show of support",
@@ -49,5 +49,5 @@ else
         { label: "SG$ 1500 — OMG! Thank you!", stripe_code: "sku_GVKQxT6fummzTu" },
       ]
     }
-  }
+  ]
 end

@@ -7,27 +7,7 @@
       h4 Support Us
 
   .row
-    - @support_plans.keys.each do |plan|
-      .col.s12.l5
-
-        h5 = @support_plans[plan][:title]
-
-        form
-          .row
-            .input-field.col.s12
-              select id=@support_plans[plan][:id] name="os0"
-                - @support_plans[plan][:payment_options].each do |payment_option|
-                  option(value=payment_option[:stripe_code])= payment_option[:label]
-              label id="#{@support_plans[plan][:id]}" = @support_plans[plan][:label]
-          .row
-            .input-field.col.s12
-              label for="user_details" Your Email
-              input.user_details maxlength="200" name="os1" type="email"
-          .row.center-align
-            .input-field.btn.waves-effect.waves-light.pay-with-stripe type="button"
-              i.material-icons.right send
-              span Donate
-
+    == render partial: 'stripe_support_payment', collection: @support_plans, as: :plan
 
 javascript:
   (function() {
