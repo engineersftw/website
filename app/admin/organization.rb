@@ -36,7 +36,7 @@ ActiveAdmin.register Organization do
     selectable_column
     id_column
     column 'Logo' do |org|
-      image_tag org.image, width: 150
+      image_tag org.image, width: 150 if org.image.present?
     end
     column :title
     column :twitter
