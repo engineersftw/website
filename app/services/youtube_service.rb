@@ -26,9 +26,9 @@ class YoutubeService
               title: playlist_item.snippet.title,
               published_at: playlist_item.snippet.published_at,
               description: playlist_item.snippet.description,
-              image1: playlist_item.snippet.thumbnails.default.url,
-              image2: playlist_item.snippet.thumbnails.medium.url,
-              image3: playlist_item.snippet.thumbnails.high.url
+              image1: playlist_item.snippet.thumbnails.default&.url,
+              image2: playlist_item.snippet.thumbnails.medium&.url,
+              image3: playlist_item.snippet.thumbnails.high&.url
           }
           items << item
         end
