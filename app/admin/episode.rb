@@ -77,14 +77,14 @@ ActiveAdmin.register Episode do
       tab 'Organization' do
         f.inputs do
           f.has_many :video_organizations, allow_destroy: true do |o|
-            o.input :organization, as: :select, collection: Organization.all, input_html: { class: 'chosen-select' }
+            o.input :organization, as: :select, collection: Organization.order('title ASC').all
           end
         end
       end
       tab 'Presenter' do
         f.inputs do
           f.has_many :video_presenters, allow_destroy: true do |o|
-            o.input :presenter, as: :select, collection: Presenter.all, input_html: { class: 'chosen-select' }
+            o.input :presenter, as: :select, collection: Presenter.order('name ASC').all
           end
         end
       end
