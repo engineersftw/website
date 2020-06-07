@@ -47,12 +47,12 @@ ActiveAdmin.register Episode do
     column :active
     column 'Organizations' do |video|
       video.video_organizations.map do |video_org|
-        link_to video_org.organization.title, admin_organization_path(video_org.organization)
+        link_to video_org&.organization.title, admin_organization_path(video_org.organization) if video_org.organization
       end.join(', ').html_safe
     end
     column 'Presenters' do |video|
       video.video_presenters.map do |video_presenter|
-        link_to video_presenter.presenter.try(:name), admin_presenter_path(video_presenter.presenter) if video_presenter.presenter
+        link_to video_presenter.presenter&.name, admin_presenter_path(video_presenter.presenter) if video_presenter.presenter
       end.compact.join(', ').html_safe
     end
     actions
