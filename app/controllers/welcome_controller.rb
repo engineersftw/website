@@ -31,6 +31,8 @@ class WelcomeController < ApplicationController
     @support_plans = STRIPE_SUPPORT_PLANS
   end
 
+  def terms; end
+
   private
 
   def get_events
