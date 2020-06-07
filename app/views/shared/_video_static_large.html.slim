@@ -1,0 +1,51 @@
+.card
+  .card-image
+    - if video.video_site == 'youtube'
+      a.watch-video href=video_path(video)
+        img.responsive-img src="#{video.image3}" alt=video.title title=video.title
+    - elsif video.video_site == 'vimeo'
+      .video.video-container
+        iframe allowfullscreen=true frameborder="0" width="500" height="281" src="https://player.vimeo.com/video/#{video.video_id}"
+  .card-content
+    .row
+      .col.s12
+        a.video.span.grey-text.text-darken-4.flow-text href=video_path(video) title="#{video.title}"
+          h5 = video.title
+          h6.grey-text= video.published_at.strftime('%A, %e %B %Y')
+      .col.s12.share-stats
+        .share-btn
+          span.youtube-view-count= "#{video.view_count} views"
+        .share-btn.fb
+          .fb-share-button data-href=episode_url(video) data-layout="button_count"
+        .share-btn
+          a.twitter-share-button data-text="#{twitter_share_text(video)}" data-url=episode_url(video) href="https://twitter.com/share" Tweet
+      .col.s12
+        = auto_link(simple_format(video.description))
+
+    .details.row
+      - video.organizations.each do |organization|
+        .col.s6
+          .row.valign-wrapper
+            - if organization.image.present?
+              .col.s4
+                a href=organization_alias_path(organization)
+                  img.responsive-img.circle src=organization.image
+            .col class=(organization.image.present? ? 's8' : 's12')
+              a href=organization_alias_path(organization)
+                h6=organization.title
+
+      - presenter = video.presenters.try(:first)
+      - if presenter
+        .col.s6
+          .row.valign-wrapper
+            - if presenter.avatar.present?
+              .col.s4
+                a href=(presenter.twitter.present? ? speaker_path(presenter.twitter) : presenter_path(presenter.id))
+                  img.responsive-img.circle src=presenter.avatar
+            .col class=(presenter.avatar.present? ? 's8' : 's12')
+              h6
+                a href=(presenter.twitter.present? ? speaker_path(presenter.twitter) : presenter_path(presenter.id))
+                  => presenter.name
+                - if video.presenters.count > 1
+                  | & others
+
