@@ -41,7 +41,7 @@ ActiveAdmin.register Episode do
     column :published_at
     column :video_site
     column 'Thumbnail' do |video|
-      image_tag video.image1
+      image_tag video.image1 if video.image1
     end
     column :title
     column :active
