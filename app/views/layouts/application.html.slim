@@ -8,6 +8,7 @@ html
     ==yield :social_share_headers
     =csrf_meta_tags
     =auto_discovery_link_tag(:atom, feed_url(format: "atom"), title: "Engineers.SG - ATOM Feed")
+    link[rel="icon" type="image/png" href="/favicon.png"]
   body
     - cache('page_headers') do
       ==render 'shared/fb'

@@ -19,7 +19,7 @@ gem 'mini_racer'
 gem 'jquery-rails'
 gem 'google-api-client', '~> 0.11'
 gem 'rails_autolink'
-gem 'puma'
+gem 'puma', '~> 4.3'
 
 gem 'coffee-script'
 gem 'activeadmin', '~> 2'
